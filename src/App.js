@@ -3,13 +3,22 @@ import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
-  state = { startStation: "", endStation: "" };
+  state = { startStation: "940GZZLUCHX", endStation: "940GZZLUBST" };
 
   whatever = () => {};
+
+  getCost = () => {
+    fetch(
+      `https://api.tfl.gov.uk/Stoppoint/${this.state.startStation}/FareTo/${this.state.endStation}`
+    )
+      .then(resp => resp.json())
+      .then(x => console.log(x));
+  };
 
   render() {
     return (
       <div className="card">
+        {this.getCost()}
         <div> h1 TFL calculator</div>
         <div>
           <form action="">
