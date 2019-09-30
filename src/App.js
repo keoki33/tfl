@@ -1,11 +1,25 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import Simple from "./Simple";
 import "./App.css";
 
 class App extends Component {
-  state = { startStation: "940GZZLUCHX", endStation: "940GZZLUBST" };
+  state = {
+    simple: true,
+    startStation: "940GZZLUCHX",
+    endStation: "940GZZLUBST"
+  };
 
   whatever = () => {};
+
+  // choice: normal 5 day work week, no holidays or:
+
+  // show 7 days. each day should have from (peak, off) to station(peak, off), how many bus trips, option for none
+
+  // should then display option if have second option to choose from per trips
+
+  // side screen should show week, month, 6 month, year vs card and how many zones.
+
+  // show ads top, left, bottom?
 
   getCost = () => {
     fetch(
@@ -18,8 +32,11 @@ class App extends Component {
   render() {
     return (
       <div className="card">
+        <Simple />
         {this.getCost()}
-        <div> h1 TFL calculator</div>
+        <div>
+          <h1>TFL calculator</h1>
+        </div>
         <div>
           <form action="">
             <input type="text" />
