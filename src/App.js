@@ -39,25 +39,41 @@ class App extends Component {
         </div>
         <div>
           <form action="">
-            <input type="text" />
-            select start station
-            <input
-              onChange={event => {
-                this.setState({ startStation: event.target.value });
-              }}
-              name="station"
-              placeholer="station"
-              type="text"
-            />
-            select end station
-            <input
-              onChange={event => {
-                this.setState({ endStation: event.target.value });
-              }}
-              name="station"
-              placeholer="station"
-              type="text"
-            />
+            <label htmlFor="">
+              select start station
+              <input
+                onChange={event => {
+                  this.setState({ startStation: event.target.value });
+                }}
+                name="station"
+                placeholer="station"
+                type="text"
+              />
+            </label>
+            <label htmlFor="">
+              AM
+              <input type="radio" />
+            </label>
+            <label htmlFor="">
+              PM
+              <input type="radio" />
+            </label>
+
+            <label htmlFor="">
+              select end station
+              <input
+                onChange={event => {
+                  this.setState({ endStation: event.target.value });
+                }}
+                name="station"
+                placeholer="station"
+                type="text"
+              />
+              AM
+              <input type="radio" />
+              PM
+              <input type="radio" />
+            </label>
           </form>
         </div>
       </div>
