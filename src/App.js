@@ -6,6 +6,7 @@ class App extends Component {
   state = {
     simple: true,
     startStation: "940GZZLUCHX",
+
     endStation: "940GZZLUBST"
   };
 
@@ -29,11 +30,18 @@ class App extends Component {
       .then(x => console.log(x));
   };
 
+  test = () => {
+    fetch(`https://api.tfl.gov.uk/line/bakerloo/stoppoints`)
+      .then(resp => resp.json())
+      .then(x => console.log(x));
+  };
+
   render() {
     return (
       <div className="card">
         <Simple />
         {this.getCost()}
+        {this.test()}
         <div>
           <h1>TFL calculator</h1>
         </div>
