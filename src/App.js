@@ -5,8 +5,10 @@ import "./App.css";
 class App extends Component {
   state = {
     simple: true,
-    startStation: "940GZZLUCHX",
-
+    startStationField: "",
+    startStation: ["one", "two", "three"],
+    // startStation: "940GZZLUCHX",
+    endStationField: "",
     endStation: "940GZZLUBST"
   };
 
@@ -36,6 +38,8 @@ class App extends Component {
       .then(x => console.log(x));
   };
 
+  selectRoute = () => {};
+
   render() {
     return (
       <div className="card">
@@ -51,12 +55,17 @@ class App extends Component {
               select start station
               <input
                 onChange={event => {
-                  this.setState({ startStation: event.target.value });
+                  this.setState({ startStationField: event.target.value });
                 }}
-                name="station"
+                name="startStation"
                 placeholer="station"
-                type="text"
+                value={this.state.startStationField}
+                id="startStation"
+                list="StartStation"
               />
+              <datalist id="StartStation">
+                <option value="940GZZLUCHX" />
+              </datalist>
             </label>
             <label htmlFor="">
               AM
@@ -71,17 +80,28 @@ class App extends Component {
               select end station
               <input
                 onChange={event => {
-                  this.setState({ endStation: event.target.value });
+                  this.setState({ endStationField: event.target.value });
                 }}
                 name="station"
                 placeholer="station"
                 type="text"
+                list="EndStation"
               />
+              <datalist id="EndStation">
+                <option value="940GZZLUBST" />
+              </datalist>
               AM
               <input type="radio" />
               PM
               <input type="radio" />
             </label>
+            <button
+              onClick={event => {
+                this.selectRoute();
+              }}
+            >
+              select
+            </button>
           </form>
         </div>
       </div>
