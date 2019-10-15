@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Simple from "./Simple";
 import "./App.css";
+import TripForm from "./TripForm";
 
 class App extends Component {
   state = {
@@ -40,6 +41,8 @@ class App extends Component {
 
   selectRoute = () => {};
 
+  formType = () => {};
+
   render() {
     return (
       <div className="card">
@@ -52,57 +55,18 @@ class App extends Component {
         <div>
           <form action="">
             <label htmlFor="">
-              select start station
-              <input
-                onChange={event => {
-                  this.setState({ startStationField: event.target.value });
-                }}
-                name="startStation"
-                placeholer="station"
-                value={this.state.startStationField}
-                id="startStation"
-                list="StartStation"
-              />
-              <datalist id="StartStation">
-                <option value="940GZZLUCHX" />
-              </datalist>
+              simple
+              <input type="radio" name="formType" />
             </label>
+            <br />
             <label htmlFor="">
-              AM
-              <input type="radio" />
+              complex
+              <input type="radio" name="formType" />
             </label>
-            <label htmlFor="">
-              PM
-              <input type="radio" />
-            </label>
-
-            <label htmlFor="">
-              select end station
-              <input
-                onChange={event => {
-                  this.setState({ endStationField: event.target.value });
-                }}
-                name="station"
-                placeholer="station"
-                type="text"
-                list="EndStation"
-              />
-              <datalist id="EndStation">
-                <option value="940GZZLUBST" />
-              </datalist>
-              AM
-              <input type="radio" />
-              PM
-              <input type="radio" />
-            </label>
-            <button
-              onClick={event => {
-                this.selectRoute();
-              }}
-            >
-              select
-            </button>
           </form>
+        </div>
+        <div>
+          <TripForm />
         </div>
       </div>
     );
