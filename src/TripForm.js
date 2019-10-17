@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 
-class SimpleForm extends Component {
+class TripForm extends Component {
   state = {
     simple: true,
     startStationField: "",
+    startTimeField: "",
     startStation: ["one", "two", "three"],
     // startStation: "940GZZLUCHX",
     endStationField: "",
-    endStation: "940GZZLUBST"
+    endTimeField: "",
+    endStation: "940GZZLUBST",
+    busTripField: 0
   };
 
   whatever = () => {};
@@ -15,6 +18,7 @@ class SimpleForm extends Component {
   render() {
     return (
       <div className="simpleForm">
+        <h1>simple form</h1>
         <form action="">
           <label htmlFor="">
             select start station
@@ -60,6 +64,10 @@ class SimpleForm extends Component {
             PM
             <input type="radio" name="endTime" />
           </label>
+          <label htmlFor="">
+            bus trips
+            <input type="number" name="bus" />
+          </label>
           <button
             onClick={event => {
               this.selectRoute();
@@ -73,4 +81,4 @@ class SimpleForm extends Component {
   }
 }
 
-export default SimpleForm;
+export default TripForm;

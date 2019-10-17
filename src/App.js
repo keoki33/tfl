@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Simple from "./Simple";
+
 import "./App.css";
 import FullForm from "./FullForm";
-import SimpleForm from "./SimpleForm";
+import TripForm from "./TripForm";
 
 class App extends Component {
   state = {
@@ -47,7 +47,6 @@ class App extends Component {
   render() {
     return (
       <div className="card">
-        <Simple />
         {this.getCost()}
         {this.test()}
         <div>
@@ -67,6 +66,7 @@ class App extends Component {
           </form>
         </div>
         <div>
+          <TripForm />
           <FullForm />
         </div>
       </div>

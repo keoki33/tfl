@@ -14,7 +14,8 @@ class TripForm extends Component {
 
   render() {
     return (
-      <div className="tripForm">
+      <div className="fullTripForm">
+        <h1>Full form</h1>
         <form action="">
           <label htmlFor="">
             select start station
@@ -59,6 +60,10 @@ class TripForm extends Component {
             <input type="radio" name="endTime" />
             PM
             <input type="radio" name="endTime" />
+          </label>
+          <label htmlFor="">
+            bus trips
+            <input type="number" name="bus" />
           </label>
           <button
             onClick={event => {
