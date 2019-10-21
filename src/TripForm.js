@@ -17,8 +17,7 @@ class TripForm extends Component {
 
   render() {
     return (
-      <div className="simpleForm">
-        <h1>simple form</h1>
+      <div className="tripForm">
         <form action="">
           <label htmlFor="">
             select start station

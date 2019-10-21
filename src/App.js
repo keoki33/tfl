@@ -66,7 +66,6 @@ class App extends Component {
           </form>
         </div>
         <div>
-          <TripForm />
           <FullForm />
         </div>
       </div>
