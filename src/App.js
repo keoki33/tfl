@@ -56,18 +56,28 @@ class App extends Component {
           <form action="">
             <label htmlFor="">
               simple
-              <input type="radio" name="formType" />
+              <input
+                onChange={event => {
+                  this.setState({ simple: true });
+                }}
+                type="radio"
+                name="formType"
+              />
             </label>
             <br />
             <label htmlFor="">
               complex
-              <input type="radio" name="formType" />
+              <input
+                onChange={event => {
+                  this.setState({ simple: false });
+                }}
+                type="radio"
+                name="formType"
+              />
             </label>
           </form>
         </div>
-        <div>
-          <FullForm />
-        </div>
+        <div>{this.state.simple ? <TripForm /> : <FullForm />}</div>
       </div>
     );
   }
