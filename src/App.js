@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./App.css";
 import FullForm from "./FullForm";
 import TripForm from "./TripForm";
+import Results from "./Results";
 
 class App extends Component {
   state = {
@@ -78,6 +79,8 @@ class App extends Component {
           </form>
         </div>
         <div>{this.state.simple ? <TripForm /> : <FullForm />}</div>
+        <br />
+        <Results />
       </div>
     );
   }
