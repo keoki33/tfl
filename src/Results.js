@@ -17,6 +17,20 @@ class Results extends Component {
     return (
       <div className="card">
         <h1>Results</h1>
+        <div>
+          <p>contactless</p>
+          <p>weekly</p>
+          <p>monthly</p>
+          <p>6 month</p>
+          <p>year</p>
+        </div>
+        <div>
+          <p>travel card</p>
+          <p>weekly</p>
+          <p>monthly</p>
+          <p>6 month</p>
+          <p>year</p>
+        </div>
       </div>
     );
   }

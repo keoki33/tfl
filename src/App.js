@@ -4,6 +4,7 @@ import "./App.css";
 import FullForm from "./FullForm";
 import TripForm from "./TripForm";
 import Results from "./Results";
+import Ads from "./Ads";
 
 class App extends Component {
   state = {
@@ -81,6 +82,7 @@ class App extends Component {
         <div>{this.state.simple ? <TripForm /> : <FullForm />}</div>
         <br />
         <Results />
+        <Ads />
       </div>
     );
   }
