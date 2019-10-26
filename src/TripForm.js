@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { startStation } from "./startStation.js";
 
 class TripForm extends Component {
   state = {
@@ -12,6 +13,8 @@ class TripForm extends Component {
     endStation: "940GZZLUBST",
     busTripField: 0
   };
+
+  componentDidMount() {}
 
   whatever = () => {};
 
@@ -32,7 +35,10 @@ class TripForm extends Component {
               list="StartStation"
             />
             <datalist id="StartStation">
-              <option value="940GZZLUCHX" />
+              {/* <option value="940GZZLUCHX" /> */}
+              {startStation.map((item, key) => (
+                <option key={key} value={item} />
+              ))}
             </datalist>
           </label>
           <label htmlFor="">
@@ -67,13 +73,6 @@ class TripForm extends Component {
             bus trips
             <input type="number" name="bus" />
           </label>
-          <button
-            onClick={event => {
-              this.selectRoute();
-            }}
-          >
-            select
-          </button>
         </form>
       </div>
     );

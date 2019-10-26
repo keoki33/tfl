@@ -80,6 +80,13 @@ class App extends Component {
           </form>
         </div>
         <div>{this.state.simple ? <TripForm /> : <FullForm />}</div>
+        <button
+          onClick={event => {
+            this.selectRoute();
+          }}
+        >
+          select
+        </button>
         <br />
         <Results />
         <Ads />
