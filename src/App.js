@@ -9,11 +9,30 @@ import Ads from "./Ads";
 class App extends Component {
   state = {
     simple: true,
-    startStationField: "",
-    startStation: ["one", "two", "three"],
+    startStationFieldM: "",
+    startStationFieldT: "",
+    startStationFieldW: "",
+    startStationFieldT: "",
+    startStationFieldF: "",
+    startStationFieldS: "",
+    startStationFieldSu: "",
+    startStationFieldA: "",
     // startStation: "940GZZLUCHX",
-    endStationField: "",
-    endStation: "940GZZLUBST"
+    endStationFieldM: "",
+    endStationFieldT: "",
+    endStationFieldW: "",
+    endStationFieldT: "",
+    endStationFieldF: "",
+    endStationFieldS: "",
+    endStationFieldSu: "",
+    endStationFieldA: "",
+    endStation: "940GZZLUBST",
+    week: 0,
+    month: 0,
+    year: 0,
+    weekCard: 0,
+    monthCard: 0,
+    yearCard: 0
   };
 
   whatever = () => {};
