@@ -15,21 +15,35 @@ class Results extends Component {
 
   render() {
     return (
-      <div className="card">
+      <div className="results">
         <h1>Results</h1>
-        <div>
+        <div className="resultsLeft">
           <p>contactless</p>
-          <p>weekly</p>
-          <p>monthly</p>
-          <p>6 month</p>
-          <p>year</p>
+          <p>weekly {this.props.week}</p>
+          <p>monthly {this.props.month}</p>
+          <p>6 month {this.props.halfYear}</p>
+          <p>year {this.props.year}</p>
+          <p>
+            Total £
+            {`${this.props.week +
+              this.props.month +
+              this.props.halfYear +
+              this.props.year}`}
+          </p>
         </div>
-        <div>
-          <p>travel card</p>
-          <p>weekly</p>
-          <p>monthly</p>
-          <p>6 month</p>
-          <p>year</p>
+        <div className="resultsRight">
+          <p>travel card </p>
+          <p>weekly {this.props.weekCard}</p>
+          <p>monthly {this.props.monthCard}</p>
+          <p>6 month {this.props.halfYearCard}</p>
+          <p>year {this.props.yearCard}</p>
+          <p>
+            Total £
+            {`${this.props.weekCard +
+              this.props.monthCard +
+              this.props.halfYearCard +
+              this.props.yearCard}`}
+          </p>
         </div>
       </div>
     );

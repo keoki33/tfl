@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./App.css";
+import "./App.scss";
 import FullForm from "./FullForm";
 import TripForm from "./TripForm";
 import Results from "./Results";
@@ -29,9 +29,11 @@ class App extends Component {
     endStation: "940GZZLUBST",
     week: 0,
     month: 0,
+    halfYear: 0,
     year: 0,
     weekCard: 0,
     monthCard: 0,
+    halfYearCard: 0,
     yearCard: 0
   };
 
@@ -107,7 +109,16 @@ class App extends Component {
           select
         </button>
         <br />
-        <Results />
+        <Results
+          week={this.state.week}
+          month={this.state.month}
+          halfYear={this.state.halfYear}
+          year={this.state.year}
+          weekCard={this.state.weekCard}
+          monthCard={this.state.monthCard}
+          halfYearCard={this.state.halfYearCard}
+          yearCard={this.state.yearCard}
+        />
         <Ads />
       </div>
     );
