@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { startStation } from "./startStation.js";
+import { stationList } from "./stationList.js";
 
 class TripForm extends Component {
   state = {
@@ -36,7 +36,7 @@ class TripForm extends Component {
             />
             <datalist id="StartStation">
               {/* <option value="940GZZLUCHX" /> */}
-              {startStation.map((item, key) => (
+              {stationList.map((item, key) => (
                 <option key={key} value={item} />
               ))}
             </datalist>
@@ -53,8 +53,11 @@ class TripForm extends Component {
           <label htmlFor="">
             select end station
             <input
+              // onChange={event => {
+              //   this.setState({ endStationField: event.target.value });
+              // }}
               onChange={event => {
-                this.setState({ endStationField: event.target.value });
+                this.props.handleChange();
               }}
               name="station"
               placeholer="station"
@@ -62,7 +65,10 @@ class TripForm extends Component {
               list="EndStation"
             />
             <datalist id="EndStation">
-              <option value="940GZZLUBST" />
+              {/* <option value="940GZZLUBST" /> */}
+              {stationList.map((item, key) => (
+                <option key={key} value={item} />
+              ))}
             </datalist>
             AM
             <input type="radio" name="endTime" />

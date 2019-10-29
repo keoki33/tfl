@@ -67,6 +67,8 @@ class App extends Component {
 
   formType = () => {};
 
+  simpleHandle = () => {};
+
   render() {
     return (
       <div className="card">
@@ -100,7 +102,13 @@ class App extends Component {
             </label>
           </form>
         </div>
-        <div>{this.state.simple ? <TripForm /> : <FullForm />}</div>
+        <div>
+          {this.state.simple ? (
+            <TripForm handleChange={this.simpleHandle} />
+          ) : (
+            <FullForm />
+          )}
+        </div>
         <button
           onClick={event => {
             this.selectRoute();
