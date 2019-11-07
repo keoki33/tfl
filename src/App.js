@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import {
+  TransitionGroup,
+  CSSTransition,
+  SwitchTransition
+} from "react-transition-group";
 
 import "./App.scss";
 import FullForm from "./FullForm";
@@ -85,6 +90,7 @@ class App extends Component {
                 onChange={event => {
                   this.setState({ simple: true });
                 }}
+                defaultChecked
                 type="radio"
                 name="formType"
               />
