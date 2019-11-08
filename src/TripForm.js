@@ -42,12 +42,12 @@ class TripForm extends Component {
             </datalist>
           </label>
           <label htmlFor="">
-            AM
-            <input type="radio" name="startTime" />
+            Peak
+            <input type="radio" name="time" />
           </label>
           <label htmlFor="">
-            PM
-            <input type="radio" name="startTime" />
+            Off Peak
+            <input type="radio" name="time" />
           </label>
 
           <label htmlFor="">
@@ -70,10 +70,10 @@ class TripForm extends Component {
                 <option key={key} value={item} />
               ))}
             </datalist>
-            AM
-            <input type="radio" name="endTime" />
-            PM
-            <input type="radio" name="endTime" />
+            Peak
+            <input type="radio" name="time" />
+            Off Peak
+            <input type="radio" name="time" />
           </label>
           <label htmlFor="">
             bus trips

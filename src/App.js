@@ -108,9 +108,11 @@ class App extends Component {
             </label>
           </form>
         </div>
-        <div>
+        <div className="form">
           {this.state.simple ? (
-            <TripForm handleChange={this.simpleHandle} />
+            <div className="simpleForm">
+              <TripForm handleChange={this.simpleHandle} />
+            </div>
           ) : (
             <FullForm />
           )}
