@@ -39,8 +39,13 @@ class App extends Component {
     weekCard: 0,
     monthCard: 0,
     halfYearCard: 0,
-    yearCard: 0
+    yearCard: 0,
+    list: []
   };
+
+  componentDidMount() {
+    this.test();
+  }
 
   whatever = () => {};
 
@@ -63,9 +68,10 @@ class App extends Component {
   };
 
   test = () => {
-    fetch(`https://api.tfl.gov.uk/line/bakerloo/stoppoints`)
+    fetch(`https://api.tfl.gov.uk/line/circle/stoppoints`)
       .then(resp => resp.json())
-      .then(x => console.log(x));
+      // .then(x => console.log(`${x[0]["commonName"]} : ${x[0]["id"]}`));
+      .then(x => this.setState({ list: x }));
   };
 
   selectRoute = () => {};
@@ -77,8 +83,8 @@ class App extends Component {
   render() {
     return (
       <div className="card">
-        {this.getCost()}
-        {this.test()}
+        {/* {this.getCost()} */}
+        {console.log(this.state.list)}
         <div>
           <h1>TFL calculator</h1>
         </div>
