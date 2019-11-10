@@ -40,11 +40,15 @@ class App extends Component {
     monthCard: 0,
     halfYearCard: 0,
     yearCard: 0,
+    zones: 0,
     list: []
   };
 
   componentDidMount() {
-    this.test();
+    this.test("circle");
+    this.test("central");
+    this.test("dlr");
+    this.test("district");
   }
 
   whatever = () => {};
@@ -67,11 +71,11 @@ class App extends Component {
       .then(x => console.log(x));
   };
 
-  test = () => {
-    fetch(`https://api.tfl.gov.uk/line/circle/stoppoints`)
+  test = line => {
+    fetch(`https://api.tfl.gov.uk/line/${line}/stoppoints`)
       .then(resp => resp.json())
       // .then(x => console.log(`${x[0]["commonName"]} : ${x[0]["id"]}`));
-      .then(x => this.setState({ list: x }));
+      .then(x => this.setState({ list: {} }));
   };
 
   selectRoute = () => {};
@@ -140,6 +144,7 @@ class App extends Component {
           monthCard={this.state.monthCard}
           halfYearCard={this.state.halfYearCard}
           yearCard={this.state.yearCard}
+          zones={this.state.zones}
         />
         <Ads />
       </div>
