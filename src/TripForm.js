@@ -49,7 +49,11 @@ class TripForm extends Component {
             Off Peak
             <input type="radio" name="time" />
           </label>
-
+          <label htmlFor="">
+            bus trips
+            <input type="number" name="bus" />
+          </label>
+          <br />
           <label htmlFor="">
             select end station
             <input

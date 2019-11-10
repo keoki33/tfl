@@ -17,19 +17,13 @@ class Results extends Component {
     return (
       <div className="results">
         <h1>Results</h1>
+        <p>Zones Travelled {this.props.zones}</p>
         <div className="resultsLeft">
           <p>contactless</p>
           <p>weekly {this.props.week}</p>
           <p>monthly {this.props.month}</p>
           <p>6 month {this.props.halfYear}</p>
           <p>year {this.props.year}</p>
-          <p>
-            Total £
-            {`${this.props.week +
-              this.props.month +
-              this.props.halfYear +
-              this.props.year}`}
-          </p>
         </div>
         <div className="resultsRight">
           <p>travel card </p>
@@ -37,13 +31,6 @@ class Results extends Component {
           <p>monthly {this.props.monthCard}</p>
           <p>6 month {this.props.halfYearCard}</p>
           <p>year {this.props.yearCard}</p>
-          <p>
-            Total £
-            {`${this.props.weekCard +
-              this.props.monthCard +
-              this.props.halfYearCard +
-              this.props.yearCard}`}
-          </p>
         </div>
       </div>
     );
