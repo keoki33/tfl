@@ -10,6 +10,8 @@ import FullForm from "./FullForm";
 import TripForm from "./TripForm";
 import Results from "./Results";
 import Ads from "./Ads";
+import Navbar from "./Navbar";
+import About from "./About";
 
 class App extends Component {
   state = {
@@ -41,14 +43,14 @@ class App extends Component {
     halfYearCard: 0,
     yearCard: 0,
     zones: 0,
-    list: []
+    list: [],
+    result: false,
+    about: false
   };
 
   componentDidMount() {
     this.test("circle");
     this.test("central");
-    this.test("dlr");
-    this.test("district");
   }
 
   whatever = () => {};
@@ -86,7 +88,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="card">
+      <div className="main">
+        <Navbar />
         {/* {this.getCost()} */}
         {console.log(this.state.list)}
         <div>

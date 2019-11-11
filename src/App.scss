@@ -6,6 +6,36 @@
   box-sizing: border-box;
 }
 
+.navbar {
+  background-color: #2d3039;
+  color: white;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  ul {
+    margin-left: 150px;
+    grid-column: 4;
+    margin-top: auto;
+    margin-bottom: auto;
+    list-style: none;
+    li {
+      display: inline;
+      padding: 20px;
+    }
+  }
+  svg {
+    path {
+      stroke: #113b92;
+      stroke-width: 1px;
+    }
+  }
+}
+
+.logo {
+  background-color: #113b92;
+  width: 250px;
+}
+
 .results {
   position: relative;
   border: solid red;
