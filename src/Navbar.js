@@ -33,8 +33,20 @@ class HogDetails extends Component {
           </svg>
         </div>
         <ul className="links">
-          <li>Home</li>
-          <li>About</li>
+          <li
+            onClick={() => {
+              this.props.handleNav("home");
+            }}
+          >
+            Home
+          </li>
+          <li
+            onClick={() => {
+              this.props.handleNav("about");
+            }}
+          >
+            About
+          </li>
         </ul>
       </div>
     );

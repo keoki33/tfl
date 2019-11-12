@@ -6,16 +6,14 @@ import {
 } from "react-transition-group";
 
 import "./App.scss";
-import FullForm from "./FullForm";
-import TripForm from "./TripForm";
-import Results from "./Results";
+
 import Ads from "./Ads";
 import Navbar from "./Navbar";
 import About from "./About";
+import Form from "./Form";
 
 class App extends Component {
   state = {
-    simple: true,
     startStationFieldM: "",
     startStationFieldT: "",
     startStationFieldW: "",
@@ -45,7 +43,8 @@ class App extends Component {
     zones: 0,
     list: [],
     result: false,
-    about: false
+    about: false,
+    form: true
   };
 
   componentDidMount() {
@@ -86,70 +85,29 @@ class App extends Component {
 
   simpleHandle = () => {};
 
+  handleNav = x => {
+    switch (x) {
+      case "home":
+        this.setState({ form: true, about: false });
+        break;
+
+      case "about":
+        this.setState({ form: false, about: true });
+        break;
+    }
+  };
+
   render() {
     return (
       <div className="main">
-        <Navbar />
+        <Navbar handleNav={this.handleNav} />
         {/* {this.getCost()} */}
         {console.log(this.state.list)}
-        <div>
-          <h1>TFL calculator</h1>
-        </div>
-        <div>
-          <form action="">
-            <label htmlFor="">
-              simple
-              <input
-                onChange={event => {
-                  this.setState({ simple: true });
-                }}
-                defaultChecked
-                type="radio"
-                name="formType"
-              />
-            </label>
-            <br />
-            <label htmlFor="">
-              complex
-              <input
-                onChange={event => {
-                  this.setState({ simple: false });
-                }}
-                type="radio"
-                name="formType"
-              />
-            </label>
-          </form>
-        </div>
-        <div className="form">
-          {this.state.simple ? (
-            <div className="simpleForm">
-              <TripForm handleChange={this.simpleHandle} />
-            </div>
-          ) : (
-            <FullForm />
-          )}
-        </div>
-        <button
-          onClick={event => {
-            this.selectRoute();
-          }}
-        >
-          select
-        </button>
-        <br />
-        <Results
-          week={this.state.week}
-          month={this.state.month}
-          halfYear={this.state.halfYear}
-          year={this.state.year}
-          weekCard={this.state.weekCard}
-          monthCard={this.state.monthCard}
-          halfYearCard={this.state.halfYearCard}
-          yearCard={this.state.yearCard}
-          zones={this.state.zones}
-        />
-        <Ads />
+        {this.state.form ? <Form /> : ""}
+        {this.state.about ? <About /> : ""}
+        <div className="adsL">adsL</div>
+        <div className="adsR">adsR</div>
+        <div className="adsB">adsB</div>
       </div>
     );
   }
