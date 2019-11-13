@@ -35,6 +35,7 @@ class HogDetails extends Component {
         <ul className="links">
           <li
             onClick={() => {
+              window.location.reload();
               this.props.handleNav("home");
             }}
           >

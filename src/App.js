@@ -79,12 +79,6 @@ class App extends Component {
       .then(x => this.setState({ list: {} }));
   };
 
-  selectRoute = () => {};
-
-  formType = () => {};
-
-  simpleHandle = () => {};
-
   handleNav = x => {
     switch (x) {
       case "home":
@@ -101,10 +95,12 @@ class App extends Component {
     return (
       <div className="main">
         <Navbar handleNav={this.handleNav} />
-        {/* {this.getCost()} */}
-        {console.log(this.state.list)}
-        {this.state.form ? <Form /> : ""}
-        {this.state.about ? <About /> : ""}
+        <div className="content">
+          {/* {this.getCost()} */}
+          {console.log(this.state.list)}
+          {this.state.form ? <Form /> : ""}
+          {this.state.about ? <About /> : ""}
+        </div>
         <div className="adsL">adsL</div>
         <div className="adsR">adsR</div>
         <div className="adsB">adsB</div>

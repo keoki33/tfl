@@ -3,7 +3,9 @@ import React, { Component } from "react";
 class Results extends Component {
   state = {};
 
-  whatever = () => {};
+  refresh = () => {
+    window.location.reload();
+  };
 
   // div table
   // ------------------
@@ -31,6 +33,10 @@ class Results extends Component {
           <p>monthly {this.props.monthCard}</p>
           <p>6 month {this.props.halfYearCard}</p>
           <p>year {this.props.yearCard}</p>
+        </div>
+        <div className="resultsButtons">
+          <button onClick={() => this.props.formReturn()}>Edit</button>
+          <button onClick={this.refresh}>Restart</button>
         </div>
       </div>
     );
