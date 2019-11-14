@@ -29,10 +29,26 @@
     }
   }
   svg {
+    stroke-dashoffset: 1000;
+    animation: draw 7s linear infinite 1s;
+    // stroke: #6d77ff;
+    stroke: white;
+    stroke-width: 1px;
     path {
-      stroke: #6d77ff;
-      stroke-width: 1px;
     }
+  }
+}
+
+@keyframes draw {
+  0% {
+    stroke-dasharray: 1000;
+
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+    fill: white;
   }
 }
 
