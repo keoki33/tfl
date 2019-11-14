@@ -37,7 +37,7 @@ class TripForm extends Component {
             <datalist id="StartStation">
               {/* <option value="940GZZLUCHX" /> */}
               {stationList.map((item, key) => (
-                <option key={key} value={item} />
+                <option key={key} value={item["name"]} />
               ))}
             </datalist>
           </label>
@@ -71,7 +71,7 @@ class TripForm extends Component {
             <datalist id="EndStation">
               {/* <option value="940GZZLUBST" /> */}
               {stationList.map((item, key) => (
-                <option key={key} value={item} />
+                <option key={key} value={item["name"]} />
               ))}
             </datalist>
             Peak

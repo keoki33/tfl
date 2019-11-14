@@ -32,23 +32,15 @@ class App extends Component {
     endStationFieldSu: "",
     endStationFieldA: "",
     endStation: "940GZZLUBST",
-    week: 0,
-    month: 0,
-    halfYear: 0,
-    year: 0,
-    weekCard: 0,
-    monthCard: 0,
-    halfYearCard: 0,
-    yearCard: 0,
-    zones: 0,
-    list: [],
+    list: ["test", "test1"],
     result: false,
     about: false,
-    form: true
+    form: true,
+    array: ["o", "e"],
+    check: "check"
   };
 
   componentDidMount() {
-    this.test("circle");
     this.test("central");
   }
 
@@ -76,7 +68,7 @@ class App extends Component {
     fetch(`https://api.tfl.gov.uk/line/${line}/stoppoints`)
       .then(resp => resp.json())
       // .then(x => console.log(`${x[0]["commonName"]} : ${x[0]["id"]}`));
-      .then(x => this.setState({ list: {} }));
+      .then(x => this.setState({ list: x }, () => this.sort()));
   };
 
   handleNav = x => {
@@ -91,13 +83,38 @@ class App extends Component {
     }
   };
 
+  test1 = x => {
+    let reduce = x["additionalProperties"];
+    let reduce2 = reduce.filter(x => x.key == "Zone");
+    return reduce2[0]["value"];
+  };
+
+  sort = () => {
+    let arr = [];
+    arr = this.state.list.map(x => ({
+      name: `${x["commonName"]}`,
+      id: `${x["id"]}`,
+      zone: this.test1(x)
+    }));
+    this.setState({ array: arr });
+  };
+
+  display = () => {
+    return this.state.array.map(x => {
+      return `{"name" : "${x["name"]}" , "id" : "${x["id"]}" , "zone" : "${
+        x["zone"]
+      }" } , `;
+    });
+  };
+
   render() {
     return (
       <div className="main">
         <Navbar handleNav={this.handleNav} />
         <div className="content">
           {/* {this.getCost()} */}
-          {console.log(this.state.list)}
+          {console.log(this.state.array)}
+          {/* {this.display()} */}
           {this.state.form ? <Form /> : ""}
           {this.state.about ? <About /> : ""}
         </div>

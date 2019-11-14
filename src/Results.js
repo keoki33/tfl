@@ -1,7 +1,17 @@
 import React, { Component } from "react";
 
 class Results extends Component {
-  state = {};
+  state = {
+    week: 0,
+    month: 0,
+    halfYear: 0,
+    year: 0,
+    weekCard: 0,
+    monthCard: 0,
+    halfYearCard: 0,
+    yearCard: 0,
+    zones: 0
+  };
 
   refresh = () => {
     window.location.reload();
