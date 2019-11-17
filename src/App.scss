@@ -37,6 +37,13 @@
     path {
     }
   }
+  h2 {
+    margin: auto;
+    // margin-top: auto;
+    // margin-bottom: auto;
+    color: white;
+    grid-column: 2/4;
+  }
 }
 
 @keyframes draw {
@@ -89,6 +96,13 @@
 
 .forms {
   border: solid red;
+}
+
+.tripForm {
+  border: solid purple;
+  width: 100%;
+  display: flex;
+  height: 100%;
 }
 
 //RESULTS //RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS

@@ -114,6 +114,7 @@ class App extends Component {
         <div className="content">
           {/* {this.getCost()} */}
           {console.log(this.state.array)}
+
           {/* {this.display()} */}
           {this.state.form ? <Form /> : ""}
           {this.state.about ? <About /> : ""}

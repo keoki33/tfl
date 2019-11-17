@@ -8,7 +8,14 @@ class Form extends Component {
     simple: true,
     complex: false,
     results: false,
-    main: true
+    main: true,
+
+    startStationFieldSimple: "",
+    startTimeFieldSimple: "",
+    endStationFieldSimple: "",
+    endTimeFieldSimple: "",
+    startBusTripField: 0,
+    endBusTripField: 0
   };
 
   calculateFare = () => {
@@ -24,9 +31,14 @@ class Form extends Component {
     this.setState({ results: false, main: true, simple: true, complex: false });
   };
 
+  handleFormInput = (k, v) => {
+    this.setState({ [k]: v });
+  };
+
   render() {
     return (
       <div>
+        {console.log(this.state.startStationFieldSimple)}
         <div className="forms">
           {this.state.main ? (
             <form action="">
@@ -59,7 +71,7 @@ class Form extends Component {
 
           {this.state.simple ? (
             <div className="simpleForm">
-              <TripForm handleChange={this.simpleHandle} />
+              <TripForm handleFormInput={this.handleFormInput} />
             </div>
           ) : (
             ""

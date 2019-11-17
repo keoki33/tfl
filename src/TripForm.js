@@ -22,68 +22,81 @@ class TripForm extends Component {
     return (
       <div className="tripForm">
         <form action="">
-          <label htmlFor="">
-            select start station
-            <input
-              onChange={event => {
-                this.setState({ startStationField: event.target.value });
-              }}
-              name="startStation"
-              placeholer="station"
-              value={this.state.startStationField}
-              id="startStation"
-              list="StartStation"
-            />
-            <datalist id="StartStation">
-              {/* <option value="940GZZLUCHX" /> */}
-              {stationList.map((item, key) => (
-                <option key={key} value={item["name"]} />
-              ))}
-            </datalist>
-          </label>
-          <label htmlFor="">
-            Peak
-            <input type="radio" name="time" />
-          </label>
-          <label htmlFor="">
-            Off Peak
-            <input type="radio" name="time" />
-          </label>
-          <label htmlFor="">
-            bus trips
-            <input type="number" name="bus" />
-          </label>
-          <br />
-          <label htmlFor="">
-            select end station
-            <input
-              // onChange={event => {
-              //   this.setState({ endStationField: event.target.value });
-              // }}
-              onChange={event => {
-                this.props.handleChange();
-              }}
-              name="station"
-              placeholer="station"
-              type="text"
-              list="EndStation"
-            />
-            <datalist id="EndStation">
-              {/* <option value="940GZZLUBST" /> */}
-              {stationList.map((item, key) => (
-                <option key={key} value={item["name"]} />
-              ))}
-            </datalist>
-            Peak
-            <input type="radio" name="time" />
-            Off Peak
-            <input type="radio" name="time" />
-          </label>
-          <label htmlFor="">
-            bus trips
-            <input type="number" name="bus" />
-          </label>
+          <label htmlFor="">start station </label>
+          <input
+            onChange={event => {
+              this.props.handleFormInput(
+                "startStationFieldSimple",
+                event.target.value
+              );
+            }}
+            name="startStation"
+            placeholer="station"
+            // value={this.state.startStationField}
+            id="startStation"
+            list="StartStation"
+          />
+          <datalist id="StartStation">
+            {/* <option value="940GZZLUCHX" /> */}
+            {stationList.map((item, key) => (
+              <option key={key} value={item["name"]} />
+            ))}
+          </datalist>
         </form>
+        <form
+          onChange={event => {
+            this.props.handleFormInput(
+              "startTimeFieldSimple",
+              event.target.value
+            );
+          }}
+        >
+          <label htmlFor="">Peak </label>
+          <input type="radio" name="time" value="peak" />
+
+          <label htmlFor="">Off Peak </label>
+          <input type="radio" name="time" value="offPeak" />
+        </form>
+        <label htmlFor="">bus trips </label>
+        <input type="number" name="bus" />
+        <form action="">
+          <label htmlFor="">start station </label>
+          <input
+            onChange={event => {
+              this.props.handleFormInput(
+                "startStationFieldSimple",
+                event.target.value
+              );
+            }}
+            name="startStation"
+            placeholer="station"
+            // value={this.state.startStationField}
+            id="startStation"
+            list="StartStation"
+          />
+          <datalist id="StartStation">
+            {/* <option value="940GZZLUCHX" /> */}
+            {stationList.map((item, key) => (
+              <option key={key} value={item["name"]} />
+            ))}
+          </datalist>
+        </form>
+        <form
+          onChange={event => {
+            this.props.handleFormInput(
+              "startTimeFieldSimple",
+              event.target.value
+            );
+          }}
+        >
+          <label htmlFor="">Peak </label>
+          <input type="radio" name="time" value="peak" />
+
+          <label htmlFor="">Off Peak </label>
+          <input type="radio" name="time" value="offPeak" />
+        </form>
+        <label htmlFor="">bus trips </label>
+        <input type="number" name="bus" />
       </div>
     );
   }
