@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FullForm from "./FullForm";
 import TripForm from "./TripForm";
 import Results from "./Results";
+import Loading from "./Loading";
 
 class Form extends Component {
   state = {

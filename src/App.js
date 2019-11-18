@@ -5,6 +5,8 @@ import {
   SwitchTransition
 } from "react-transition-group";
 
+import Loading from "./Loading";
+
 import "./App.scss";
 
 import Ads from "./Ads";
@@ -122,6 +124,7 @@ class App extends Component {
         <div className="adsL">adsL</div>
         <div className="adsR">adsR</div>
         <div className="adsB">adsB</div>
+        <Loading />
       </div>
     );
   }
