@@ -4,6 +4,8 @@ import TripForm from "./TripForm";
 import Results from "./Results";
 import Loading from "./Loading";
 
+import { stationList } from "./stationList.js";
+
 class Form extends Component {
   state = {
     simple: true,
@@ -16,7 +18,9 @@ class Form extends Component {
     endStationFieldSimple: "",
     endTimeFieldSimple: "",
     startBusTripField: 0,
-    endBusTripField: 0
+    endBusTripField: 0,
+    startId: "",
+    endId: ""
   };
 
   calculateFare = () => {
@@ -26,6 +30,28 @@ class Form extends Component {
       simple: false,
       complex: false
     });
+    this.getStationId();
+  };
+
+  getCost = () => {
+    fetch(
+      `https://api.tfl.gov.uk/Stoppoint/${this.state.startId}/FareTo/${this.state.endId}`
+    )
+      .then(resp => resp.json())
+      .then(x => console.log(x[0]["rows"][0]["ticketsAvailable"]));
+  };
+
+  getStationId = () => {
+    let start = stationList.filter(
+      x => x.name === this.state.startStationFieldSimple
+    );
+    let end = stationList.filter(
+      x => x.name === this.state.endStationFieldSimple
+    );
+
+    this.setState({ startId: start[0].id, endId: end[0].id }, () =>
+      this.getCost()
+    );
   };
 
   formReturn = () => {
