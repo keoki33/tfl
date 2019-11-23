@@ -30,7 +30,7 @@
   }
   svg {
     stroke-dashoffset: 1000;
-    animation: draw 7s linear infinite 1s;
+    animation: draw 7s linear infinite alternate 1s;
     // stroke: #6d77ff;
     stroke: white;
     stroke-width: 1px;

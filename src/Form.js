@@ -13,14 +13,24 @@ class Form extends Component {
     results: false,
     main: true,
 
-    startStationFieldSimple: "",
-    startTimeFieldSimple: "",
-    endStationFieldSimple: "",
-    endTimeFieldSimple: "",
-    startBusTripField: 0,
+    startStationFieldSimpleM: "",
+    timeFieldSimpleM: "1",
+    endStationFieldSimpleM: "",
+    endTimeFieldSimple: "1",
+    busTripFieldM: 0,
     endBusTripField: 0,
     startId: "",
-    endId: ""
+    endId: "",
+
+    week: 0,
+    month: 0,
+    halfYear: 0,
+    year: 0,
+    weekCard: 0,
+    monthCard: 0,
+    halfYearCard: 0,
+    yearCard: 0,
+    zones: 0
   };
 
   calculateFare = () => {
@@ -38,15 +48,21 @@ class Form extends Component {
       `https://api.tfl.gov.uk/Stoppoint/${this.state.startId}/FareTo/${this.state.endId}`
     )
       .then(resp => resp.json())
-      .then(x => console.log(x[0]["rows"][0]["ticketsAvailable"]));
+      .then(x =>
+        console.log(
+          x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
+            "cost"
+          ]
+        )
+      );
   };
 
   getStationId = () => {
     let start = stationList.filter(
-      x => x.name === this.state.startStationFieldSimple
+      x => x.name === this.state.startStationFieldSimpleM
     );
     let end = stationList.filter(
-      x => x.name === this.state.endStationFieldSimple
+      x => x.name === this.state.endStationFieldSimpleM
     );
 
     this.setState({ startId: start[0].id, endId: end[0].id }, () =>
@@ -98,7 +114,15 @@ class Form extends Component {
 
           {this.state.simple ? (
             <div className="simpleForm">
-              <TripForm handleFormInput={this.handleFormInput} />
+              <TripForm
+                startStationFieldSimpleM={this.state.startStationFieldSimpleM}
+                timeFieldSimpleM={this.state.timeFieldSimpleM}
+                endStationFieldSimpleM={this.state.endStationFieldSimpleM}
+                endTimeFieldSimple={this.state.endTimeFieldSimple}
+                busTripFieldM={this.state.busTripFieldM}
+                endBusTripField={this.state.endBusTripField}
+                handleFormInput={this.handleFormInput}
+              />
             </div>
           ) : (
             ""
