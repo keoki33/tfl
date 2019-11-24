@@ -43,21 +43,21 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.getStations("central");
-    this.getStations("dlr");
-    this.getStations("circle");
-    this.getStations("bakerloo");
-    this.getStations("district");
-    this.getStations("hammersmith-city");
-    this.getStations("jubilee");
-    this.getStations("metropolitan");
-    this.getStations("northern");
-    this.getStations("piccadilly");
-    this.getStations("victoria");
-    this.getStations("waterloo-city");
-    this.getStations("london-overground");
-    this.getStations("northern");
-    this.getStations("tfl-rail");
+    // this.getStations("central");
+    // this.getStations("dlr");
+    // this.getStations("circle");
+    // this.getStations("bakerloo");
+    // this.getStations("district");
+    // this.getStations("hammersmith-city");
+    // this.getStations("jubilee");
+    // this.getStations("metropolitan");
+    // this.getStations("northern");
+    // this.getStations("piccadilly");
+    // this.getStations("victoria");
+    // this.getStations("waterloo-city");
+    // this.getStations("london-overground");
+    // this.getStations("northern");
+    // this.getStations("tfl-rail");
   }
 
   whatever = () => {};
@@ -107,12 +107,12 @@ class App extends Component {
       // .then(x => this.setState({ list: x }, () => this.sort()));
       .then(x =>
         this.setState({ list: [...this.state.list, x] }, () =>
-          this.setState({ list: this.state.list.flat() }, () => this.sort())
+          this.setState({ list: this.state.list.flat() }, () => this.print())
         )
       );
   };
 
-  sort = () => {
+  print = () => {
     let arr = [];
     arr = this.state.list.map(x => ({
       name: `${x["commonName"]}`,
@@ -122,8 +122,34 @@ class App extends Component {
     this.setState({ array: arr });
   };
 
+  compare = (a, b) => {
+    // Use toUpperCase() to ignore character casing
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+
+    let comparison = 0;
+    if (nameA > nameB) {
+      comparison = 1;
+    } else if (nameA < nameB) {
+      comparison = -1;
+    }
+    return comparison;
+  };
+
+  getUnique = (arr, comp) => {
+    const unique = arr
+      .map(e => e[comp])
+      .map((e, i, final) => final.indexOf(e) === i && i)
+      .filter(e => arr[e])
+      .map(e => arr[e]);
+    return unique;
+  };
+
   display = () => {
-    return this.state.array.map(x => {
+    this.state.array.sort(this.compare);
+    let arr = this.getUnique(this.state.array, "name");
+    console.log(arr);
+    return arr.map(x => {
       return `{"name" : "${x["name"]}" , "id" : "${x["id"]}" , "zone" : "${x["zone"]}" } , `;
     });
   };
@@ -133,7 +159,7 @@ class App extends Component {
       <div className="main">
         <Navbar handleNav={this.handleNav} />
         <div className="content">
-          {this.display()}
+          {/* {this.display()} */}
           {this.state.form ? <Form /> : ""}
           {this.state.about ? <About /> : ""}
         </div>
