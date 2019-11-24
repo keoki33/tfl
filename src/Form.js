@@ -13,9 +13,9 @@ class Form extends Component {
     results: false,
     main: true,
 
-    startStationFieldSimpleM: "",
+    startStationFieldSimpleM: "0",
     timeFieldSimpleM: "1",
-    endStationFieldSimpleM: "",
+    endStationFieldSimpleM: "0",
     endTimeFieldSimple: "1",
     busTripFieldM: 0,
     endBusTripField: 0,
@@ -48,13 +48,24 @@ class Form extends Component {
       `https://api.tfl.gov.uk/Stoppoint/${this.state.startId}/FareTo/${this.state.endId}`
     )
       .then(resp => resp.json())
-      .then(x =>
-        console.log(
-          x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
-            "cost"
-          ]
-        )
-      );
+      // .then(x =>
+      //   console.log(
+      //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
+      //       "cost"
+      //     ]
+      //   )
+      // );
+      .then(x => {
+        let list = x[0]["rows"][0]["ticketsAvailable"];
+
+        if (list.length === 2) {
+          this.setState({ week: list[1]["cost"] });
+        } else {
+          this.setState({
+            week: list[`${this.state.timeFieldSimpleM}`]["cost"]
+          });
+        }
+      });
   };
 
   getStationId = () => {

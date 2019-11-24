@@ -23,83 +23,85 @@ class TripForm extends Component {
       <div>
         <div className="tripForm">
           <form action="">
-            <label htmlFor="">From </label>
-            <input
-              placeholder="From"
-              onChange={event => {
-                this.props.handleFormInput(
-                  "startStationFieldSimpleM",
-                  event.target.value
-                );
-              }}
-              name="startStation"
-              placeholer="station"
-              // value={this.state.startStationField}
-              id="startStation"
-              list="StartStation"
-              value={this.props.startStationFieldSimpleM}
-            />
-            <datalist id="StartStation">
-              {/* <option value="940GZZLUCHX" /> */}
-              {stationList.map((item, key) => (
-                <option key={key} value={item["name"]} />
-              ))}
-            </datalist>
+            <label htmlFor="">
+              <select
+                onChange={event => {
+                  this.props.handleFormInput(
+                    "startStationFieldSimpleM",
+                    event.target.value
+                  );
+                }}
+                value={this.props.startStationFieldSimpleM}
+              >
+                <option value="0" disabled>
+                  From
+                </option>
+                {stationList.map((item, key) => (
+                  <option key={key} value={item["name"]}>
+                    {item["name"]}
+                  </option>
+                ))}
+              </select>
+            </label>
           </form>
           <form action="">
-            <label htmlFor="">To </label>
-            <input
-              onChange={event => {
-                this.props.handleFormInput(
-                  "endStationFieldSimpleM",
-                  event.target.value
-                );
-              }}
-              name="startStation"
-              placeholder="To"
-              // value={this.state.startStationField}
-              id="startStation"
-              list="StartStation"
-              value={this.props.endStationFieldSimpleM}
-            />
-            <datalist id="StartStation">
-              {/* <option value="940GZZLUCHX" /> */}
-              {stationList.map((item, key) => (
-                <option key={key} value={item["name"]} />
-              ))}
-            </datalist>
+            <label htmlFor="">
+              <select
+                onChange={event => {
+                  this.props.handleFormInput(
+                    "endStationFieldSimpleM",
+                    event.target.value
+                  );
+                }}
+                value={this.props.endStationFieldSimpleM}
+              >
+                <option value="0" disabled>
+                  To
+                </option>
+                {stationList.map((item, key) => (
+                  <option key={key} value={item["name"]}>
+                    {item["name"]}
+                  </option>
+                ))}
+              </select>
+            </label>
           </form>
           <form>
-            <label htmlFor="">Peak </label>
-            <input
-              onChange={event => {
-                this.props.handleFormInput(
-                  "timeFieldSimpleM",
-                  event.target.value
-                );
-              }}
-              type="radio"
-              name="time"
-              value="2"
-              checked={this.props.timeFieldSimpleM === "2"}
-            />
-
-            <label htmlFor="">Off Peak </label>
-            <input
-              onChange={event => {
-                this.props.handleFormInput(
-                  "timeFieldSimpleM",
-                  event.target.value
-                );
-              }}
-              type="radio"
-              name="time"
-              value="1"
-              checked={this.props.timeFieldSimpleM === "1"}
-            />
+            <label htmlFor="">
+              Peak
+              <input
+                onChange={event => {
+                  this.props.handleFormInput(
+                    "timeFieldSimpleM",
+                    event.target.value
+                  );
+                }}
+                type="radio"
+                name="time"
+                value="2"
+                checked={this.props.timeFieldSimpleM === "2"}
+              />
+            </label>{" "}
+            <label htmlFor="">
+              Off Peak
+              <input
+                onChange={event => {
+                  this.props.handleFormInput(
+                    "timeFieldSimpleM",
+                    event.target.value
+                  );
+                }}
+                type="radio"
+                name="time"
+                value="1"
+                checked={this.props.timeFieldSimpleM === "1"}
+              />
+            </label>
           </form>
+
           <label htmlFor="">bus trips </label>
           <input
+            className="busInput"
             onChange={event => {
               this.props.handleFormInput("busTripFieldM", event.target.value);
             }}

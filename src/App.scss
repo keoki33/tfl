@@ -104,6 +104,19 @@
   width: 100%;
   height: 100%;
   display: flex;
+
+  form {
+    width: 100%;
+    padding: 2px;
+  }
+
+  select {
+    width: 100%;
+  }
+
+  label {
+    width: 50%;
+  }
 }
 
 .tripForm2 {
@@ -112,6 +125,10 @@
   width: 100%;
   height: 100%;
   display: flex;
+}
+
+.busInput {
+  width: 20%;
 }
 
 //RESULTS //RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS
