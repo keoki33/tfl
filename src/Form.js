@@ -14,11 +14,14 @@ class Form extends Component {
     main: true,
 
     startStationFieldSimpleM: "0",
-    timeFieldSimpleM: "1",
+    timeFieldSimpleM: "2",
     endStationFieldSimpleM: "0",
-    endTimeFieldSimple: "1",
+    startStationFieldSimpleN: "0",
+    timeFieldSimpleN: "2",
+    endStationFieldSimpleN: "0",
+
     busTripFieldM: 0,
-    endBusTripField: 0,
+    busTripFieldN: 0,
     startId: "",
     endId: "",
 
@@ -127,11 +130,13 @@ class Form extends Component {
             <div className="simpleForm">
               <TripForm
                 startStationFieldSimpleM={this.state.startStationFieldSimpleM}
+                startStationFieldSimpleN={this.state.startStationFieldSimpleN}
                 timeFieldSimpleM={this.state.timeFieldSimpleM}
                 endStationFieldSimpleM={this.state.endStationFieldSimpleM}
-                endTimeFieldSimple={this.state.endTimeFieldSimple}
+                endStationFieldSimpleN={this.state.endStationFieldSimpleN}
+                timeFieldSimpleN={this.state.timeFieldSimpleN}
                 busTripFieldM={this.state.busTripFieldM}
-                endBusTripField={this.state.endBusTripField}
+                busTripFieldN={this.state.busTripFieldN}
                 handleFormInput={this.handleFormInput}
               />
             </div>

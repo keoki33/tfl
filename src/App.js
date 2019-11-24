@@ -103,9 +103,7 @@ class App extends Component {
 
   display = () => {
     return this.state.array.map(x => {
-      return `{"name" : "${x["name"]}" , "id" : "${x["id"]}" , "zone" : "${
-        x["zone"]
-      }" } , `;
+      return `{"name" : "${x["name"]}" , "id" : "${x["id"]}" , "zone" : "${x["zone"]}" } , `;
     });
   };
 
