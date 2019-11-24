@@ -43,22 +43,21 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // this.test("central");
-    // this.test("dlr");
-    // this.test("circle");
-    // this.test("bakerloo");
-    // this.test("district");
-    // this.test("hammersmith-city");
-    // this.test("jubilee");
-    // this.test("metropolitan");
-    // this.test("northern");
-    // this.test("piccadilly");
-    // this.test("victoria");
-    // this.test("waterloo-city");
-    // this.test("london-overground");
-    // this.test("northern");
-    // this.test("tfl-rail");
-    this.test("tram");
+    this.getStations("central");
+    this.getStations("dlr");
+    this.getStations("circle");
+    this.getStations("bakerloo");
+    this.getStations("district");
+    this.getStations("hammersmith-city");
+    this.getStations("jubilee");
+    this.getStations("metropolitan");
+    this.getStations("northern");
+    this.getStations("piccadilly");
+    this.getStations("victoria");
+    this.getStations("waterloo-city");
+    this.getStations("london-overground");
+    this.getStations("northern");
+    this.getStations("tfl-rail");
   }
 
   whatever = () => {};
@@ -96,21 +95,21 @@ class App extends Component {
   test1 = x => {
     let reduce = x["additionalProperties"];
     let reduce2 = reduce.filter(x => x.key == "Zone");
-    return reduce2[0]["value"];
+    // console.log(reduce2[0]["value"]);
+    // return reduce2[0]["value"];
+    return reduce2[0] ? reduce2[0]["value"] : "fixMe";
   };
 
-  test = line => {
+  getStations = line => {
     fetch(`https://api.tfl.gov.uk/line/${line}/stoppoints`)
       .then(resp => resp.json())
       // .then(x => console.log(`${x[0]["commonName"]} : ${x[0]["id"]}`));
       // .then(x => this.setState({ list: x }, () => this.sort()));
       .then(x =>
         this.setState({ list: [...this.state.list, x] }, () =>
-          this.setState({ list: this.state.list.flat() })
+          this.setState({ list: this.state.list.flat() }, () => this.sort())
         )
       );
-
-    console.log(this.state.list);
   };
 
   sort = () => {
@@ -134,17 +133,14 @@ class App extends Component {
       <div className="main">
         <Navbar handleNav={this.handleNav} />
         <div className="content">
-          {/* {this.getCost()} */}
-          {console.log(this.state.list)}
-
-          {/* {this.display()} */}
+          {this.display()}
           {this.state.form ? <Form /> : ""}
           {this.state.about ? <About /> : ""}
         </div>
         <div className="adsL">adsL</div>
         <div className="adsR">adsR</div>
         <div className="adsB">adsB</div>
-        <Loading />
+        {/* <Loading /> */}
       </div>
     );
   }
