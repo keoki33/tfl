@@ -34,16 +34,31 @@ class App extends Component {
     endStationFieldSu: "",
     endStationFieldA: "",
     endStation: "940GZZLUBST",
-    list: ["test", "test1"],
+    list: [],
     result: false,
     about: false,
     form: true,
-    array: ["o", "e"],
+    array: [],
     check: "check"
   };
 
   componentDidMount() {
-    this.test("central");
+    // this.test("central");
+    // this.test("dlr");
+    // this.test("circle");
+    // this.test("bakerloo");
+    // this.test("district");
+    // this.test("hammersmith-city");
+    // this.test("jubilee");
+    // this.test("metropolitan");
+    // this.test("northern");
+    // this.test("piccadilly");
+    // this.test("victoria");
+    // this.test("waterloo-city");
+    // this.test("london-overground");
+    // this.test("northern");
+    // this.test("tfl-rail");
+    this.test("tram");
   }
 
   whatever = () => {};
@@ -58,20 +73,13 @@ class App extends Component {
 
   // show ads top, left, bottom?
 
-  getCost = () => {
-    fetch(
-      `https://api.tfl.gov.uk/Stoppoint/${this.state.startStation}/FareTo/${this.state.endStation}`
-    )
-      .then(resp => resp.json())
-      .then(x => console.log(x));
-  };
-
-  test = line => {
-    fetch(`https://api.tfl.gov.uk/line/${line}/stoppoints`)
-      .then(resp => resp.json())
-      // .then(x => console.log(`${x[0]["commonName"]} : ${x[0]["id"]}`));
-      .then(x => this.setState({ list: x }, () => this.sort()));
-  };
+  // getCost = () => {
+  //   fetch(
+  //     `https://api.tfl.gov.uk/Stoppoint/${this.state.startStation}/FareTo/${this.state.endStation}`
+  //   )
+  //     .then(resp => resp.json())
+  //     .then(x => console.log(x));
+  // };
 
   handleNav = x => {
     switch (x) {
@@ -89,6 +97,20 @@ class App extends Component {
     let reduce = x["additionalProperties"];
     let reduce2 = reduce.filter(x => x.key == "Zone");
     return reduce2[0]["value"];
+  };
+
+  test = line => {
+    fetch(`https://api.tfl.gov.uk/line/${line}/stoppoints`)
+      .then(resp => resp.json())
+      // .then(x => console.log(`${x[0]["commonName"]} : ${x[0]["id"]}`));
+      // .then(x => this.setState({ list: x }, () => this.sort()));
+      .then(x =>
+        this.setState({ list: [...this.state.list, x] }, () =>
+          this.setState({ list: this.state.list.flat() })
+        )
+      );
+
+    console.log(this.state.list);
   };
 
   sort = () => {
@@ -113,7 +135,7 @@ class App extends Component {
         <Navbar handleNav={this.handleNav} />
         <div className="content">
           {/* {this.getCost()} */}
-          {console.log(this.state.array)}
+          {console.log(this.state.list)}
 
           {/* {this.display()} */}
           {this.state.form ? <Form /> : ""}
