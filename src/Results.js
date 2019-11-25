@@ -31,9 +31,12 @@ class Results extends Component {
         <h1>Results</h1>
         <br />
         <h4>Zones Travelled {this.props.zones}</h4>
+
         <br />
         <div className="resultsLeft">
           <p>contactless</p>
+          <br />
+          <p>daily £{this.props.day}</p>
           <p>weekly £{this.props.week}</p>
           <p>monthly £{this.props.month}</p>
           <p>6 month £{this.props.halfYear}</p>
@@ -41,6 +44,8 @@ class Results extends Component {
         </div>
         <div className="resultsRight">
           <p>travel card </p>
+          <br />
+
           <p>weekly £{this.props.weekCard}</p>
           <p>monthly £{this.props.monthCard}</p>
           <p>6 month £{this.props.halfYearCard}</p>

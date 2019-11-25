@@ -95,7 +95,8 @@ class Form extends Component {
   render() {
     return (
       <div>
-        {console.log(this.state.startStationFieldSimple)}
+        {console.log(this.state.startStationFieldSimpleM)}
+        {console.log(this.state.endStationFieldSimpleM)}
         <div className="forms">
           {this.state.main ? (
             <form action="">
