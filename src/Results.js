@@ -36,7 +36,11 @@ class Results extends Component {
         <div className="resultsLeft">
           <p>contactless</p>
           <br />
-          <p>daily £{this.props.day}</p>
+          {this.props.day === 0 ? (
+            <p className="dayResults">No tube fare found, reselect</p>
+          ) : (
+            <p className="dayResults">daily: £{this.props.day}</p>
+          )}
           <p>weekly £{this.props.week}</p>
           <p>monthly £{this.props.month}</p>
           <p>6 month £{this.props.halfYear}</p>
@@ -45,7 +49,7 @@ class Results extends Component {
         <div className="resultsRight">
           <p>travel card </p>
           <br />
-
+          <br />
           <p>weekly £{this.props.weekCard}</p>
           <p>monthly £{this.props.monthCard}</p>
           <p>6 month £{this.props.halfYearCard}</p>

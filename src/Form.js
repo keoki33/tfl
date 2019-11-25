@@ -24,7 +24,7 @@ class Form extends Component {
     busTripFieldN: 0,
     startId: "",
     endId: "",
-
+    day: 0,
     week: 0,
     month: 0,
     halfYear: 0,
@@ -38,6 +38,7 @@ class Form extends Component {
 
   calculateFare = () => {
     this.setState({
+      day: 0,
       results: true,
       main: false,
       simple: false,
@@ -59,14 +60,18 @@ class Form extends Component {
       //   )
       // );
       .then(x => {
-        let list = x[0]["rows"][0]["ticketsAvailable"];
-
-        if (list.length === 2) {
-          this.setState({ week: list[1]["cost"] });
+        if (x.length == 0) {
+          this.setState({ day: 0 });
         } else {
-          this.setState({
-            week: list[`${this.state.timeFieldSimpleM}`]["cost"]
-          });
+          let list = x[0]["rows"][0]["ticketsAvailable"];
+
+          if (list.length === 2) {
+            this.setState({ day: list[1]["cost"] });
+          } else {
+            this.setState({
+              day: list[`${this.state.timeFieldSimpleM}`]["cost"]
+            });
+          }
         }
       });
   };
@@ -160,6 +165,7 @@ class Form extends Component {
         )}
         {this.state.results ? (
           <Results
+            day={this.state.day}
             formReturn={this.formReturn}
             week={this.state.week}
             month={this.state.month}
