@@ -14,6 +14,12 @@ class TripForm extends Component {
     busTripField: 0
   };
 
+  //// calculate fares when all t/f time and bus all filled out.
+  /// make all required if filled out station otherwise only bus required.
+  /// show fare on end, show error if tube route invalid.
+  // show loading when calculating? disable all fields when loading?
+  // send daily cost up to form for result screen
+
   componentDidMount() {}
 
   whatever = () => {};
