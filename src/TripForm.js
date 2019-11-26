@@ -4,14 +4,16 @@ import { stationList } from "./stationList.js";
 class TripForm extends Component {
   state = {
     simple: true,
-    startStationField: "",
-    startTimeField: "",
-    startStation: ["one", "two", "three"],
-    // startStation: "940GZZLUCHX",
-    endStationField: "",
-    endTimeField: "",
-    endStation: "940GZZLUBST",
-    busTripField: 0
+
+    startStationFieldSimpleM: "0",
+    timeFieldSimpleM: "2",
+    endStationFieldSimpleM: "0",
+    startStationFieldSimpleN: "0",
+    timeFieldSimpleN: "2",
+    endStationFieldSimpleN: "0",
+
+    busTripFieldM: 0,
+    busTripFieldN: 0
   };
 
   //// calculate fares when all t/f time and bus all filled out.
