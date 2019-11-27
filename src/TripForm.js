@@ -6,12 +6,14 @@ class TripForm extends Component {
     startStationM: "0",
     endStationM: "0",
     timeM: "2",
-    zoneM: "",
+    startZoneM: "",
+    endZoneM: "",
 
     startStationN: "0",
     endStationN: "0",
     timeN: "2",
-    zoneN: "",
+    startZoneN: "",
+    endZoneN: "",
 
     busM: 0,
     busN: 0,
@@ -53,8 +55,8 @@ class TripForm extends Component {
         {
           [`startId${time}`]: start[0].id,
           [`endId${time}`]: end[0].id,
-          [`zone${time}`]: start[0].zone,
-          [`zone${time}`]: end[0].zone
+          [`startZone${time}`]: start[0].zone,
+          [`endZone${time}`]: end[0].zone
         },
         () => (time == "M" ? this.getCostM() : this.getCostN())
       );
@@ -91,7 +93,27 @@ class TripForm extends Component {
       });
   };
 
-  calculateZone = () => {};
+  calculateZone = () => {
+    if (
+      (this.state.startZoneM != "" && this.state.startZoneM != "") ||
+      (this.state.startZoneN != "" && this.state.startZoneN != "")
+    )
+      if (
+        this.state.startZoneM.includes("+") ||
+        this.state.endZoneM.includes("+")
+      ) {
+        return "between";
+      } else {
+        let arr = [
+          this.state.startZoneM,
+          this.state.endZoneM,
+          this.state.startZoneN,
+          this.state.endZoneN
+        ];
+        let sort = arr.sort().filter(x => x != "");
+        return `${sort[0]} to ${sort[sort.length - 1]}`;
+      }
+  };
 
   getCostN = () => {
     this.setState({ costN: "Loading" });
@@ -121,6 +143,11 @@ class TripForm extends Component {
           }
         }
       });
+  };
+
+  totalCost = () => {
+    let cc = Number(this.state.costM) + Number(this.state.costN);
+    this.setState({ cost: cc.toFixed(2) });
   };
 
   whatever = () => {};
@@ -218,7 +245,9 @@ class TripForm extends Component {
             <label htmlFor="">
               <select
                 onChange={event =>
-                  this.setState({ startStationN: event.target.value })
+                  this.setState({ startStationN: event.target.value }, () => {
+                    this.getStationId("N");
+                  })
                 }
                 value={this.state.startStationN}
               >
@@ -237,7 +266,9 @@ class TripForm extends Component {
             <label htmlFor="">
               <select
                 onChange={event => {
-                  this.setState({ endStationN: event.target.value });
+                  this.setState({ endStationN: event.target.value }, () => {
+                    this.getStationId("N");
+                  });
                 }}
                 value={this.state.endStationN}
               >
@@ -257,7 +288,9 @@ class TripForm extends Component {
               Peak
               <input
                 onChange={event => {
-                  this.setState({ timeN: event.target.value });
+                  this.setState({ timeN: event.target.value }, () => {
+                    this.getStationId("N");
+                  });
                 }}
                 type="radio"
                 name="time"
@@ -269,7 +302,9 @@ class TripForm extends Component {
               Off Peak
               <input
                 onChange={event => {
-                  this.setState({ timeN: event.target.value });
+                  this.setState({ timeN: event.target.value }, () => {
+                    this.getStationId("N");
+                  });
                 }}
                 type="radio"
                 name="time"
@@ -292,8 +327,7 @@ class TripForm extends Component {
         <div>
           <p>
             Morning: £{this.state.costM} Night: £{this.state.costN} Total: £
-            {this.state.cost} Zones travelled: {this.state.zoneM}{" "}
-            {this.state.zoneN}
+            {this.state.cost} Zones travelled: {this.calculateZone()}
           </p>
         </div>
       </div>
