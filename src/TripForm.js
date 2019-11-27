@@ -3,17 +3,28 @@ import { stationList } from "./stationList.js";
 
 class TripForm extends Component {
   state = {
-    simple: true,
+    startStationM: "0",
+    endStationM: "0",
+    timeM: "2",
+    zoneM: "",
 
-    startStationFieldSimpleM: "0",
-    timeFieldSimpleM: "2",
-    endStationFieldSimpleM: "0",
-    startStationFieldSimpleN: "0",
-    timeFieldSimpleN: "2",
-    endStationFieldSimpleN: "0",
+    startStationN: "0",
+    endStationN: "0",
+    timeN: "2",
+    zoneN: "",
 
-    busTripFieldM: 0,
-    busTripFieldN: 0
+    busM: 0,
+    busN: 0,
+
+    startIdM: "",
+    endIdM: "",
+
+    costM: 0,
+    costN: 0,
+    cost: 0,
+    zones: "",
+
+    loading: false
   };
 
   //// calculate fares when all t/f time and bus all filled out.
@@ -23,6 +34,94 @@ class TripForm extends Component {
   // send daily cost up to form for result screen
 
   componentDidMount() {}
+
+  getStationId = time => {
+    if (
+      this.state[`startStation${time}`] === "0" ||
+      this.state[`endStation${time}`] === "0"
+    ) {
+      time == "M" ? this.getCostM() : this.getCostN();
+    } else {
+      let start = stationList.filter(
+        x => x.name === this.state[`startStation${time}`]
+      );
+      let end = stationList.filter(
+        x => x.name === this.state[`endStation${time}`]
+      );
+
+      this.setState(
+        {
+          [`startId${time}`]: start[0].id,
+          [`endId${time}`]: end[0].id,
+          [`zone${time}`]: start[0].zone,
+          [`zone${time}`]: end[0].zone
+        },
+        () => (time == "M" ? this.getCostM() : this.getCostN())
+      );
+    }
+  };
+
+  getCostM = () => {
+    this.setState({ costM: "Loading" });
+    fetch(
+      `https://api.tfl.gov.uk/Stoppoint/${this.state.startIdM}/FareTo/${this.state.endIdM}`
+    )
+      .then(resp => resp.json())
+      // .then(x =>
+      //   console.log(
+      //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
+      //       "cost"
+      //     ]
+      //   )
+      // );
+      .then(x => {
+        if (x.length == 0 || x["httpStatusCode"] == 404) {
+          this.setState({ costM: 0 });
+        } else {
+          let list = x[0]["rows"][0]["ticketsAvailable"];
+
+          if (list.length === 2) {
+            this.setState({ costM: list[1]["cost"] });
+          } else {
+            this.setState({
+              costM: list[`${this.state.timeM}`]["cost"]
+            });
+          }
+        }
+      });
+  };
+
+  calculateZone = () => {};
+
+  getCostN = () => {
+    this.setState({ costN: "Loading" });
+    fetch(
+      `https://api.tfl.gov.uk/Stoppoint/${this.state.startIdN}/FareTo/${this.state.endIdN}`
+    )
+      .then(resp => resp.json())
+      // .then(x =>
+      //   console.log(
+      //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
+      //       "cost"
+      //     ]
+      //   )
+      // );
+      .then(x => {
+        if (x.length == 0 || x["httpStatusCode"] == 404) {
+          this.setState({ costN: 0 });
+        } else {
+          let list = x[0]["rows"][0]["ticketsAvailable"];
+
+          if (list.length === 2) {
+            this.setState({ costN: list[1]["cost"] });
+          } else {
+            this.setState({
+              costN: list[`${this.state.timeM}`]["cost"]
+            });
+          }
+        }
+      });
+  };
 
   whatever = () => {};
 
@@ -34,12 +133,11 @@ class TripForm extends Component {
             <label htmlFor="">
               <select
                 onChange={event => {
-                  this.props.handleFormInput(
-                    "startStationFieldSimpleM",
-                    event.target.value
-                  );
+                  this.setState({ startStationM: event.target.value }, () => {
+                    this.getStationId("M");
+                  });
                 }}
-                value={this.props.startStationFieldSimpleM}
+                value={this.state.startStationM}
               >
                 <option value="0" disabled>
                   From
@@ -56,12 +154,11 @@ class TripForm extends Component {
             <label htmlFor="">
               <select
                 onChange={event => {
-                  this.props.handleFormInput(
-                    "endStationFieldSimpleM",
-                    event.target.value
-                  );
+                  this.setState({ endStationM: event.target.value }, () => {
+                    this.getStationId("M");
+                  });
                 }}
-                value={this.props.endStationFieldSimpleM}
+                value={this.state.endStationM}
               >
                 <option value="0" disabled>
                   To
@@ -79,30 +176,28 @@ class TripForm extends Component {
               Peak
               <input
                 onChange={event => {
-                  this.props.handleFormInput(
-                    "timeFieldSimpleM",
-                    event.target.value
-                  );
+                  this.setState({ timeM: event.target.value }, () => {
+                    this.getStationId("M");
+                  });
                 }}
                 type="radio"
                 name="time"
                 value="2"
-                checked={this.props.timeFieldSimpleM === "2"}
+                checked={this.state.timeM === "2"}
               />
             </label>{" "}
             <label htmlFor="">
               Off Peak
               <input
                 onChange={event => {
-                  this.props.handleFormInput(
-                    "timeFieldSimpleM",
-                    event.target.value
-                  );
+                  this.setState({ timeM: event.target.value }, () => {
+                    this.getStationId("M");
+                  });
                 }}
                 type="radio"
                 name="time"
                 value="1"
-                checked={this.props.timeFieldSimpleM === "1"}
+                checked={this.state.timeM === "1"}
               />
             </label>
           </form>
@@ -111,7 +206,7 @@ class TripForm extends Component {
           <input
             className="busInput"
             onChange={event => {
-              this.props.handleFormInput("busTripFieldM", event.target.value);
+              this.setState({ busM: event.target.value });
             }}
             type="number"
             name="bus"
@@ -122,13 +217,10 @@ class TripForm extends Component {
           <form action="">
             <label htmlFor="">
               <select
-                onChange={event => {
-                  this.props.handleFormInput(
-                    "startStationFieldSimpleN",
-                    event.target.value
-                  );
-                }}
-                value={this.props.startStationFieldSimpleN}
+                onChange={event =>
+                  this.setState({ startStationN: event.target.value })
+                }
+                value={this.state.startStationN}
               >
                 <option value="0" disabled>
                   From
@@ -145,12 +237,9 @@ class TripForm extends Component {
             <label htmlFor="">
               <select
                 onChange={event => {
-                  this.props.handleFormInput(
-                    "endStationFieldSimpleN",
-                    event.target.value
-                  );
+                  this.setState({ endStationN: event.target.value });
                 }}
-                value={this.props.endStationFieldSimpleN}
+                value={this.state.endStationN}
               >
                 <option value="0" disabled>
                   To
@@ -168,30 +257,24 @@ class TripForm extends Component {
               Peak
               <input
                 onChange={event => {
-                  this.props.handleFormInput(
-                    "timeFieldSimpleN",
-                    event.target.value
-                  );
+                  this.setState({ timeN: event.target.value });
                 }}
                 type="radio"
                 name="time"
                 value="2"
-                checked={this.props.timeFieldSimpleN === "2"}
+                checked={this.state.timeN === "2"}
               />
             </label>{" "}
             <label htmlFor="">
               Off Peak
               <input
                 onChange={event => {
-                  this.props.handleFormInput(
-                    "timeFieldSimpleN",
-                    event.target.value
-                  );
+                  this.setState({ timeN: event.target.value });
                 }}
                 type="radio"
                 name="time"
                 value="1"
-                checked={this.props.timeFieldSimpleN === "1"}
+                checked={this.state.timeN === "1"}
               />
             </label>
           </form>
@@ -200,11 +283,18 @@ class TripForm extends Component {
           <input
             className="busInput"
             onChange={event => {
-              this.props.handleFormInput("busTripFieldN", event.target.value);
+              this.setState({ busN: event.target.value });
             }}
             type="number"
             name="bus"
           />
+        </div>
+        <div>
+          <p>
+            Morning: £{this.state.costM} Night: £{this.state.costN} Total: £
+            {this.state.cost} Zones travelled: {this.state.zoneM}{" "}
+            {this.state.zoneN}
+          </p>
         </div>
       </div>
     );
