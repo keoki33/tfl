@@ -78,16 +78,25 @@ class TripForm extends Component {
       // );
       .then(x => {
         if (x.length == 0 || x["httpStatusCode"] == 404) {
-          this.setState({ costM: 0 });
+          this.setState({ costM: 0 }, () => {
+            this.totalCost();
+          });
         } else {
           let list = x[0]["rows"][0]["ticketsAvailable"];
 
           if (list.length === 2) {
-            this.setState({ costM: list[1]["cost"] });
-          } else {
-            this.setState({
-              costM: list[`${this.state.timeM}`]["cost"]
+            this.setState({ costM: list[1]["cost"] }, () => {
+              this.totalCost();
             });
+          } else {
+            this.setState(
+              {
+                costM: list[`${this.state.timeM}`]["cost"]
+              },
+              () => {
+                this.totalCost();
+              }
+            );
           }
         }
       });
@@ -130,23 +139,37 @@ class TripForm extends Component {
       // );
       .then(x => {
         if (x.length == 0 || x["httpStatusCode"] == 404) {
-          this.setState({ costN: 0 });
+          this.setState({ costN: 0 }, () => {
+            this.totalCost();
+          });
         } else {
           let list = x[0]["rows"][0]["ticketsAvailable"];
 
           if (list.length === 2) {
-            this.setState({ costN: list[1]["cost"] });
-          } else {
-            this.setState({
-              costN: list[`${this.state.timeM}`]["cost"]
+            this.setState({ costN: list[1]["cost"] }, () => {
+              this.totalCost();
             });
+          } else {
+            this.setState(
+              {
+                costN: list[`${this.state.timeM}`]["cost"]
+              },
+              () => {
+                this.totalCost();
+              }
+            );
           }
         }
       });
   };
 
   totalCost = () => {
-    let cc = Number(this.state.costM) + Number(this.state.costN);
+    let cc =
+      Number(this.state.costM) +
+      Number(this.state.costN) +
+      Number(this.state.busM) * 1.5 +
+      Number(this.state.busN) * 1.5;
+
     this.setState({ cost: cc.toFixed(2) });
   };
 
@@ -233,7 +256,9 @@ class TripForm extends Component {
           <input
             className="busInput"
             onChange={event => {
-              this.setState({ busM: event.target.value });
+              this.setState({ busM: event.target.value }, () => {
+                this.totalCost();
+              });
             }}
             type="number"
             name="bus"
@@ -318,7 +343,9 @@ class TripForm extends Component {
           <input
             className="busInput"
             onChange={event => {
-              this.setState({ busN: event.target.value });
+              this.setState({ busN: event.target.value }, () => {
+                this.totalCost();
+              });
             }}
             type="number"
             name="bus"
