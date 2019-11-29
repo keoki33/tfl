@@ -1,5 +1,5 @@
 export const stationList = [
-  { name: "Abbey Road DLR Station", id: "940GZZDLABR", zone: "2+3" },
+  { name: "Abbey Road DLR Station", id: "940GZZDLABR", zone: [2, 3] },
   { name: "Acton Central Rail Station", id: "910GACTNCTL", zone: "3" },
   { name: "Acton Main Line Rail Station", id: "910GACTONML", zone: "3" },
   { name: "Acton Town Underground Station", id: "940GZZLUACT", zone: "3" },
@@ -10,7 +10,7 @@ export const stationList = [
   { name: "Amersham Underground Station", id: "940GZZLUAMS", zone: "9" },
   { name: "Anerley Rail Station", id: "910GANERLEY", zone: "4" },
   { name: "Angel Underground Station", id: "940GZZLUAGL", zone: "1" },
-  { name: "Archway Underground Station", id: "940GZZLUACY", zone: "2+3" },
+  { name: "Archway Underground Station", id: "940GZZLUACY", zone: [2, 3] },
   { name: "Arnos Grove Underground Station", id: "940GZZLUASG", zone: "4" },
   { name: "Arsenal Underground Station", id: "940GZZLUASL", zone: "2" },
   { name: "Baker Street Underground Station", id: "940GZZLUBST", zone: "1" },
@@ -37,7 +37,7 @@ export const stationList = [
   { name: "Bond Street Underground Station", id: "940GZZLUBND", zone: "1" },
   { name: "Borough Underground Station", id: "940GZZLUBOR", zone: "1" },
   { name: "Boston Manor Underground Station", id: "940GZZLUBOS", zone: "4" },
-  { name: "Bounds Green Underground Station", id: "940GZZLUBDS", zone: "3+4" },
+  { name: "Bounds Green Underground Station", id: "940GZZLUBDS", zone: [3, 4] },
   { name: "Bow Church DLR Station", id: "940GZZDLBOW", zone: "2" },
   { name: "Bow Road Underground Station", id: "940GZZLUBWR", zone: "2" },
   { name: "Brent Cross Underground Station", id: "940GZZLUBTX", zone: "3" },
@@ -47,7 +47,7 @@ export const stationList = [
   {
     name: "Bromley-by-Bow Underground Station",
     id: "940GZZLUBBB",
-    zone: "2+3"
+    zone: [2, 3]
   },
   { name: "Brondesbury Park Rail Station", id: "910GBRBYPK", zone: "2" },
   { name: "Brondesbury Rail Station", id: "910GBRBY", zone: "2" },
@@ -73,8 +73,8 @@ export const stationList = [
   { name: "Canada Water Underground Station", id: "940GZZLUCWR", zone: "2" },
   { name: "Canary Wharf DLR Station", id: "940GZZDLCAN", zone: "2" },
   { name: "Canary Wharf Underground Station", id: "940GZZLUCYF", zone: "2" },
-  { name: "Canning Town DLR Station", id: "940GZZDLCGT", zone: "2+3" },
-  { name: "Canning Town Underground Station", id: "940GZZLUCGT", zone: "2+3" },
+  { name: "Canning Town DLR Station", id: "940GZZDLCGT", zone: [2, 3] },
+  { name: "Canning Town Underground Station", id: "940GZZLUCGT", zone: [2, 3] },
   { name: "Cannon Street Underground Station", id: "940GZZLUCST", zone: "1" },
   { name: "Canonbury Rail Station", id: "910GCNNB", zone: "2" },
   { name: "Canons Park Underground Station", id: "940GZZLUCPK", zone: "5" },
@@ -98,8 +98,12 @@ export const stationList = [
   { name: "Clapham High Street Rail Station", id: "910GCLPHHS", zone: "2" },
   { name: "Clapham Junction Station", id: "910GCLPHMJ1", zone: "2" },
   { name: "Clapham North Underground Station", id: "940GZZLUCPN", zone: "2" },
-  { name: "Clapham South Underground Station", id: "940GZZLUCPS", zone: "2+3" },
-  { name: "Clapton Rail Station", id: "910GCLAPTON", zone: "2+3" },
+  {
+    name: "Clapham South Underground Station",
+    id: "940GZZLUCPS",
+    zone: [2, 3]
+  },
+  { name: "Clapton Rail Station", id: "910GCLAPTON", zone: [2, 3] },
   { name: "Cockfosters Underground Station", id: "940GZZLUCKS", zone: "5" },
   { name: "Colindale Underground Station", id: "940GZZLUCND", zone: "4" },
   { name: "Colliers Wood Underground Station", id: "940GZZLUCSD", zone: "3" },
@@ -107,7 +111,7 @@ export const stationList = [
   { name: "Crossharbour DLR Station", id: "940GZZDLCLA", zone: "2" },
   { name: "Crouch Hill Rail Station", id: "910GCROUCHH", zone: "3" },
   { name: "Croxley Underground Station", id: "940GZZLUCXY", zone: "7" },
-  { name: "Crystal Palace Rail Station", id: "910GCRYSTLP", zone: "3+4" },
+  { name: "Crystal Palace Rail Station", id: "910GCRYSTLP", zone: [3, 4] },
   {
     name: "Custom House (for ExCel) DLR Station",
     id: "940GZZDLCUS",
@@ -116,7 +120,7 @@ export const stationList = [
   {
     name: "Cutty Sark (for Maritime Greenwich) DLR Station",
     id: "940GZZDLCUT",
-    zone: "2+3"
+    zone: [2, 3]
   },
   { name: "Cyprus DLR Station", id: "940GZZDLCYP", zone: "3" },
   { name: "Dagenham East Underground Station", id: "940GZZLUDGE", zone: "5" },
@@ -129,18 +133,18 @@ export const stationList = [
   { name: "Dalston Kingsland Rail Station", id: "910GDALSKLD", zone: "2" },
   { name: "Debden Underground Station", id: "940GZZLUDBN", zone: "6" },
   { name: "Denmark Hill Rail Station", id: "910GDENMRKH", zone: "2" },
-  { name: "Deptford Bridge DLR Station", id: "940GZZDLDEP", zone: "2+3" },
+  { name: "Deptford Bridge DLR Station", id: "940GZZDLDEP", zone: [2, 3] },
   { name: "Devons Road DLR Station", id: "940GZZDLDEV", zone: "2" },
   { name: "Dollis Hill Underground Station", id: "940GZZLUDOH", zone: "3" },
   { name: "Ealing Broadway Rail Station", id: "910GEALINGB", zone: "3" },
   { name: "Ealing Broadway Underground Station", id: "940GZZLUEBY", zone: "3" },
   { name: "Ealing Common Underground Station", id: "940GZZLUECM", zone: "3" },
-  { name: "Earl's Court Underground Station", id: "940GZZLUECT", zone: "1+2" },
+  { name: "Earl's Court Underground Station", id: "940GZZLUECT", zone: [1, 2] },
   { name: "East Acton Underground Station", id: "940GZZLUEAN", zone: "2" },
   { name: "East Finchley Underground Station", id: "940GZZLUEFY", zone: "3" },
-  { name: "East Ham Underground Station", id: "940GZZLUEHM", zone: "3+4" },
-  { name: "East India DLR Station", id: "940GZZDLEIN", zone: "2+3" },
-  { name: "East Putney Underground Station", id: "940GZZLUEPY", zone: "2+3" },
+  { name: "East Ham Underground Station", id: "940GZZLUEHM", zone: [3, 4] },
+  { name: "East India DLR Station", id: "940GZZDLEIN", zone: [2, 3] },
+  { name: "East Putney Underground Station", id: "940GZZLUEPY", zone: [2, 3] },
   { name: "Eastcote Underground Station", id: "940GZZLUEAE", zone: "5" },
   {
     name: "Edgware Road (Bakerloo) Underground Station",
@@ -157,10 +161,10 @@ export const stationList = [
   {
     name: "Elephant & Castle Underground Station",
     id: "940GZZLUEAC",
-    zone: "1+2"
+    zone: [1, 2]
   },
   { name: "Elm Park Underground Station", id: "940GZZLUEPK", zone: "6" },
-  { name: "Elverson Road DLR Station", id: "940GZZDLELV", zone: "2+3" },
+  { name: "Elverson Road DLR Station", id: "940GZZDLELV", zone: [2, 3] },
   { name: "Embankment Underground Station", id: "940GZZLUEMB", zone: "1" },
   { name: "Emerson Park Rail Station", id: "910GEMRSPKH", zone: "6" },
   { name: "Enfield Town Rail Station", id: "910GENFLDTN", zone: "5" },
@@ -201,7 +205,7 @@ export const stationList = [
   },
   { name: "Green Park Underground Station", id: "940GZZLUGPK", zone: "1" },
   { name: "Greenford Underground Station", id: "940GZZLUGFD", zone: "4" },
-  { name: "Greenwich DLR Station", id: "940GZZDLGRE", zone: "2+3" },
+  { name: "Greenwich DLR Station", id: "940GZZDLGRE", zone: [2, 3] },
   { name: "Gunnersbury Rail Station", id: "910GGNRSBRY", zone: "3" },
   { name: "Gunnersbury Underground Station", id: "940GZZLUGBY", zone: "3" },
   { name: "Hackney Central Rail Station", id: "910GHACKNYC", zone: "2" },
@@ -220,7 +224,7 @@ export const stationList = [
     zone: "2"
   },
   { name: "Hampstead Heath Rail Station", id: "910GHMPSTDH", zone: "2" },
-  { name: "Hampstead Underground Station", id: "940GZZLUHTD", zone: "2+3" },
+  { name: "Hampstead Underground Station", id: "940GZZLUHTD", zone: [2, 3] },
   { name: "Hanger Lane Underground Station", id: "940GZZLUHGR", zone: "3" },
   { name: "Hanwell Rail Station", id: "910GHANWELL", zone: "4" },
   { name: "Harlesden Rail Station", id: "910GHARLSDN", zone: "3" },
@@ -239,7 +243,7 @@ export const stationList = [
     zone: "5"
   },
   { name: "Hatch End Rail Station", id: "910GHTCHEND", zone: "6" },
-  { name: "Hatton Cross Underground Station", id: "940GZZLUHNX", zone: "5+6" },
+  { name: "Hatton Cross Underground Station", id: "940GZZLUHNX", zone: [5, 6] },
   { name: "Hayes & Harlington Rail Station", id: "910GHAYESAH", zone: "5" },
   { name: "Headstone Lane Rail Station", id: "910GHEDSTNL", zone: "5" },
   { name: "Heathrow Terminal 4 Rail Station", id: "910GHTRWTM4", zone: "6" },
@@ -266,7 +270,7 @@ export const stationList = [
   {
     name: "Hendon Central Underground Station",
     id: "940GZZLUHCL",
-    zone: "3+4"
+    zone: [3, 4]
   },
   { name: "Heron Quays DLR Station", id: "940GZZDLHEQ", zone: "2" },
   { name: "High Barnet Underground Station", id: "940GZZLUHBT", zone: "5" },

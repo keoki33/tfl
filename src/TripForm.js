@@ -108,10 +108,14 @@ class TripForm extends Component {
       (this.state.startZoneN != "" && this.state.startZoneN != "")
     )
       if (
-        this.state.startZoneM.includes("+") ||
-        this.state.endZoneM.includes("+")
+        // this.state.startZoneM.includes("+") ||
+        // this.state.endZoneM.includes("+")
+        this.state.startZoneM.length == 2
       ) {
-        return "between";
+        if (this.state.endZoneM <= this.state.endZoneM[0]) {
+          let x = this.state.endZoneM[0];
+          this.setState({ endZoneM: x });
+        }
       } else {
         let arr = [
           this.state.startZoneM,
