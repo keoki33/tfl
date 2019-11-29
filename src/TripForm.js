@@ -262,6 +262,8 @@ class TripForm extends Component {
             }}
             type="number"
             name="bus"
+            min="0"
+            step="1"
           />
         </div>
 
@@ -347,6 +349,8 @@ class TripForm extends Component {
                 this.totalCost();
               });
             }}
+            min="0"
+            step="1"
             type="number"
             name="bus"
           />
@@ -354,7 +358,9 @@ class TripForm extends Component {
         <div>
           <p>
             Morning: £{this.state.costM} Night: £{this.state.costN} Total: £
-            {this.state.cost} Zones travelled: {this.calculateZone()}
+            {this.state.cost} bus trips:{" "}
+            {Number(this.state.busM) + Number(this.state.busN)} Zones travelled:{" "}
+            {this.calculateZone()}
           </p>
         </div>
       </div>
