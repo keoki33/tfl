@@ -301,7 +301,7 @@ export const stationList = [
   },
   { name: "Hounslow East Underground Station", id: "940GZZLUHWE", zone: "4" },
   { name: "Hounslow West Underground Station", id: "940GZZLUHWT", zone: "5" },
-  { name: "Hoxton Rail Station", id: "910GHOXTON", zone: "1+2" },
+  { name: "Hoxton Rail Station", id: "910GHOXTON", zone: [1, 2] },
   {
     name: "Hyde Park Corner Underground Station",
     id: "940GZZLUHPC",
@@ -325,8 +325,8 @@ export const stationList = [
   { name: "Kentish Town West Rail Station", id: "910GKNTSHTW", zone: "2" },
   { name: "Kenton Rail Station", id: "910GKTON", zone: "4" },
   { name: "Kenton Underground Station", id: "940GZZLUKEN", zone: "4" },
-  { name: "Kew Gardens Rail Station", id: "910GKEWGRDN", zone: "3+4" },
-  { name: "Kew Gardens Underground Station", id: "940GZZLUKWG", zone: "3+4" },
+  { name: "Kew Gardens Rail Station", id: "910GKEWGRDN", zone: [3, 4] },
+  { name: "Kew Gardens Underground Station", id: "940GZZLUKWG", zone: [3, 4] },
   { name: "Kilburn High Road Rail Station", id: "910GKLBRNHR", zone: "2" },
   { name: "Kilburn Park Underground Station", id: "940GZZLUKPK", zone: "2" },
   { name: "Kilburn Underground Station", id: "940GZZLUKBN", zone: "2" },
@@ -348,11 +348,11 @@ export const stationList = [
     id: "940GZZLULSQ",
     zone: "1"
   },
-  { name: "Lewisham DLR Station", id: "940GZZDLLEW", zone: "2+3" },
+  { name: "Lewisham DLR Station", id: "940GZZDLLEW", zone: [2, 3] },
   { name: "Leyton Midland Road Rail Station", id: "910GLEYTNMR", zone: "3" },
   { name: "Leyton Underground Station", id: "940GZZLULYN", zone: "3" },
   { name: "Leytonstone High Road Rail Station", id: "910GLYTNSHR", zone: "3" },
-  { name: "Leytonstone Underground Station", id: "940GZZLULYS", zone: "3+4" },
+  { name: "Leytonstone Underground Station", id: "940GZZLULYS", zone: [3, 4] },
   { name: "Limehouse DLR Station", id: "940GZZDLLIM", zone: "2" },
   {
     name: "Liverpool Street Underground Station",
@@ -367,8 +367,8 @@ export const stationList = [
   { name: "London Paddington Rail Station", id: "910GPADTON", zone: "1" },
   { name: "Loughton Underground Station", id: "940GZZLULGN", zone: "6" },
   { name: "Maida Vale Underground Station", id: "940GZZLUMVL", zone: "2" },
-  { name: "Manor House Underground Station", id: "940GZZLUMRH", zone: "2+3" },
-  { name: "Manor Park Rail Station", id: "910GMANRPK", zone: "3+4" },
+  { name: "Manor House Underground Station", id: "940GZZLUMRH", zone: [2, 3] },
+  { name: "Manor Park Rail Station", id: "910GMANRPK", zone: [3, 4] },
   { name: "Mansion House Underground Station", id: "940GZZLUMSH", zone: "1" },
   { name: "Marble Arch Underground Station", id: "940GZZLUMBA", zone: "1" },
   { name: "Maryland Rail Station", id: "910GMRYLAND", zone: "3" },
@@ -376,7 +376,7 @@ export const stationList = [
   { name: "Mile End Underground Station", id: "940GZZLUMED", zone: "2" },
   { name: "Mill Hill East Underground Station", id: "940GZZLUMHL", zone: "4" },
   { name: "Monument Underground Station", id: "940GZZLUMMT", zone: "1" },
-  { name: "Moor Park Underground Station", id: "940GZZLUMPK", zone: "6+7" },
+  { name: "Moor Park Underground Station", id: "940GZZLUMPK", zone: [6, 7] },
   { name: "Moorgate Underground Station", id: "940GZZLUMGT", zone: "1" },
   { name: "Morden Underground Station", id: "940GZZLUMDN", zone: "4" },
   {
@@ -389,12 +389,12 @@ export const stationList = [
   { name: "New Cross ELL Rail Station", id: "910GNWCRELL", zone: "2" },
   { name: "New Cross Gate Rail Station", id: "910GNEWXGTE", zone: "2" },
   { name: "Newbury Park Underground Station", id: "940GZZLUNBP", zone: "4" },
-  { name: "North Acton Underground Station", id: "940GZZLUNAN", zone: "2+3" },
+  { name: "North Acton Underground Station", id: "940GZZLUNAN", zone: [2, 3] },
   { name: "North Ealing Underground Station", id: "940GZZLUNEN", zone: "3" },
   {
     name: "North Greenwich Underground Station",
     id: "940GZZLUNGW",
-    zone: "2+3"
+    zone: [2, 3]
   },
   { name: "North Harrow Underground Station", id: "940GZZLUNHA", zone: "5" },
   { name: "North Wembley Rail Station", id: "910GNWEMBLY", zone: "4" },
@@ -408,7 +408,7 @@ export const stationList = [
   {
     name: "Notting Hill Gate Underground Station",
     id: "940GZZLUNHG",
-    zone: "1+2"
+    zone: [1, 2]
   },
   { name: "Oakwood Underground Station", id: "940GZZLUOAK", zone: "5" },
   { name: "Old Street Underground Station", id: "940GZZLUODS", zone: "1" },
@@ -434,7 +434,7 @@ export const stationList = [
   { name: "Poplar DLR Station", id: "940GZZDLPOP", zone: "2" },
   { name: "Preston Road Underground Station", id: "940GZZLUPRD", zone: "4" },
   { name: "Prince Regent DLR Station", id: "940GZZDLPRE", zone: "3" },
-  { name: "Pudding Mill Lane DLR Station", id: "940GZZDLPUD", zone: "2+3" },
+  { name: "Pudding Mill Lane DLR Station", id: "940GZZDLPUD", zone: [2, 3] },
   { name: "Putney Bridge Underground Station", id: "940GZZLUPYB", zone: "2" },
   { name: "Queen's Park Underground Station", id: "940GZZLUQPS", zone: "2" },
   { name: "Queens Park (London) Rail Station", id: "910GQPRK", zone: "2" },
@@ -501,7 +501,7 @@ export const stationList = [
   {
     name: "South Wimbledon Underground Station",
     id: "940GZZLUSWN",
-    zone: "3+4"
+    zone: [3, 4]
   },
   { name: "South Woodford Underground Station", id: "940GZZLUSWF", zone: "4" },
   { name: "Southall Rail Station", id: "910GSTHALL", zone: "4" },
@@ -524,7 +524,7 @@ export const stationList = [
   { name: "Stamford Brook Underground Station", id: "940GZZLUSFB", zone: "2" },
   { name: "Stamford Hill Rail Station", id: "910GSTMFDHL", zone: "3" },
   { name: "Stanmore Underground Station", id: "940GZZLUSTM", zone: "5" },
-  { name: "Star Lane DLR Station", id: "940GZZDLSTL", zone: "2+3" },
+  { name: "Star Lane DLR Station", id: "940GZZDLSTL", zone: [2, 3] },
   { name: "Stepney Green Underground Station", id: "940GZZLUSGN", zone: "2" },
   { name: "Stockwell Underground Station", id: "940GZZLUSKW", zone: "2" },
   { name: "Stoke Newington Rail Station", id: "910GSTKNWNG", zone: "2" },
@@ -534,15 +534,19 @@ export const stationList = [
     id: "940GZZLUSGP",
     zone: "3"
   },
-  { name: "Stratford (London) Rail Station", id: "910GSTFD", zone: "2+3" },
-  { name: "Stratford DLR Station", id: "940GZZDLSTD", zone: "2+3" },
-  { name: "Stratford High Street DLR Station", id: "940GZZDLSHS", zone: "2+3" },
+  { name: "Stratford (London) Rail Station", id: "910GSTFD", zone: [2, 3] },
+  { name: "Stratford DLR Station", id: "940GZZDLSTD", zone: [2, 3] },
+  {
+    name: "Stratford High Street DLR Station",
+    id: "940GZZDLSHS",
+    zone: [2, 3]
+  },
   {
     name: "Stratford International DLR Station",
     id: "940GZZDLSIT",
-    zone: "2+3"
+    zone: [2, 3]
   },
-  { name: "Stratford Underground Station", id: "940GZZLUSTD", zone: "2+3" },
+  { name: "Stratford Underground Station", id: "940GZZLUSTD", zone: [2, 3] },
   { name: "Sudbury Hill Underground Station", id: "940GZZLUSUH", zone: "4" },
   { name: "Sudbury Town Underground Station", id: "940GZZLUSUT", zone: "4" },
   { name: "Surrey Quays Rail Station", id: "910GSURREYQ", zone: "2" },
@@ -585,7 +589,7 @@ export const stationList = [
   { name: "Upper Holloway Rail Station", id: "910GUPRHLWY", zone: "2" },
   { name: "Upton Park Underground Station", id: "940GZZLUUPK", zone: "3" },
   { name: "Uxbridge Underground Station", id: "940GZZLUUXB", zone: "6" },
-  { name: "Vauxhall Underground Station", id: "940GZZLUVXL", zone: "1+2" },
+  { name: "Vauxhall Underground Station", id: "940GZZLUVXL", zone: [1, 2] },
   { name: "Victoria Underground Station", id: "940GZZLUVIC", zone: "1" },
   { name: "Walthamstow Central Rail Station", id: "910GWLTWCEN", zone: "3" },
   {
@@ -617,8 +621,8 @@ export const stationList = [
   { name: "West Croydon Rail Station", id: "910GWCROYDN", zone: "5" },
   { name: "West Ealing Rail Station", id: "910GWEALING", zone: "3" },
   { name: "West Finchley Underground Station", id: "940GZZLUWFN", zone: "4" },
-  { name: "West Ham DLR Station", id: "940GZZDLWHM", zone: "2+3" },
-  { name: "West Ham Underground Station", id: "940GZZLUWHM", zone: "2+3" },
+  { name: "West Ham DLR Station", id: "940GZZDLWHM", zone: [2, 3] },
+  { name: "West Ham Underground Station", id: "940GZZLUWHM", zone: [2, 3] },
   { name: "West Hampstead Rail Station", id: "910GWHMDSTD", zone: "2" },
   { name: "West Hampstead Underground Station", id: "940GZZLUWHP", zone: "2" },
   { name: "West Harrow Underground Station", id: "940GZZLUWHW", zone: "5" },
@@ -636,13 +640,13 @@ export const stationList = [
   {
     name: "Willesden Green Underground Station",
     id: "940GZZLUWIG",
-    zone: "2+3"
+    zone: [2, 3]
   },
-  { name: "Willesden Junction Rail Station", id: "910GWLSDJHL", zone: "2+3" },
+  { name: "Willesden Junction Rail Station", id: "910GWLSDJHL", zone: [2, 3] },
   {
     name: "Willesden Junction Underground Station",
     id: "940GZZLUWJN",
-    zone: "2+3"
+    zone: [2, 3]
   },
   { name: "Wimbledon Park Underground Station", id: "940GZZLUWIP", zone: "3" },
   { name: "Wimbledon Underground Station", id: "940GZZLUWIM", zone: "3" },
@@ -650,7 +654,7 @@ export const stationList = [
   { name: "Wood Lane Underground Station", id: "940GZZLUWLA", zone: "2" },
   { name: "Wood Street Rail Station", id: "910GWDST", zone: "4" },
   { name: "Woodford Underground Station", id: "940GZZLUWOF", zone: "4" },
-  { name: "Woodgrange Park Rail Station", id: "910GWDGRNPK", zone: "3+4" },
+  { name: "Woodgrange Park Rail Station", id: "910GWDGRNPK", zone: [3, 4] },
   { name: "Woodside Park Underground Station", id: "940GZZLUWOP", zone: "4" },
   { name: "Woolwich Arsenal DLR Station", id: "940GZZDLWLA", zone: "4" }
 ];
