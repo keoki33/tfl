@@ -44,7 +44,7 @@ class Form extends Component {
       simple: false,
       complex: false
     });
-    this.getStationId();
+    // this.getStationId();
   };
 
   getCost = () => {
@@ -135,14 +135,14 @@ class Form extends Component {
           {this.state.simple ? (
             <div className="simpleForm">
               <TripForm
-                startStationFieldSimpleM={this.state.startStationFieldSimpleM}
-                startStationFieldSimpleN={this.state.startStationFieldSimpleN}
-                timeFieldSimpleM={this.state.timeFieldSimpleM}
-                endStationFieldSimpleM={this.state.endStationFieldSimpleM}
-                endStationFieldSimpleN={this.state.endStationFieldSimpleN}
-                timeFieldSimpleN={this.state.timeFieldSimpleN}
-                busTripFieldM={this.state.busTripFieldM}
-                busTripFieldN={this.state.busTripFieldN}
+                // startStationFieldSimpleM={this.state.startStationFieldSimpleM}
+                // startStationFieldSimpleN={this.state.startStationFieldSimpleN}
+                // timeFieldSimpleM={this.state.timeFieldSimpleM}
+                // endStationFieldSimpleM={this.state.endStationFieldSimpleM}
+                // endStationFieldSimpleN={this.state.endStationFieldSimpleN}
+                // timeFieldSimpleN={this.state.timeFieldSimpleN}
+                // busTripFieldM={this.state.busTripFieldM}
+                // busTripFieldN={this.state.busTripFieldN}
                 handleFormInput={this.handleFormInput}
               />
             </div>

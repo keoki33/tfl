@@ -35,6 +35,8 @@ class TripForm extends Component {
   // show loading when calculating? disable all fields when loading?
   // send daily cost up to form for result screen
 
+  // getstationid then getcost then gettotalcost then calculate zone
+
   componentDidMount() {}
 
   getStationId = time => {
@@ -102,32 +104,6 @@ class TripForm extends Component {
       });
   };
 
-  calculateZone = () => {
-    if (
-      (this.state.startZoneM != "" && this.state.startZoneM != "") ||
-      (this.state.startZoneN != "" && this.state.startZoneN != "")
-    )
-      if (
-        // this.state.startZoneM.includes("+") ||
-        // this.state.endZoneM.includes("+")
-        this.state.startZoneM.length == 2
-      ) {
-        if (this.state.endZoneM <= this.state.endZoneM[0]) {
-          let x = this.state.endZoneM[0];
-          this.setState({ endZoneM: x });
-        }
-      } else {
-        let arr = [
-          this.state.startZoneM,
-          this.state.endZoneM,
-          this.state.startZoneN,
-          this.state.endZoneN
-        ];
-        let sort = arr.sort().filter(x => x != "");
-        return `${sort[0]} to ${sort[sort.length - 1]}`;
-      }
-  };
-
   getCostN = () => {
     this.setState({ costN: "Loading" });
     fetch(
@@ -174,10 +150,37 @@ class TripForm extends Component {
       Number(this.state.busM) * 1.5 +
       Number(this.state.busN) * 1.5;
 
-    this.setState({ cost: cc.toFixed(2) });
+    this.setState({ cost: cc.toFixed(2) }, () => {
+      this.calculateZone();
+    });
   };
 
-  whatever = () => {};
+  calculateZone = () => {
+    if (
+      (this.state.startZoneM != "" && this.state.startZoneM != "") ||
+      (this.state.startZoneN != "" && this.state.startZoneN != "")
+    )
+      if (
+        // this.state.startZoneM.includes("+") ||
+        // this.state.endZoneM.includes("+")
+        this.state.startZoneM.length == 2
+      ) {
+        if (this.state.endZoneM <= this.state.endZoneM[0]) {
+          let x = this.state.endZoneM[0];
+          this.setState({ endZoneM: x });
+        }
+      } else {
+        let arr = [
+          this.state.startZoneM,
+          this.state.endZoneM,
+          this.state.startZoneN,
+          this.state.endZoneN
+        ];
+        let sort = arr.sort().filter(x => x != "");
+        // return `${sort[0]} to ${sort[sort.length - 1]}`;
+        this.setState({ zones: `${sort[0]} to ${sort[sort.length - 1]}` });
+      }
+  };
 
   render() {
     return (
@@ -364,7 +367,7 @@ class TripForm extends Component {
             Morning: £{this.state.costM} Night: £{this.state.costN} Total: £
             {this.state.cost} bus trips:{" "}
             {Number(this.state.busM) + Number(this.state.busN)} Zones travelled:{" "}
-            {this.calculateZone()}
+            {this.state.zones}
           </p>
         </div>
       </div>
