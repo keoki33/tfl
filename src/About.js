@@ -12,6 +12,10 @@ class About extends Component {
           commute and trying to figure out if it was worth buying a Travelcard I
           created a website to let you easily make that determination
         </p>
+        <p>
+          Simple assumes: Average work days travel monday to friday no travel on
+          weekends
+        </p>
 
         <p>
           This website is in no way associated with TFL. Any errors in
