@@ -10,11 +10,16 @@ class About extends Component {
         <p>
           Frustrated with the difficulty in calculating the average cost of my
           commute and trying to figure out if it was worth buying a Travelcard I
-          created a website to let you easily make that determination
+          created a website to let you easily make that determination.
         </p>
         <p>
-          Simple assumes: Average work days travel monday to friday no travel on
-          weekends
+          Simple assumes: Average of 253 working days a year Commute Monday to
+          Friday with no commute on weekends. Complex assumes: Average of 253
+          working days a year and 104 weekend days.
+          <br />
+          <br />
+          All fares assume you are not tapping out or switching trains to avoid
+          zone 1.
         </p>
 
         <p>
