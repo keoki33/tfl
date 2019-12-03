@@ -46,7 +46,7 @@ class Form extends Component {
     monthCard: 0,
     halfYearCard: 0,
     yearCard: 0,
-    zones: 0
+    totalZones: 0
   };
 
   calculateFare = () => {
@@ -60,9 +60,86 @@ class Form extends Component {
     // this.getStationId();
   };
 
-  getCost = () => {
+  // getCost = () => {
+  //   fetch(
+  //     `https://api.tfl.gov.uk/Stoppoint/${this.state.startId}/FareTo/${this.state.endId}`
+  //   )
+  //     .then(resp => resp.json())
+  //     // .then(x =>
+  //     //   console.log(
+  //     //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
+  //     //       "cost"
+  //     //     ]
+  //     //   )
+  //     // );
+  //     .then(x => {
+  //       if (x.length == 0) {
+  //         this.setState({ day: 0 });
+  //       } else {
+  //         let list = x[0]["rows"][0]["ticketsAvailable"];
+
+  //         if (list.length === 2) {
+  //           this.setState({ day: list[1]["cost"] });
+  //         } else {
+  //           this.setState({
+  //             day: list[`${this.state.timeFieldSimpleM}`]["cost"]
+  //           });
+  //         }
+  //       }
+  //     });
+  // };
+
+  // getStationId = () => {
+  //   let start = stationList.filter(
+  //     x => x.name === this.state.startStationFieldSimpleM
+  //   );
+  //   let end = stationList.filter(
+  //     x => x.name === this.state.endStationFieldSimpleM
+  //   );
+
+  //   this.setState({ startId: start[0].id, endId: end[0].id }, () =>
+  //     this.getCost()
+  //   );
+  // };
+
+  // formReturn = () => {
+  //   this.setState({ results: false, main: true, simple: true, complex: false });
+  // };
+
+  // handleFormInput = (k, v) => {
+  //   this.setState({ [k]: v });
+  // };
+
+  getStationId = time => {
+    if (
+      this.state[`startStation${time}`] === "0" ||
+      this.state[`endStation${time}`] === "0"
+    ) {
+      time == "M" ? this.getCostM() : this.getCostN();
+    } else {
+      let start = stationList.filter(
+        x => x.name === this.state[`startStation${time}`]
+      );
+      let end = stationList.filter(
+        x => x.name === this.state[`endStation${time}`]
+      );
+
+      this.setState(
+        {
+          [`startId${time}`]: start[0].id,
+          [`endId${time}`]: end[0].id,
+          [`startZone${time}`]: start[0].zone,
+          [`endZone${time}`]: end[0].zone
+        },
+        () => (time == "M" ? this.getCostM() : this.getCostN())
+      );
+    }
+  };
+
+  getCostM = () => {
+    this.setState({ costM: "Loading" });
     fetch(
-      `https://api.tfl.gov.uk/Stoppoint/${this.state.startId}/FareTo/${this.state.endId}`
+      `https://api.tfl.gov.uk/Stoppoint/${this.state.startIdM}/FareTo/${this.state.endIdM}`
     )
       .then(resp => resp.json())
       // .then(x =>
@@ -73,41 +150,131 @@ class Form extends Component {
       //   )
       // );
       .then(x => {
-        if (x.length == 0) {
-          this.setState({ day: 0 });
+        if (x.length == 0 || x["httpStatusCode"] == 404) {
+          this.setState({ costM: 0 }, () => {
+            this.totalCost();
+          });
         } else {
           let list = x[0]["rows"][0]["ticketsAvailable"];
 
           if (list.length === 2) {
-            this.setState({ day: list[1]["cost"] });
-          } else {
-            this.setState({
-              day: list[`${this.state.timeFieldSimpleM}`]["cost"]
+            this.setState({ costM: list[1]["cost"] }, () => {
+              this.totalCost();
             });
+          } else {
+            this.setState(
+              {
+                costM: list[`${this.state.timeM}`]["cost"]
+              },
+              () => {
+                this.totalCost();
+              }
+            );
           }
         }
       });
   };
 
-  getStationId = () => {
-    let start = stationList.filter(
-      x => x.name === this.state.startStationFieldSimpleM
-    );
-    let end = stationList.filter(
-      x => x.name === this.state.endStationFieldSimpleM
-    );
+  getCostN = () => {
+    this.setState({ costN: "Loading" });
+    fetch(
+      `https://api.tfl.gov.uk/Stoppoint/${this.state.startIdN}/FareTo/${this.state.endIdN}`
+    )
+      .then(resp => resp.json())
+      // .then(x =>
+      //   console.log(
+      //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
+      //       "cost"
+      //     ]
+      //   )
+      // );
+      .then(x => {
+        if (x.length == 0 || x["httpStatusCode"] == 404) {
+          this.setState({ costN: 0 }, () => {
+            this.totalCost();
+          });
+        } else {
+          let list = x[0]["rows"][0]["ticketsAvailable"];
 
-    this.setState({ startId: start[0].id, endId: end[0].id }, () =>
-      this.getCost()
-    );
+          if (list.length === 2) {
+            this.setState({ costN: list[1]["cost"] }, () => {
+              this.totalCost();
+            });
+          } else {
+            this.setState(
+              {
+                costN: list[`${this.state.timeM}`]["cost"]
+              },
+              () => {
+                this.totalCost();
+              }
+            );
+          }
+        }
+      });
   };
 
-  formReturn = () => {
-    this.setState({ results: false, main: true, simple: true, complex: false });
+  totalCost = () => {
+    let cc =
+      Number(this.state.costM) +
+      Number(this.state.costN) +
+      Number(this.state.busM) * 1.5 +
+      Number(this.state.busN) * 1.5;
+
+    this.setState({ cost: cc.toFixed(2) }, () => {
+      this.calculateZone();
+    });
   };
 
-  handleFormInput = (k, v) => {
-    this.setState({ [k]: v });
+  calculateZone = () => {
+    if (
+      (this.state.startZoneM != "" && this.state.startZoneM != "") ||
+      (this.state.startZoneN != "" && this.state.startZoneN != "")
+    ) {
+      if (
+        // this.state.startZoneM.includes("+") ||
+        // this.state.endZoneM.includes("+")
+        this.state.startZoneM.length == 2
+      ) {
+        if (this.state.endZoneM <= this.state.startZoneM[0]) {
+          let x = this.state.startZoneM[0];
+          this.setState({ startZoneM: x }, () => {
+            this.zones();
+          });
+        } else {
+          let x = this.state.startZoneM[1];
+          this.setState({ startZoneM: x }, () => {
+            this.zones();
+          });
+        }
+      } else if (this.state.endZoneM.length == 2) {
+        if (this.state.startZoneM <= this.state.endZoneM[0]) {
+          let x = this.state.endZoneM[0];
+          this.setState({ endZoneM: x }, () => {
+            this.zones();
+          });
+        } else {
+          let x = this.state.endZoneM[1];
+          this.setState({ endZoneM: x }, () => {
+            this.zones();
+          });
+        }
+      } else {
+        this.zones();
+      }
+    }
+  };
+
+  zones = () => {
+    let arr = [
+      this.state.startZoneM,
+      this.state.endZoneM,
+      this.state.startZoneN,
+      this.state.endZoneN
+    ];
+    let sort = arr.sort().filter(x => x != "");
+    // return `${sort[0]} to ${sort[sort.length - 1]}`;
+    this.setState({ zones: `${sort[0]} to ${sort[sort.length - 1]}` });
   };
 
   render() {
