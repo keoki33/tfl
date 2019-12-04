@@ -107,9 +107,15 @@ class Form extends Component {
   // };
 
   handleFormInput = (k, v, t) => {
-    this.setState({ [k]: v }, () => {
-      this.getStationId(t);
-    });
+    if (k === "busN" || k === "busM") {
+      this.setState({ [k]: v }, () => {
+        this.totalCost();
+      });
+    } else {
+      this.setState({ [k]: v }, () => {
+        this.getStationId(t);
+      });
+    }
   };
 
   getStationId = time => {
@@ -205,7 +211,7 @@ class Form extends Component {
           } else {
             this.setState(
               {
-                costN: list[`${this.state.timeM}`]["cost"]
+                costN: list[`${this.state.timeN}`]["cost"]
               },
               () => {
                 this.totalCost();
@@ -330,6 +336,11 @@ class Form extends Component {
                 busM={this.state.busM}
                 busN={this.state.busN}
                 handleFormInput={this.handleFormInput}
+                costM={this.state.costM}
+                costN={this.state.costN}
+                cost={this.state.cost}
+                zones={this.state.zones}
+
                 // disabled={true}
               />
             </div>

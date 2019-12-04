@@ -39,172 +39,172 @@ class TripForm extends Component {
 
   componentDidMount() {}
 
-  getStationId = time => {
-    if (
-      this.state[`startStation${time}`] === "0" ||
-      this.state[`endStation${time}`] === "0"
-    ) {
-      time == "M" ? this.getCostM() : this.getCostN();
-    } else {
-      let start = stationList.filter(
-        x => x.name === this.state[`startStation${time}`]
-      );
-      let end = stationList.filter(
-        x => x.name === this.state[`endStation${time}`]
-      );
+  // getStationId = time => {
+  //   if (
+  //     this.state[`startStation${time}`] === "0" ||
+  //     this.state[`endStation${time}`] === "0"
+  //   ) {
+  //     time == "M" ? this.getCostM() : this.getCostN();
+  //   } else {
+  //     let start = stationList.filter(
+  //       x => x.name === this.state[`startStation${time}`]
+  //     );
+  //     let end = stationList.filter(
+  //       x => x.name === this.state[`endStation${time}`]
+  //     );
 
-      this.setState(
-        {
-          [`startId${time}`]: start[0].id,
-          [`endId${time}`]: end[0].id,
-          [`startZone${time}`]: start[0].zone,
-          [`endZone${time}`]: end[0].zone
-        },
-        () => (time == "M" ? this.getCostM() : this.getCostN())
-      );
-    }
-  };
+  //     this.setState(
+  //       {
+  //         [`startId${time}`]: start[0].id,
+  //         [`endId${time}`]: end[0].id,
+  //         [`startZone${time}`]: start[0].zone,
+  //         [`endZone${time}`]: end[0].zone
+  //       },
+  //       () => (time == "M" ? this.getCostM() : this.getCostN())
+  //     );
+  //   }
+  // };
 
-  getCostM = () => {
-    this.setState({ costM: "Loading" });
-    fetch(
-      `https://api.tfl.gov.uk/Stoppoint/${this.state.startIdM}/FareTo/${this.state.endIdM}`
-    )
-      .then(resp => resp.json())
-      // .then(x =>
-      //   console.log(
-      //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
-      //       "cost"
-      //     ]
-      //   )
-      // );
-      .then(x => {
-        if (x.length == 0 || x["httpStatusCode"] == 404) {
-          this.setState({ costM: 0 }, () => {
-            this.totalCost();
-          });
-        } else {
-          let list = x[0]["rows"][0]["ticketsAvailable"];
+  // getCostM = () => {
+  //   this.setState({ costM: "Loading" });
+  //   fetch(
+  //     `https://api.tfl.gov.uk/Stoppoint/${this.state.startIdM}/FareTo/${this.state.endIdM}`
+  //   )
+  //     .then(resp => resp.json())
+  //     // .then(x =>
+  //     //   console.log(
+  //     //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
+  //     //       "cost"
+  //     //     ]
+  //     //   )
+  //     // );
+  //     .then(x => {
+  //       if (x.length == 0 || x["httpStatusCode"] == 404) {
+  //         this.setState({ costM: 0 }, () => {
+  //           this.totalCost();
+  //         });
+  //       } else {
+  //         let list = x[0]["rows"][0]["ticketsAvailable"];
 
-          if (list.length === 2) {
-            this.setState({ costM: list[1]["cost"] }, () => {
-              this.totalCost();
-            });
-          } else {
-            this.setState(
-              {
-                costM: list[`${this.state.timeM}`]["cost"]
-              },
-              () => {
-                this.totalCost();
-              }
-            );
-          }
-        }
-      });
-  };
+  //         if (list.length === 2) {
+  //           this.setState({ costM: list[1]["cost"] }, () => {
+  //             this.totalCost();
+  //           });
+  //         } else {
+  //           this.setState(
+  //             {
+  //               costM: list[`${this.state.timeM}`]["cost"]
+  //             },
+  //             () => {
+  //               this.totalCost();
+  //             }
+  //           );
+  //         }
+  //       }
+  //     });
+  // };
 
-  getCostN = () => {
-    this.setState({ costN: "Loading" });
-    fetch(
-      `https://api.tfl.gov.uk/Stoppoint/${this.state.startIdN}/FareTo/${this.state.endIdN}`
-    )
-      .then(resp => resp.json())
-      // .then(x =>
-      //   console.log(
-      //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
-      //       "cost"
-      //     ]
-      //   )
-      // );
-      .then(x => {
-        if (x.length == 0 || x["httpStatusCode"] == 404) {
-          this.setState({ costN: 0 }, () => {
-            this.totalCost();
-          });
-        } else {
-          let list = x[0]["rows"][0]["ticketsAvailable"];
+  // getCostN = () => {
+  //   this.setState({ costN: "Loading" });
+  //   fetch(
+  //     `https://api.tfl.gov.uk/Stoppoint/${this.state.startIdN}/FareTo/${this.state.endIdN}`
+  //   )
+  //     .then(resp => resp.json())
+  //     // .then(x =>
+  //     //   console.log(
+  //     //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
+  //     //       "cost"
+  //     //     ]
+  //     //   )
+  //     // );
+  //     .then(x => {
+  //       if (x.length == 0 || x["httpStatusCode"] == 404) {
+  //         this.setState({ costN: 0 }, () => {
+  //           this.totalCost();
+  //         });
+  //       } else {
+  //         let list = x[0]["rows"][0]["ticketsAvailable"];
 
-          if (list.length === 2) {
-            this.setState({ costN: list[1]["cost"] }, () => {
-              this.totalCost();
-            });
-          } else {
-            this.setState(
-              {
-                costN: list[`${this.state.timeM}`]["cost"]
-              },
-              () => {
-                this.totalCost();
-              }
-            );
-          }
-        }
-      });
-  };
+  //         if (list.length === 2) {
+  //           this.setState({ costN: list[1]["cost"] }, () => {
+  //             this.totalCost();
+  //           });
+  //         } else {
+  //           this.setState(
+  //             {
+  //               costN: list[`${this.state.timeM}`]["cost"]
+  //             },
+  //             () => {
+  //               this.totalCost();
+  //             }
+  //           );
+  //         }
+  //       }
+  //     });
+  // };
 
-  totalCost = () => {
-    let cc =
-      Number(this.state.costM) +
-      Number(this.state.costN) +
-      Number(this.state.busM) * 1.5 +
-      Number(this.state.busN) * 1.5;
+  // totalCost = () => {
+  //   let cc =
+  //     Number(this.state.costM) +
+  //     Number(this.state.costN) +
+  //     Number(this.state.busM) * 1.5 +
+  //     Number(this.state.busN) * 1.5;
 
-    this.setState({ cost: cc.toFixed(2) }, () => {
-      this.calculateZone();
-    });
-  };
+  //   this.setState({ cost: cc.toFixed(2) }, () => {
+  //     this.calculateZone();
+  //   });
+  // };
 
-  calculateZone = () => {
-    if (
-      (this.state.startZoneM != "" && this.state.startZoneM != "") ||
-      (this.state.startZoneN != "" && this.state.startZoneN != "")
-    ) {
-      if (
-        // this.state.startZoneM.includes("+") ||
-        // this.state.endZoneM.includes("+")
-        this.state.startZoneM.length == 2
-      ) {
-        if (this.state.endZoneM <= this.state.startZoneM[0]) {
-          let x = this.state.startZoneM[0];
-          this.setState({ startZoneM: x }, () => {
-            this.zones();
-          });
-        } else {
-          let x = this.state.startZoneM[1];
-          this.setState({ startZoneM: x }, () => {
-            this.zones();
-          });
-        }
-      } else if (this.state.endZoneM.length == 2) {
-        if (this.state.startZoneM <= this.state.endZoneM[0]) {
-          let x = this.state.endZoneM[0];
-          this.setState({ endZoneM: x }, () => {
-            this.zones();
-          });
-        } else {
-          let x = this.state.endZoneM[1];
-          this.setState({ endZoneM: x }, () => {
-            this.zones();
-          });
-        }
-      } else {
-        this.zones();
-      }
-    }
-  };
+  // calculateZone = () => {
+  //   if (
+  //     (this.state.startZoneM != "" && this.state.startZoneM != "") ||
+  //     (this.state.startZoneN != "" && this.state.startZoneN != "")
+  //   ) {
+  //     if (
+  //       // this.state.startZoneM.includes("+") ||
+  //       // this.state.endZoneM.includes("+")
+  //       this.state.startZoneM.length == 2
+  //     ) {
+  //       if (this.state.endZoneM <= this.state.startZoneM[0]) {
+  //         let x = this.state.startZoneM[0];
+  //         this.setState({ startZoneM: x }, () => {
+  //           this.zones();
+  //         });
+  //       } else {
+  //         let x = this.state.startZoneM[1];
+  //         this.setState({ startZoneM: x }, () => {
+  //           this.zones();
+  //         });
+  //       }
+  //     } else if (this.state.endZoneM.length == 2) {
+  //       if (this.state.startZoneM <= this.state.endZoneM[0]) {
+  //         let x = this.state.endZoneM[0];
+  //         this.setState({ endZoneM: x }, () => {
+  //           this.zones();
+  //         });
+  //       } else {
+  //         let x = this.state.endZoneM[1];
+  //         this.setState({ endZoneM: x }, () => {
+  //           this.zones();
+  //         });
+  //       }
+  //     } else {
+  //       this.zones();
+  //     }
+  //   }
+  // };
 
-  zones = () => {
-    let arr = [
-      this.state.startZoneM,
-      this.state.endZoneM,
-      this.state.startZoneN,
-      this.state.endZoneN
-    ];
-    let sort = arr.sort().filter(x => x != "");
-    // return `${sort[0]} to ${sort[sort.length - 1]}`;
-    this.setState({ zones: `${sort[0]} to ${sort[sort.length - 1]}` });
-  };
+  // zones = () => {
+  //   let arr = [
+  //     this.state.startZoneM,
+  //     this.state.endZoneM,
+  //     this.state.startZoneN,
+  //     this.state.endZoneN
+  //   ];
+  //   let sort = arr.sort().filter(x => x != "");
+  //   // return `${sort[0]} to ${sort[sort.length - 1]}`;
+  //   this.setState({ zones: `${sort[0]} to ${sort[sort.length - 1]}` });
+  // };
 
   render() {
     return (
@@ -270,7 +270,7 @@ class TripForm extends Component {
                   // this.setState({ timeM: event.target.value }, () => {
                   //   this.getStationId("M");
                   // });
-                  this.handleFormInput("timeM", event.target.value, "M");
+                  this.props.handleFormInput("timeM", event.target.value, "M");
                 }}
                 disabled={this.props.disabled}
                 type="radio"
@@ -286,7 +286,7 @@ class TripForm extends Component {
                   // this.setState({ timeM: event.target.value }, () => {
                   //   this.getStationId("M");
                   // });
-                  this.handleFormInput("timeM", event.target.value, "M");
+                  this.props.handleFormInput("timeM", event.target.value, "M");
                 }}
                 type="radio"
                 name="time"
@@ -322,7 +322,8 @@ class TripForm extends Component {
                   // })
                   this.props.handleFormInput(
                     "startStationN",
-                    event.target.value
+                    event.target.value,
+                    "N"
                   )
                 }
                 value={this.props.startStationN}
@@ -345,7 +346,11 @@ class TripForm extends Component {
                   // this.setState({ endStationN: event.target.value }, () => {
                   //   this.getStationId("N");
                   // });
-                  this.props.handleFormInput("endStationN", event.target.value);
+                  this.props.handleFormInput(
+                    "endStationN",
+                    event.target.value,
+                    "N"
+                  );
                 }}
                 value={this.props.endStationN}
               >
@@ -368,7 +373,7 @@ class TripForm extends Component {
                   // this.setState({ timeN: event.target.value }, () => {
                   //   this.getStationId("N");
                   // });
-                  this.props.handleFormInput("timeN", event.target.value);
+                  this.props.handleFormInput("timeN", event.target.value, "N");
                 }}
                 disabled={this.props.disabled}
                 type="radio"
@@ -384,7 +389,7 @@ class TripForm extends Component {
                   // this.setState({ timeN: event.target.value }, () => {
                   //   this.getStationId("N");
                   // });
-                  this.props.handleFormInput("timeN", event.target.value);
+                  this.props.handleFormInput("timeN", event.target.value, "N");
                 }}
                 type="radio"
                 name="time"
