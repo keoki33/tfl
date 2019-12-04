@@ -106,9 +106,11 @@ class Form extends Component {
   //   this.setState({ results: false, main: true, simple: true, complex: false });
   // };
 
-  // handleFormInput = (k, v) => {
-  //   this.setState({ [k]: v });
-  // };
+  handleFormInput = (k, v, t) => {
+    this.setState({ [k]: v }, () => {
+      this.getStationId(t);
+    });
+  };
 
   getStationId = time => {
     if (
@@ -280,9 +282,13 @@ class Form extends Component {
   render() {
     return (
       <div>
-        {console.log(this.state.startStationFieldSimpleM)}
-        {console.log(this.state.endStationFieldSimpleM)}
         <div className="forms">
+          <p>
+            Peak fares - Monday to Friday (not on public holidays) between 06:30
+            and 09:30, and between 16:00 and 19:00 Off-peak fares - at all other
+            times and if you travel from a station outside Zone 1 to a station
+            in Zone 1 between 16:00 and 19:00, Monday to Friday
+          </p>
           {this.state.main ? (
             <form action="">
               <label htmlFor="">
@@ -315,15 +321,16 @@ class Form extends Component {
           {this.state.simple ? (
             <div className="simpleForm">
               <TripForm
-                // startStationFieldSimpleM={this.state.startStationFieldSimpleM}
-                // startStationFieldSimpleN={this.state.startStationFieldSimpleN}
-                // timeFieldSimpleM={this.state.timeFieldSimpleM}
-                // endStationFieldSimpleM={this.state.endStationFieldSimpleM}
-                // endStationFieldSimpleN={this.state.endStationFieldSimpleN}
-                // timeFieldSimpleN={this.state.timeFieldSimpleN}
-                // busTripFieldM={this.state.busTripFieldM}
-                // busTripFieldN={this.state.busTripFieldN}
+                startStationM={this.state.startStationM}
+                endStationM={this.state.endStationM}
+                timeM={this.state.timeM}
+                startStationN={this.state.startStationN}
+                endStationN={this.state.endStationN}
+                timeN={this.state.timeN}
+                busM={this.state.busM}
+                busN={this.state.busN}
                 handleFormInput={this.handleFormInput}
+                // disabled={true}
               />
             </div>
           ) : (

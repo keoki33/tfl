@@ -214,11 +214,16 @@ class TripForm extends Component {
             <label htmlFor="">
               <select
                 onChange={event => {
-                  this.setState({ startStationM: event.target.value }, () => {
-                    this.getStationId("M");
-                  });
+                  // this.setState({ startStationM: event.target.value }, () => {
+                  //   this.getStationId("M");
+                  // });
+                  this.props.handleFormInput(
+                    "startStationM",
+                    event.target.value,
+                    "M"
+                  );
                 }}
-                value={this.state.startStationM}
+                value={this.props.startStationM}
               >
                 <option value="0" disabled>
                   From
@@ -235,11 +240,16 @@ class TripForm extends Component {
             <label htmlFor="">
               <select
                 onChange={event => {
-                  this.setState({ endStationM: event.target.value }, () => {
-                    this.getStationId("M");
-                  });
+                  // this.setState({ endStationM: event.target.value }, () => {
+                  //   this.getStationId("M");
+                  // });
+                  this.props.handleFormInput(
+                    "endStationM",
+                    event.target.value,
+                    "M"
+                  );
                 }}
-                value={this.state.endStationM}
+                value={this.props.endStationM}
               >
                 <option value="0" disabled>
                   To
@@ -257,28 +267,31 @@ class TripForm extends Component {
               Peak
               <input
                 onChange={event => {
-                  this.setState({ timeM: event.target.value }, () => {
-                    this.getStationId("M");
-                  });
+                  // this.setState({ timeM: event.target.value }, () => {
+                  //   this.getStationId("M");
+                  // });
+                  this.handleFormInput("timeM", event.target.value, "M");
                 }}
+                disabled={this.props.disabled}
                 type="radio"
                 name="time"
                 value="2"
-                checked={this.state.timeM === "2"}
+                checked={this.props.timeM === "2"}
               />
             </label>{" "}
             <label htmlFor="">
               Off Peak
               <input
                 onChange={event => {
-                  this.setState({ timeM: event.target.value }, () => {
-                    this.getStationId("M");
-                  });
+                  // this.setState({ timeM: event.target.value }, () => {
+                  //   this.getStationId("M");
+                  // });
+                  this.handleFormInput("timeM", event.target.value, "M");
                 }}
                 type="radio"
                 name="time"
                 value="1"
-                checked={this.state.timeM === "1"}
+                checked={this.props.timeM === "1"}
               />
             </label>
           </form>
@@ -287,9 +300,10 @@ class TripForm extends Component {
           <input
             className="busInput"
             onChange={event => {
-              this.setState({ busM: event.target.value }, () => {
-                this.totalCost();
-              });
+              // this.setState({ busM: event.target.value }, () => {
+              //   this.totalCost();
+              // });
+              this.props.handleFormInput("busM", event.target.value);
             }}
             type="number"
             name="bus"
@@ -303,11 +317,15 @@ class TripForm extends Component {
             <label htmlFor="">
               <select
                 onChange={event =>
-                  this.setState({ startStationN: event.target.value }, () => {
-                    this.getStationId("N");
-                  })
+                  // this.setState({ startStationN: event.target.value }, () => {
+                  //   this.getStationId("N");
+                  // })
+                  this.props.handleFormInput(
+                    "startStationN",
+                    event.target.value
+                  )
                 }
-                value={this.state.startStationN}
+                value={this.props.startStationN}
               >
                 <option value="0" disabled>
                   From
@@ -324,11 +342,12 @@ class TripForm extends Component {
             <label htmlFor="">
               <select
                 onChange={event => {
-                  this.setState({ endStationN: event.target.value }, () => {
-                    this.getStationId("N");
-                  });
+                  // this.setState({ endStationN: event.target.value }, () => {
+                  //   this.getStationId("N");
+                  // });
+                  this.props.handleFormInput("endStationN", event.target.value);
                 }}
-                value={this.state.endStationN}
+                value={this.props.endStationN}
               >
                 <option value="0" disabled>
                   To
@@ -346,28 +365,31 @@ class TripForm extends Component {
               Peak
               <input
                 onChange={event => {
-                  this.setState({ timeN: event.target.value }, () => {
-                    this.getStationId("N");
-                  });
+                  // this.setState({ timeN: event.target.value }, () => {
+                  //   this.getStationId("N");
+                  // });
+                  this.props.handleFormInput("timeN", event.target.value);
                 }}
+                disabled={this.props.disabled}
                 type="radio"
                 name="time"
                 value="2"
-                checked={this.state.timeN === "2"}
+                checked={this.props.timeN === "2"}
               />
             </label>{" "}
             <label htmlFor="">
               Off Peak
               <input
                 onChange={event => {
-                  this.setState({ timeN: event.target.value }, () => {
-                    this.getStationId("N");
-                  });
+                  // this.setState({ timeN: event.target.value }, () => {
+                  //   this.getStationId("N");
+                  // });
+                  this.props.handleFormInput("timeN", event.target.value);
                 }}
                 type="radio"
                 name="time"
                 value="1"
-                checked={this.state.timeN === "1"}
+                checked={this.props.timeN === "1"}
               />
             </label>
           </form>
@@ -376,9 +398,10 @@ class TripForm extends Component {
           <input
             className="busInput"
             onChange={event => {
-              this.setState({ busN: event.target.value }, () => {
-                this.totalCost();
-              });
+              // this.setState({ busN: event.target.value }, () => {
+              //   this.totalCost();
+              // });
+              this.props.handleFormInput("busN", event.target.value);
             }}
             min="0"
             step="1"
@@ -388,10 +411,10 @@ class TripForm extends Component {
         </div>
         <div>
           <p>
-            Morning: £{this.state.costM} Night: £{this.state.costN} Total: £
-            {this.state.cost} bus trips:{" "}
-            {Number(this.state.busM) + Number(this.state.busN)} Zones travelled:{" "}
-            {this.state.zones}
+            Morning: £{this.props.costM} Night: £{this.props.costN} Total: £
+            {this.props.cost} bus trips:{" "}
+            {Number(this.props.busM) + Number(this.props.busN)} Zones travelled:{" "}
+            {this.props.zones}
           </p>
         </div>
       </div>
