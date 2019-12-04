@@ -16,15 +16,19 @@ class Form extends Component {
 
     startStationM: "0",
     endStationM: "0",
-    timeM: "2",
+    timeM: "peak",
     startZoneM: "",
     endZoneM: "",
+    startZoneM2: "",
+    endZoneM2: "",
 
     startStationN: "0",
     endStationN: "0",
     timeN: "2",
     startZoneN: "",
     endZoneN: "",
+    startZoneN2: "",
+    endZoneN2: "",
 
     busM: 0,
     busN: 0,
@@ -33,7 +37,9 @@ class Form extends Component {
     endIdM: "",
 
     costM: 0,
+    costM2: 0,
     costN: 0,
+    costN2: 0,
     cost: 0,
     zones: "",
 
@@ -102,9 +108,9 @@ class Form extends Component {
   //   );
   // };
 
-  // formReturn = () => {
-  //   this.setState({ results: false, main: true, simple: true, complex: false });
-  // };
+  formReturn = () => {
+    this.setState({ results: false, main: true, simple: true, complex: false });
+  };
 
   handleFormInput = (k, v, t) => {
     if (k === "busN" || k === "busM") {
@@ -135,9 +141,9 @@ class Form extends Component {
       this.setState(
         {
           [`startId${time}`]: start[0].id,
-          [`endId${time}`]: end[0].id,
-          [`startZone${time}`]: start[0].zone,
-          [`endZone${time}`]: end[0].zone
+          [`endId${time}`]: end[0].id
+          // [`startZone${time}`]: start[0].zone,
+          // [`endZone${time}`]: end[0].zone
         },
         () => (time == "M" ? this.getCostM() : this.getCostN())
       );
@@ -147,80 +153,166 @@ class Form extends Component {
   getCostM = () => {
     this.setState({ costM: "Loading" });
     fetch(
-      `https://api.tfl.gov.uk/Stoppoint/${this.state.startIdM}/FareTo/${this.state.endIdM}`
+      `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM}/to/${this.state.endIdM}`
     )
       .then(resp => resp.json())
-      // .then(x =>
-      //   console.log(
-      //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
-      //       "cost"
-      //     ]
-      //   )
-      // );
       .then(x => {
-        if (x.length == 0 || x["httpStatusCode"] == 404) {
-          this.setState({ costM: 0 }, () => {
-            this.totalCost();
-          });
-        } else {
-          let list = x[0]["rows"][0]["ticketsAvailable"];
-
-          if (list.length === 2) {
-            this.setState({ costM: list[1]["cost"] }, () => {
+        if (
+          x.length == 0 ||
+          x["httpStatusCode"] == 404 ||
+          x["httpStatusCode"] == 500
+        ) {
+          this.setState(
+            {
+              costM: 0,
+              startZoneM: "",
+              endZoneM: "",
+              startZoneM2: "",
+              endZoneM2: ""
+            },
+            () => {
               this.totalCost();
-            });
-          } else {
-            this.setState(
-              {
-                costM: list[`${this.state.timeM}`]["cost"]
-              },
-              () => {
-                this.totalCost();
-              }
-            );
-          }
+            }
+          );
+        } else if (
+          x["journeys"][0]["fare"]["fares"][0]["taps"][0]["tapDetails"][
+            "modeType"
+          ] === "Bus"
+        ) {
+          console.log("bus");
+        } else {
+          this.setState(
+            {
+              startZoneM: x["journeys"][0]["fare"]["fares"][0]["lowZone"],
+              endZoneM: x["journeys"][0]["fare"]["fares"][0]["highZone"],
+              startZoneM2: x["journeys"][1]["fare"]["fares"][0]["lowZone"],
+              endZoneM2: x["journeys"][1]["fare"]["fares"][0]["highZone"],
+              costM: Number(
+                x["journeys"][0]["fare"]["fares"][0][`${this.state.timeM}`] /
+                  100
+              ).toFixed(2),
+              costM2: Number(
+                x["journeys"][1]["fare"]["fares"][0][`${this.state.timeM}`] /
+                  100
+              ).toFixed(2)
+            },
+            () => {
+              this.totalCost();
+            }
+          );
         }
       });
   };
+  //     .then(x => {
+  //       if (x.length == 0 || x["httpStatusCode"] == 404) {
+  //         console.log("error");
+  //       } else {
+  //         console.log(x["journeys"][0]["fare"]["fares"][0]["lowZone"]);
+  //       }
+  //     });
+  // };
+  // .then(x => {
+  //   if (x.length == 0 || x["httpStatusCode"] == 404) {
+  //     this.setState({ costM: 0 }, () => {
+  //       this.totalCost();
+  //     });
+  //   } else {
+  //     let list = x[0]["rows"][0]["ticketsAvailable"];
 
-  getCostN = () => {
-    this.setState({ costN: "Loading" });
-    fetch(
-      `https://api.tfl.gov.uk/Stoppoint/${this.state.startIdN}/FareTo/${this.state.endIdN}`
-    )
-      .then(resp => resp.json())
-      // .then(x =>
-      //   console.log(
-      //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
-      //       "cost"
-      //     ]
-      //   )
-      // );
-      .then(x => {
-        if (x.length == 0 || x["httpStatusCode"] == 404) {
-          this.setState({ costN: 0 }, () => {
-            this.totalCost();
-          });
-        } else {
-          let list = x[0]["rows"][0]["ticketsAvailable"];
+  //     if (list.length === 2) {
+  //       this.setState({ costM: list[1]["cost"] }, () => {
+  //         this.totalCost();
+  //       });
+  //     } else {
+  //       this.setState(
+  //         {
+  //           costM: list[`${this.state.timeM}`]["cost"]
+  //         },
+  //         () => {
+  //           this.totalCost();
+  //         }
+  //       );
+  //     }
+  //   }
+  // });
 
-          if (list.length === 2) {
-            this.setState({ costN: list[1]["cost"] }, () => {
-              this.totalCost();
-            });
-          } else {
-            this.setState(
-              {
-                costN: list[`${this.state.timeN}`]["cost"]
-              },
-              () => {
-                this.totalCost();
-              }
-            );
-          }
-        }
-      });
-  };
+  // getCostM = () => {
+  //   this.setState({ costM: "Loading" });
+  //   fetch(
+  //     `https://api.tfl.gov.uk/Stoppoint/${this.state.startIdM}/FareTo/${this.state.endIdM}`
+  //   )
+  //     .then(resp => resp.json())
+  //     // .then(x =>
+  //     //   console.log(
+  //     //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
+  //     //       "cost"
+  //     //     ]
+  //     //   )
+  //     // );
+  //     .then(x => {
+  //       if (x.length == 0 || x["httpStatusCode"] == 404) {
+  //         this.setState({ costM: 0 }, () => {
+  //           this.totalCost();
+  //         });
+  //       } else {
+  //         let list = x[0]["rows"][0]["ticketsAvailable"];
+
+  //         if (list.length === 2) {
+  //           this.setState({ costM: list[1]["cost"] }, () => {
+  //             this.totalCost();
+  //           });
+  //         } else {
+  //           this.setState(
+  //             {
+  //               costM: list[`${this.state.timeM}`]["cost"]
+  //             },
+  //             () => {
+  //               this.totalCost();
+  //             }
+  //           );
+  //         }
+  //       }
+  //     });
+  // };
+
+  // getCostN = () => {
+  //   this.setState({ costN: "Loading" });
+  //   fetch(
+  //     `https://api.tfl.gov.uk/Stoppoint/${this.state.startIdN}/FareTo/${this.state.endIdN}`
+  //   )
+  //     .then(resp => resp.json())
+  //     // .then(x =>
+  //     //   console.log(
+  //     //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
+  //     //       "cost"
+  //     //     ]
+  //     //   )
+  //     // );
+  //     .then(x => {
+  //       if (x.length == 0 || x["httpStatusCode"] == 404) {
+  //         this.setState({ costN: 0 }, () => {
+  //           this.totalCost();
+  //         });
+  //       } else {
+  //         let list = x[0]["rows"][0]["ticketsAvailable"];
+
+  //         if (list.length === 2) {
+  //           this.setState({ costN: list[1]["cost"] }, () => {
+  //             this.totalCost();
+  //           });
+  //         } else {
+  //           this.setState(
+  //             {
+  //               costN: list[`${this.state.timeN}`]["cost"]
+  //             },
+  //             () => {
+  //               this.totalCost();
+  //             }
+  //           );
+  //         }
+  //       }
+  //     });
+  // };
 
   totalCost = () => {
     let cc =
@@ -230,48 +322,48 @@ class Form extends Component {
       Number(this.state.busN) * 1.5;
 
     this.setState({ cost: cc.toFixed(2) }, () => {
-      this.calculateZone();
+      this.zones();
     });
   };
 
-  calculateZone = () => {
-    if (
-      (this.state.startZoneM != "" && this.state.startZoneM != "") ||
-      (this.state.startZoneN != "" && this.state.startZoneN != "")
-    ) {
-      if (
-        // this.state.startZoneM.includes("+") ||
-        // this.state.endZoneM.includes("+")
-        this.state.startZoneM.length == 2
-      ) {
-        if (this.state.endZoneM <= this.state.startZoneM[0]) {
-          let x = this.state.startZoneM[0];
-          this.setState({ startZoneM: x }, () => {
-            this.zones();
-          });
-        } else {
-          let x = this.state.startZoneM[1];
-          this.setState({ startZoneM: x }, () => {
-            this.zones();
-          });
-        }
-      } else if (this.state.endZoneM.length == 2) {
-        if (this.state.startZoneM <= this.state.endZoneM[0]) {
-          let x = this.state.endZoneM[0];
-          this.setState({ endZoneM: x }, () => {
-            this.zones();
-          });
-        } else {
-          let x = this.state.endZoneM[1];
-          this.setState({ endZoneM: x }, () => {
-            this.zones();
-          });
-        }
-      } else {
-        this.zones();
-      }
-    }
-  };
+  // calculateZone = () => {
+  //   if (
+  //     (this.state.startZoneM != "" && this.state.startZoneM != "") ||
+  //     (this.state.startZoneN != "" && this.state.startZoneN != "")
+  //   ) {
+  //     if (
+  //       // this.state.startZoneM.includes("+") ||
+  //       // this.state.endZoneM.includes("+")
+  //       this.state.startZoneM.length == 2
+  //     ) {
+  //       if (this.state.endZoneM <= this.state.startZoneM[0]) {
+  //         let x = this.state.startZoneM[0];
+  //         this.setState({ startZoneM: x }, () => {
+  //           this.zones();
+  //         });
+  //       } else {
+  //         let x = this.state.startZoneM[1];
+  //         this.setState({ startZoneM: x }, () => {
+  //           this.zones();
+  //         });
+  //       }
+  //     } else if (this.state.endZoneM.length == 2) {
+  //       if (this.state.startZoneM <= this.state.endZoneM[0]) {
+  //         let x = this.state.endZoneM[0];
+  //         this.setState({ endZoneM: x }, () => {
+  //           this.zones();
+  //         });
+  //       } else {
+  //         let x = this.state.endZoneM[1];
+  //         this.setState({ endZoneM: x }, () => {
+  //           this.zones();
+  //         });
+  //       }
+  //     } else {
+  //       this.zones();
+  //     }
+  //   }
+  // };
 
   zones = () => {
     let arr = [

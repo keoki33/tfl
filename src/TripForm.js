@@ -275,8 +275,8 @@ class TripForm extends Component {
                 disabled={this.props.disabled}
                 type="radio"
                 name="time"
-                value="2"
-                checked={this.props.timeM === "2"}
+                value="peak"
+                checked={this.props.timeM === "peak"}
               />
             </label>{" "}
             <label htmlFor="">
@@ -290,8 +290,8 @@ class TripForm extends Component {
                 }}
                 type="radio"
                 name="time"
-                value="1"
-                checked={this.props.timeM === "1"}
+                value="offPeak"
+                checked={this.props.timeM === "offPeak"}
               />
             </label>
           </form>
