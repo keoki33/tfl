@@ -157,7 +157,7 @@ class Form extends Component {
   };
 
   getCostM = () => {
-    this.setState({ costM: "Loading" });
+    this.setState({ invalidM: false, costM: "Loading" });
     fetch(
       `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM}/to/${this.state.endIdM}`
     )
@@ -174,7 +174,8 @@ class Form extends Component {
               startZoneM: "",
               endZoneM: "",
               startZoneM2: "",
-              endZoneM2: ""
+              endZoneM2: "",
+              invalidM: true
             },
             () => {
               this.totalCost();
@@ -185,10 +186,14 @@ class Form extends Component {
             "modeType"
           ] === "Bus"
         ) {
-          console.log("bus");
+          this.setState({ costM: 0, invalidM: true }, () => {
+            this.totalCost();
+          });
         } else {
           this.setState(
             {
+              invalidM: false,
+              // choicesN:
               startZoneM: x["journeys"][0]["fare"]["fares"][0]["lowZone"],
               endZoneM: x["journeys"][0]["fare"]["fares"][0]["highZone"],
               startZoneM2: x["journeys"][1]["fare"]["fares"][0]["lowZone"],
