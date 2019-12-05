@@ -416,7 +416,8 @@ class TripForm extends Component {
         </div>
         <div>
           <p>
-            Morning: £{this.props.costM} Night: £{this.props.costN} Total: £
+            Morning: £{this.props.invalidM ? "Invalid" : this.props.costM}{" "}
+            Night: £{this.props.invalid ? "Invalid" : this.props.costN} Total: £
             {this.props.cost} bus trips:{" "}
             {Number(this.props.busM) + Number(this.props.busN)} Zones travelled:{" "}
             {this.props.zones}

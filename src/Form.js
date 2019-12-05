@@ -21,6 +21,9 @@ class Form extends Component {
     endZoneM: "",
     startZoneM2: "",
     endZoneM2: "",
+    tripM: "",
+    choicesM: "",
+    invalidM: false,
 
     startStationN: "0",
     endStationN: "0",
@@ -29,6 +32,9 @@ class Form extends Component {
     endZoneN: "",
     startZoneN2: "",
     endZoneN2: "",
+    tripN: "",
+    choicesN: "",
+    invalidN: false,
 
     busM: 0,
     busN: 0,
@@ -432,6 +438,12 @@ class Form extends Component {
                 costN={this.state.costN}
                 cost={this.state.cost}
                 zones={this.state.zones}
+                tripM={this.state.tripM}
+                choicesM={this.state.choicesM}
+                tripN={this.state.tripN}
+                choicesN={this.state.choicesN}
+                invalidM={this.state.invalidM}
+                invalidN={this.state.invalidN}
 
                 // disabled={true}
               />
