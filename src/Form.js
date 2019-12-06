@@ -181,6 +181,8 @@ class Form extends Component {
               this.totalCost();
             }
           );
+        } else if (x["journeys"][0]["fare"] === undefined) {
+          console.log("broken");
         } else if (
           x["journeys"][0]["fare"]["fares"][0]["taps"][0]["tapDetails"][
             "modeType"

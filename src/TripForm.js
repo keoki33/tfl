@@ -295,7 +295,6 @@ class TripForm extends Component {
               />
             </label>
           </form>
-
           <label htmlFor="">bus trips </label>
           <input
             className="busInput"
@@ -309,8 +308,11 @@ class TripForm extends Component {
             name="bus"
             min="0"
             step="1"
-          />
+          />{" "}
         </div>
+
+        <div className="routes">route 1</div>
+        <div className="routes">route 2</div>
 
         <div className="tripForm">
           <form action="">
