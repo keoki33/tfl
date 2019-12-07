@@ -46,7 +46,7 @@ class Form extends Component {
     costM2: 0,
     costN: 0,
     costN2: 0,
-    cost: 0,
+    cost: 2.5,
     zones: "",
 
     day: 0,
@@ -61,7 +61,7 @@ class Form extends Component {
     totalZones: 0
   };
 
-  calculateFare = () => {
+  displayResults = () => {
     this.setState({
       day: 0,
       results: true,
@@ -70,6 +70,17 @@ class Form extends Component {
       complex: false
     });
     // this.getStationId();
+    this.calculateContactless();
+  };
+
+  calculateContactless = () => {
+    this.setState({
+      day: this.state.cost.toFixed(2),
+      week: (this.state.cost * 5).toFixed(2),
+      month: (this.state.cost * 21).toFixed(2),
+      halfYear: (this.state.cost * 42).toFixed(2),
+      year: (this.state.cost * 253).toFixed(2)
+    });
   };
 
   // getCost = () => {
@@ -464,7 +475,7 @@ class Form extends Component {
         {this.state.main ? (
           <button
             onClick={event => {
-              this.calculateFare();
+              this.displayResults();
             }}
           >
             select
