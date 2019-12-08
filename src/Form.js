@@ -5,7 +5,7 @@ import Results from "./Results";
 import Loading from "./Loading";
 
 import { stationList } from "./stationList.js";
-import { travelCardPriceList } from "./travelCardPriceList";
+import { travelCardPriceList } from "./travelCardPriceList.js";
 
 class Form extends Component {
   state = {
@@ -48,7 +48,7 @@ class Form extends Component {
     costN: 0,
     costN2: 0,
     cost: 2.5,
-    zones: "",
+    zones: "1-2",
 
     day: 0,
     week: 0,
@@ -72,6 +72,7 @@ class Form extends Component {
     });
     // this.getStationId();
     this.calculateContactless();
+    this.calculateTravelcard();
   };
 
   calculateContactless = () => {
@@ -82,6 +83,28 @@ class Form extends Component {
       halfYear: (this.state.cost * 42).toFixed(2),
       year: (this.state.cost * 253).toFixed(2)
     });
+  };
+
+  calculateTravelcard = () => {
+    let price = travelCardPriceList.filter(x => x.zone === this.state.zones);
+    this.setState({
+      weekCard: price[0].week.toFixed(2),
+      monthCard: price[0].month.toFixed(2),
+      halfYearCard: (price[0].month * 6).toFixed(2),
+      yearCard: price[0].year.toFixed(2)
+    });
+  };
+
+  zones = () => {
+    let arr = [
+      this.state.startZoneM,
+      this.state.endZoneM,
+      this.state.startZoneN,
+      this.state.endZoneN
+    ];
+    let sort = arr.sort().filter(x => x != "");
+    // return `${sort[0]} to ${sort[sort.length - 1]}`;
+    this.setState({ zones: `${sort[0]}-${sort[sort.length - 1]}` });
   };
 
   // getCost = () => {
@@ -340,6 +363,9 @@ class Form extends Component {
   // };
 
   totalCost = () => {
+    let price = travelCardPriceList.filter(x => x.zone === this.state.zones);
+    let cap = price[0];
+
     let cc =
       Number(this.state.costM) +
       Number(this.state.costN) +
@@ -389,18 +415,6 @@ class Form extends Component {
   //     }
   //   }
   // };
-
-  zones = () => {
-    let arr = [
-      this.state.startZoneM,
-      this.state.endZoneM,
-      this.state.startZoneN,
-      this.state.endZoneN
-    ];
-    let sort = arr.sort().filter(x => x != "");
-    // return `${sort[0]} to ${sort[sort.length - 1]}`;
-    this.setState({ zones: `${sort[0]} to ${sort[sort.length - 1]}` });
-  };
 
   render() {
     return (

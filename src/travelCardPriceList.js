@@ -1,4 +1,4 @@
-export const travelCard = [
+export const travelCardPriceList = [
   {
     zone: "1-1",
     peak: 7.2,
