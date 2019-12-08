@@ -192,64 +192,66 @@ class Form extends Component {
   };
 
   getCostM = () => {
-    this.setState({ invalidM: false, costM: "Loading" });
-    fetch(
-      `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM}/to/${this.state.endIdM}`
-    )
-      .then(resp => resp.json())
-      .then(x => {
-        if (
-          x.length == 0 ||
-          x["httpStatusCode"] == 404 ||
-          x["httpStatusCode"] == 500
-        ) {
-          this.setState(
-            {
-              costM: 0,
-              startZoneM: "",
-              endZoneM: "",
-              startZoneM2: "",
-              endZoneM2: "",
-              invalidM: true
-            },
-            () => {
+    if (this.state.startStationM != "0" && this.state.endStationM != "0") {
+      this.setState({ invalidM: false, costM: "Loading" });
+      fetch(
+        `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM}/to/${this.state.endIdM}`
+      )
+        .then(resp => resp.json())
+        .then(x => {
+          if (
+            x.length == 0 ||
+            x["httpStatusCode"] == 404 ||
+            x["httpStatusCode"] == 500
+          ) {
+            this.setState(
+              {
+                costM: 0,
+                startZoneM: "",
+                endZoneM: "",
+                startZoneM2: "",
+                endZoneM2: "",
+                invalidM: true
+              },
+              () => {
+                this.totalCost();
+              }
+            );
+          } else if (x["journeys"][0]["fare"] === undefined) {
+            console.log("broken");
+          } else if (
+            x["journeys"][0]["fare"]["fares"][0]["taps"][0]["tapDetails"][
+              "modeType"
+            ] === "Bus"
+          ) {
+            this.setState({ costM: 0, invalidM: true }, () => {
               this.totalCost();
-            }
-          );
-        } else if (x["journeys"][0]["fare"] === undefined) {
-          console.log("broken");
-        } else if (
-          x["journeys"][0]["fare"]["fares"][0]["taps"][0]["tapDetails"][
-            "modeType"
-          ] === "Bus"
-        ) {
-          this.setState({ costM: 0, invalidM: true }, () => {
-            this.totalCost();
-          });
-        } else {
-          this.setState(
-            {
-              invalidM: false,
-              // choicesN:
-              startZoneM: x["journeys"][0]["fare"]["fares"][0]["lowZone"],
-              endZoneM: x["journeys"][0]["fare"]["fares"][0]["highZone"],
-              startZoneM2: x["journeys"][1]["fare"]["fares"][0]["lowZone"],
-              endZoneM2: x["journeys"][1]["fare"]["fares"][0]["highZone"],
-              costM: Number(
-                x["journeys"][0]["fare"]["fares"][0][`${this.state.timeM}`] /
-                  100
-              ).toFixed(2),
-              costM2: Number(
-                x["journeys"][1]["fare"]["fares"][0][`${this.state.timeM}`] /
-                  100
-              ).toFixed(2)
-            },
-            () => {
-              this.totalCost();
-            }
-          );
-        }
-      });
+            });
+          } else {
+            this.setState(
+              {
+                invalidM: false,
+                // choicesN:
+                startZoneM: x["journeys"][0]["fare"]["fares"][0]["lowZone"],
+                endZoneM: x["journeys"][0]["fare"]["fares"][0]["highZone"],
+                startZoneM2: x["journeys"][1]["fare"]["fares"][0]["lowZone"],
+                endZoneM2: x["journeys"][1]["fare"]["fares"][0]["highZone"],
+                costM: Number(
+                  x["journeys"][0]["fare"]["fares"][0][`${this.state.timeM}`] /
+                    100
+                ).toFixed(2),
+                costM2: Number(
+                  x["journeys"][1]["fare"]["fares"][0][`${this.state.timeM}`] /
+                    100
+                ).toFixed(2)
+              },
+              () => {
+                this.totalCost();
+              }
+            );
+          }
+        });
+    }
   };
   //     .then(x => {
   //       if (x.length == 0 || x["httpStatusCode"] == 404) {
