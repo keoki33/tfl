@@ -5,6 +5,7 @@ import Results from "./Results";
 import Loading from "./Loading";
 
 import { stationList } from "./stationList.js";
+import { travelCardPriceList } from "./travelCardPriceList";
 
 class Form extends Component {
   state = {
