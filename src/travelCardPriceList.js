@@ -144,6 +144,70 @@ export const travelCardPriceList = [
     week: 27,
     month: 103.7,
     year: 1080
+  },
+  {
+    zone: "3-4",
+    peak: 10.4,
+    offPeak: 10.4,
+    week: 27,
+    month: 103.7,
+    year: 1080
+  },
+  {
+    zone: "3-5",
+    peak: 12.3,
+    offPeak: 12.3,
+    week: 29.9,
+    month: 114.9,
+    year: 1196
+  },
+  {
+    zone: "3-6",
+    peak: 13.2,
+    offPeak: 13.2,
+    week: 35.9,
+    month: 137.9,
+    year: 1436
+  },
+  {
+    zone: "3-7",
+    peak: 14.4,
+    offPeak: 13.3,
+    week: 46.9,
+    month: 180.1,
+    year: 1876
+  },
+  {
+    zone: "3-8",
+    peak: 17,
+    offPeak: 13.3,
+    week: 63.7,
+    month: 244.7,
+    year: 2548
+  },
+  {
+    zone: "3-9",
+    peak: 18.8,
+    offPeak: 13.3,
+    week: 63.7,
+    month: 244.7,
+    year: 2548
+  },
+  {
+    zone: "4-4",
+    peak: 10.4,
+    offPeak: 10.4,
+    week: 27,
+    month: 103.7,
+    year: 1080
+  },
+  {
+    zone: "4-5",
+    peak: 12.3,
+    offPeak: 12.3,
+    week: 27,
+    month: 103.7,
+    year: 1080
   }
 ];
 
