@@ -256,6 +256,102 @@ export const travelCardPriceList = [
     week: 27,
     month: 103.7,
     year: 1080
+  },
+  {
+    zone: "5-7",
+    peak: 14.4,
+    offPeak: 13.3,
+    week: 33.9,
+    month: 130.2,
+    year: 1356
+  },
+  {
+    zone: "5-8",
+    peak: 17,
+    offPeak: 13.3,
+    week: 57.1,
+    month: 219.3,
+    year: 2284
+  },
+  {
+    zone: "5-9",
+    peak: 18.8,
+    offPeak: 13.3,
+    week: 57.1,
+    month: 219.3,
+    year: 2284
+  },
+  {
+    zone: "6-6",
+    peak: 13.2,
+    offPeak: 13.2,
+    week: 27,
+    month: 103.7,
+    year: 1080
+  },
+  {
+    zone: "6-7",
+    peak: 14.4,
+    offPeak: 13.3,
+    week: 33.9,
+    month: 130.2,
+    year: 1356
+  },
+  {
+    zone: "6-8",
+    peak: 17,
+    offPeak: 13.3,
+    week: 57.1,
+    month: 219.3,
+    year: 2284
+  },
+  {
+    zone: "6-9",
+    peak: 18.8,
+    offPeak: 13.3,
+    week: 57.1,
+    month: 219.3,
+    year: 2284
+  },
+  {
+    zone: "7-7",
+    peak: 14.4,
+    offPeak: 13.3,
+    week: 33.9,
+    month: 130.2,
+    year: 1356
+  },
+  {
+    zone: "7-8",
+    peak: 17,
+    offPeak: 13.3,
+    week: 57.1,
+    month: 219.3,
+    year: 2284
+  },
+  {
+    zone: "7-9",
+    peak: 18.8,
+    offPeak: 13.3,
+    week: 57.1,
+    month: 219.3,
+    year: 2284
+  },
+  {
+    zone: "8-8",
+    peak: 17,
+    offPeak: 13.3,
+    week: 57.1,
+    month: 219.3,
+    year: 2284
+  },
+  {
+    zone: "8-9",
+    peak: 18.8,
+    offPeak: 13.3,
+    week: 57.1,
+    month: 219.3,
+    year: 2284
   }
 ];
 
