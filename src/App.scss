@@ -181,6 +181,19 @@
   margin-right: 0 auto;
 }
 
+// LOADING // // LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //
+// LOADING // // LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //
+// LOADING // // LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //
+
+.loading {
+  border: solid yellow;
+  width: 100%;
+  // overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
+
 // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS
 // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS
 // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS // ADS

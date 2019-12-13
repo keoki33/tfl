@@ -3,6 +3,11 @@ import FullForm from "./FullForm";
 import TripForm from "./TripForm";
 import Results from "./Results";
 import Loading from "./Loading";
+import {
+  TransitionGroup,
+  CSSTransition,
+  SwitchTransition
+} from "react-transition-group";
 
 import { stationList } from "./stationList.js";
 import { travelCardPriceList } from "./travelCardPriceList.js";
@@ -65,7 +70,7 @@ class Form extends Component {
   displayResults = () => {
     this.setState({
       day: 0,
-      results: true,
+      loading: true,
       main: false,
       simple: false,
       complex: false
@@ -73,6 +78,9 @@ class Form extends Component {
     // this.getStationId();
     this.calculateContactless();
     this.calculateTravelcard();
+    setTimeout(() => {
+      this.setState({ loading: false, results: true });
+    }, 1000);
   };
 
   calculateContactless = () => {
@@ -456,7 +464,6 @@ class Form extends Component {
           ) : (
             ""
           )}
-
           {this.state.simple ? (
             <div className="simpleForm">
               <TripForm
@@ -486,7 +493,7 @@ class Form extends Component {
           ) : (
             ""
           )}
-          {this.state.complex ? <FullForm /> : ""}
+          {this.state.complex ? <FullForm /> : ""}{" "}
         </div>
 
         {this.state.main ? (
@@ -500,6 +507,7 @@ class Form extends Component {
         ) : (
           ""
         )}
+        {this.state.loading ? <Loading /> : ""}
         {this.state.results ? (
           <Results
             day={this.state.day}
