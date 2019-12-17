@@ -81,7 +81,10 @@
 
 .content {
   grid-area: c;
-  border: solid blue;
+  // border: solid blue;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 // FORM // FORM // FORM // FORM // FORM // FORM // FORM // FORM // FORM // FORM // FORM // FORM // FORM // FORM // FORM // FORM
@@ -95,7 +98,9 @@
 }
 
 .forms {
-  border: solid red;
+  // border: solid red;
+  height: 100%;
+  // overflow: scroll;
 }
 
 .tripForm {

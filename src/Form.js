@@ -382,9 +382,7 @@ class Form extends Component {
       Number(this.state.busM) * 1.5 +
       Number(this.state.busN) * 1.5;
 
-    this.setState({ cost: cc.toFixed(2) }, () => {
-      this.zones();
-    });
+    this.setState({ cost: cc.toFixed(2) });
   };
 
   // calculateZone = () => {
@@ -428,8 +426,8 @@ class Form extends Component {
 
   render() {
     return (
-      <div>
-        <div className="forms">
+      <div className="forms">
+        <div>
           {/* <p>
             Peak fares - Monday to Friday (not on public holidays) between 06:30
             and 09:30, and between 16:00 and 19:00 Off-peak fares - at all other
