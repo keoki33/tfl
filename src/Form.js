@@ -80,7 +80,7 @@ class Form extends Component {
     this.calculateTravelcard();
     setTimeout(() => {
       this.setState({ loading: false, results: true });
-    }, 1000);
+    }, 5000);
   };
 
   calculateContactless = () => {
@@ -430,12 +430,12 @@ class Form extends Component {
     return (
       <div>
         <div className="forms">
-          <p>
+          {/* <p>
             Peak fares - Monday to Friday (not on public holidays) between 06:30
             and 09:30, and between 16:00 and 19:00 Off-peak fares - at all other
             times and if you travel from a station outside Zone 1 to a station
             in Zone 1 between 16:00 and 19:00, Monday to Friday
-          </p>
+          </p> */}
           {this.state.main ? (
             <form action="">
               <label htmlFor="">
