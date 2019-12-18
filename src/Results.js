@@ -28,7 +28,9 @@ class Results extends Component {
   render() {
     return (
       <div className="results">
-        <h1>Results</h1>
+        <div className="resultsHead">
+          <h1>Results</h1>
+        </div>
         <br />
         <h4>Zones Travelled {this.props.zones}</h4>
 
