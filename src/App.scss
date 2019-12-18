@@ -6,10 +6,12 @@
   box-sizing: border-box;
 }
 
-// NAVBAR // // NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //
-// NAVBAR // // NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //
-// NAVBAR // // NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //
+$borderColor: rgb(90, 90, 90);
+$buttonColor: rgb(0, 132, 255);
 
+// NAVBAR // // NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //
+// NAVBAR // // NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //
+// NAVBAR // // NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //
 .navbar {
   grid-area: n;
   background-color: #2d3039;
@@ -101,6 +103,9 @@
   // border: solid red;
   height: 100%;
   // overflow: scroll;
+  button {
+    background-color: $buttonColor;
+  }
 }
 
 .tripForm {
@@ -153,8 +158,8 @@
   }
   h3 {
     text-align: center;
-    border-top: solid rgb(99, 99, 99);
-    border-bottom: solid rgb(99, 99, 99);
+    border-top: solid $borderColor;
+    border-bottom: solid $borderColor;
     padding: 5px;
   }
 
@@ -208,16 +213,25 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   button {
     padding: 10px;
     border-radius: 5px;
+    margin: 20px;
+    background-color: $buttonColor;
   }
 }
 
 .dayResults {
   // margin-left: 25vw;
   // margin-right: 0 auto;
+}
+
+.resultsSep {
+  position: absolute;
+  height: 40%;
+  width: 1px;
+  background-color: $borderColor;
 }
 
 // LOADING // // LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //// LOADING //
