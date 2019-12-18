@@ -32,30 +32,61 @@ class Results extends Component {
           <h1>Results</h1>
         </div>
         <br />
-        <h4>Zones Travelled {this.props.zones}</h4>
+        <h4>Zones Travelled: {this.props.zones}</h4>
 
         <br />
-        <div className="resultsLeft">
-          <p>contactless</p>
+        {/* <div className="resultsLeft">
+          <p>Contactless</p>
           <br />
           {this.props.day === 0 ? (
             <p className="dayResults">No tube fare found, reselect</p>
           ) : (
-            <p className="dayResults">daily: £{this.props.day}</p>
+            <p className="dayResults">Daily: £{this.props.day}</p>
           )}
-          <p>weekly £{this.props.week}</p>
-          <p>monthly £{this.props.month}</p>
-          <p>6 month £{this.props.halfYear}</p>
-          <p>year £{this.props.year}</p>
-        </div>
+          <p>Weekly: £{this.props.week}</p>
+          <p>Monthly: £{this.props.month}</p>
+          <p>6 month: £{this.props.halfYear}</p>
+          <p>Year: £{this.props.year}</p>
+        </div> */}
+        <table className="resultsLeft">
+          <caption>Contactless</caption>
+
+          {this.props.day === 0 ? (
+            <tr>
+              <td className="dayResults"> No tube fare found, reselect</td>
+            </tr>
+          ) : (
+            <tr>
+              <td className="dayResults">Daily: </td>
+              <td>£{this.props.day}</td>
+            </tr>
+          )}
+
+          <tr>
+            <td>Weekly:</td>
+            <td>£{this.props.week}</td>
+          </tr>
+          <tr>
+            <td>Monthly:</td>
+            <td>£{this.props.month}</td>
+          </tr>
+          <tr>
+            <td>6 month:</td>
+            <td>£{this.props.halfYear}</td>
+          </tr>
+          <tr>
+            <td>Year:</td>
+            <td>£{this.props.year}</td>
+          </tr>
+        </table>
         <div className="resultsRight">
-          <p>travel card </p>
+          <p>Travel Card </p>
           <br />
           <br />
-          <p>weekly £{this.props.weekCard}</p>
-          <p>monthly £{this.props.monthCard}</p>
-          <p>6 month £{this.props.halfYearCard}</p>
-          <p>year £{this.props.yearCard}</p>
+          <p>Weekly: £{this.props.weekCard}</p>
+          <p>Monthly: £{this.props.monthCard}</p>
+          <p>6 month: £{this.props.halfYearCard}</p>
+          <p>Year: £{this.props.yearCard}</p>
         </div>
         <div className="resultsButtons">
           <button onClick={() => this.props.formReturn()}>Edit</button>
