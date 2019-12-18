@@ -145,18 +145,19 @@
 //RESULTS //RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS
 
 .results {
-  th {
+  caption {
     text-align: center;
   }
   h1 {
     text-align: center;
   }
-  h4 {
+  h3 {
     text-align: center;
     border-top: solid rgb(99, 99, 99);
     border-bottom: solid rgb(99, 99, 99);
-    padding: 10px;
+    padding: 5px;
   }
+
   position: relative;
   border: solid red;
   width: 100%;
@@ -170,25 +171,32 @@
   background-color: rgb(109, 109, 255);
   border-radius: 5px;
 }
+.resultsTables {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  h4 {
+    padding: 5px;
+  }
+}
 
 .resultsLeft {
+  border-spacing: 20px 6px;
   text-align: justify;
-  border: solid red;
+  // border: solid red;
   position: relative;
-  float: left;
-  line-height: 20px;
-  left: 15%;
-  width: 35%;
-  // border-right: solid rgb(99, 99, 99);
+
+  // left: 10%;
+  width: 40%;
 }
 
 .resultsRight {
+  border-spacing: 20px 6px;
   position: relative;
-  float: right;
-  line-height: 20px;
-  right: -5%;
-  border: solid red;
+
+  // border: solid red;
   width: 40%;
+  // right: 10%;
 }
 
 .resultsButtons {
