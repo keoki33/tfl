@@ -27,6 +27,7 @@ $buttonColor: rgb(0, 132, 255);
     margin-bottom: auto;
     list-style: none;
     li {
+      color: white;
       display: inline;
       padding: 20px;
     }
@@ -111,6 +112,16 @@ $buttonColor: rgb(0, 132, 255);
   }
 }
 
+.formSwitch {
+  margin: 10px;
+  label {
+    // margin-right: 0px;
+  }
+  input {
+    margin-right: 20px;
+  }
+}
+
 .tripForm {
   position: relative;
   border: solid purple;
@@ -167,7 +178,7 @@ $buttonColor: rgb(0, 132, 255);
   }
 
   position: relative;
-  border: solid red;
+  // border: solid red;
   width: 100%;
   height: 100%;
   padding: 15px;

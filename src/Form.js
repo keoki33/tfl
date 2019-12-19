@@ -435,29 +435,24 @@ class Form extends Component {
             in Zone 1 between 16:00 and 19:00, Monday to Friday
           </p> */}
           {this.state.main ? (
-            <form action="">
-              <label htmlFor="">
-                simple
-                <input
-                  onChange={event => {
-                    this.setState({ simple: true, complex: false });
-                  }}
-                  defaultChecked
-                  type="radio"
-                  name="formType"
-                />
-              </label>
-              <br />
-              <label htmlFor="">
-                complex
-                <input
-                  onChange={event => {
-                    this.setState({ simple: false, complex: true });
-                  }}
-                  type="radio"
-                  name="formType"
-                />
-              </label>
+            <form action="" className="formSwitch">
+              <label htmlFor="">Same trip M-F </label>
+              <input
+                onChange={event => {
+                  this.setState({ simple: true, complex: false });
+                }}
+                defaultChecked
+                type="radio"
+                name="formType"
+              />
+              <label htmlFor="">Custom week </label>
+              <input
+                onChange={event => {
+                  this.setState({ simple: false, complex: true });
+                }}
+                type="radio"
+                name="formType"
+              />
             </form>
           ) : (
             ""
