@@ -53,58 +53,64 @@ class Results extends Component {
             <caption>
               <h4>Contactless</h4>
             </caption>
-            {this.props.day === 0 ? (
-              <tr>
-                <td className="dayResults"> No tube fare found, reselect</td>
-              </tr>
-            ) : (
-              <tr>
-                <td className="dayResults">Daily: </td>
-                <td>£{this.props.day}</td>
-              </tr>
-            )}
+            <tbody>
+              {this.props.day === 0 ? (
+                <tr>
+                  <td className="dayResults"> No tube fare found, reselect</td>
+                </tr>
+              ) : (
+                <tr>
+                  <td className="dayResults">Daily: </td>
+                  <td>£{this.props.day}</td>
+                </tr>
+              )}
 
-            <tr>
-              <td>Weekly:</td>
-              <td>£{this.props.week}</td>
-            </tr>
-            <tr>
-              <td>Monthly:</td>
-              <td>£{this.props.month}</td>
-            </tr>
-            <tr>
-              <td>6 month:</td>
-              <td>£{this.props.halfYear}</td>
-            </tr>
-            <tr>
-              <td>Year:</td>
-              <td>£{this.props.year}</td>
-            </tr>
+              <tr>
+                <td>Weekly:</td>
+                <td>£{this.props.week}</td>
+              </tr>
+              <tr>
+                <td>Monthly:</td>
+                <td>£{this.props.month}</td>
+              </tr>
+              <tr>
+                <td>6 month:</td>
+                <td>£{this.props.halfYear}</td>
+              </tr>
+              <tr>
+                <td>Year:</td>
+                <td>£{this.props.year}</td>
+              </tr>
+            </tbody>
           </table>
           <div className="resultsSep"></div>
           <table className="resultsRight">
             <caption>
               <h4>Travel Card</h4>
             </caption>
-            <tr>
-              <br />
-            </tr>
-            <tr>
-              <td>Weekly:</td>
-              <td>£{this.props.weekCard}</td>
-            </tr>
-            <tr>
-              <td>Monthly:</td>
-              <td>£{this.props.monthCard}</td>
-            </tr>
-            <tr>
-              <td>6 month:</td>
-              <td>£{this.props.halfYearCard}</td>
-            </tr>
-            <tr>
-              <td>Year:</td>
-              <td>£{this.props.yearCard}</td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>
+                  <br />
+                </td>
+              </tr>
+              <tr>
+                <td>Weekly:</td>
+                <td>£{this.props.weekCard}</td>
+              </tr>
+              <tr>
+                <td>Monthly:</td>
+                <td>£{this.props.monthCard}</td>
+              </tr>
+              <tr>
+                <td>6 month:</td>
+                <td>£{this.props.halfYearCard}</td>
+              </tr>
+              <tr>
+                <td>Year:</td>
+                <td>£{this.props.yearCard}</td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <div className="resultsButtons">
