@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: rgb(29, 29, 29);
 }
 
 $borderColor: rgb(90, 90, 90);
@@ -105,6 +106,8 @@ $buttonColor: rgb(0, 132, 255);
   // overflow: scroll;
   button {
     background-color: $buttonColor;
+    padding: 6px;
+    border-radius: 5px;
   }
 }
 
@@ -173,7 +176,7 @@ $buttonColor: rgb(0, 132, 255);
 .resultsHead {
   width: 100%;
   height: 10%;
-  background-color: rgb(109, 109, 255);
+  background-color: #2366eba4;
   border-radius: 5px;
 }
 .resultsTables {
@@ -261,17 +264,41 @@ $buttonColor: rgb(0, 132, 255);
 
 .adsL {
   grid-area: al;
-  border: solid green;
+
+  img {
+    position: relative;
+    width: 80%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .adsR {
   grid-area: ar;
-  border: solid green;
+  // border: solid green;
+  img {
+    position: relative;
+    width: 80%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .adsB {
   grid-area: ab;
-  border: solid green;
+  // border: solid green;
+  img {
+    position: relative;
+    width: 90%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 // ABOUT // ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT

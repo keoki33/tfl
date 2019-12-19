@@ -163,9 +163,15 @@ class App extends Component {
           {this.state.form ? <Form /> : ""}
           {this.state.about ? <About /> : ""}
         </div>
-        <div className="adsL">adsL</div>
-        <div className="adsR">adsR</div>
-        <div className="adsB">adsB</div>
+        <div className="adsL">
+          <img src={require("./verticalAd.png")} alt="" />
+        </div>
+        <div className="adsR">
+          <img src={require("./verticalAd.png")} alt="" />
+        </div>
+        <div className="adsB">
+          <img src={require("./horizontalAd.png")} alt="" />
+        </div>
         {/* <Loading /> */}
       </div>
     );
