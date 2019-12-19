@@ -104,8 +104,9 @@ $buttonColor: rgb(0, 132, 255);
 .forms {
   // border: solid red;
   height: 100%;
-  // overflow: scroll;
+  overflow: auto;
   button {
+    margin-top: 20px;
     background-color: $buttonColor;
     padding: 6px;
     border-radius: 5px;
@@ -124,7 +125,7 @@ $buttonColor: rgb(0, 132, 255);
 
 .tripForm {
   position: relative;
-  border: solid purple;
+  // border: solid purple;
   width: 100%;
   height: 100%;
   display: flex;
@@ -141,6 +142,9 @@ $buttonColor: rgb(0, 132, 255);
   label {
     width: 50%;
   }
+  input {
+    margin-right: 5px;
+  }
 }
 
 .tripForm2 {
@@ -156,7 +160,7 @@ $buttonColor: rgb(0, 132, 255);
 }
 
 .routes {
-  border: solid purple;
+  // border: solid purple;
 }
 
 //RESULTS //RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS

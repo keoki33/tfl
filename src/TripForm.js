@@ -263,37 +263,33 @@ class TripForm extends Component {
             </label>
           </form>
           <form>
-            <label htmlFor="">
-              Peak
-              <input
-                onChange={event => {
-                  // this.setState({ timeM: event.target.value }, () => {
-                  //   this.getStationId("M");
-                  // });
-                  this.props.handleFormInput("timeM", event.target.value, "M");
-                }}
-                disabled={this.props.disabled}
-                type="radio"
-                name="time"
-                value="peak"
-                checked={this.props.timeM === "peak"}
-              />
-            </label>{" "}
-            <label htmlFor="">
-              Off Peak
-              <input
-                onChange={event => {
-                  // this.setState({ timeM: event.target.value }, () => {
-                  //   this.getStationId("M");
-                  // });
-                  this.props.handleFormInput("timeM", event.target.value, "M");
-                }}
-                type="radio"
-                name="time"
-                value="offPeak"
-                checked={this.props.timeM === "offPeak"}
-              />
-            </label>
+            <label htmlFor="">Peak </label>{" "}
+            <input
+              onChange={event => {
+                // this.setState({ timeM: event.target.value }, () => {
+                //   this.getStationId("M");
+                // });
+                this.props.handleFormInput("timeM", event.target.value, "M");
+              }}
+              disabled={this.props.disabled}
+              type="radio"
+              name="time"
+              value="peak"
+              checked={this.props.timeM === "peak"}
+            />
+            <label htmlFor="">Off Peak </label>
+            <input
+              onChange={event => {
+                // this.setState({ timeM: event.target.value }, () => {
+                //   this.getStationId("M");
+                // });
+                this.props.handleFormInput("timeM", event.target.value, "M");
+              }}
+              type="radio"
+              name="time"
+              value="offPeak"
+              checked={this.props.timeM === "offPeak"}
+            />
           </form>
           <label htmlFor="">bus trips </label>
           <input
@@ -416,6 +412,7 @@ class TripForm extends Component {
             name="bus"
           />
         </div>
+        <br />
         <div>
           <p>
             Morning: £{this.props.invalidM ? "Invalid" : this.props.costM}{" "}
