@@ -198,7 +198,7 @@ $buttonColor: rgb(0, 132, 255);
   display: flex;
   flex-direction: row;
   justify-content: center;
-
+  height: 55%;
   h4 {
     padding: 5px;
   }
@@ -228,9 +228,9 @@ $buttonColor: rgb(0, 132, 255);
 .resultsButtons {
   left: 0px;
   // border: solid purple;
-  position: absolute;
+  position: relative;
   height: fit-content;
-  bottom: 10px;
+  bottom: 0px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -238,7 +238,8 @@ $buttonColor: rgb(0, 132, 255);
   button {
     padding: 10px;
     border-radius: 5px;
-    margin: 20px;
+    margin-right: 40px;
+    margin-left: 10px;
     background-color: $buttonColor;
   }
 }

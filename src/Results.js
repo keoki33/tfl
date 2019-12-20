@@ -121,8 +121,16 @@ class Results extends Component {
           </div>
         </div>
         <div className="resultsButtons">
-          <button onClick={() => this.props.formReturn()}>Edit Stations</button>
-          <button onClick={this.refresh}>Restart</button>
+          <div>
+            {" "}
+            <button onClick={() => this.props.formReturn()}>
+              Edit Stations
+            </button>
+          </div>
+          <div>
+            {" "}
+            <button onClick={this.refresh}>Restart</button>
+          </div>
         </div>
       </div>
     );
