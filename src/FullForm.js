@@ -16,13 +16,20 @@ class FullForm extends Component {
   render() {
     return (
       <div className="fullForm">
-        Monday <TripForm />
-        Tuesday <TripForm />
-        Wednesday <TripForm />
-        Thursday <TripForm />
-        Friday <TripForm />
-        Saturday <TripForm />
-        Sunday <TripForm />
+        <h3>Monday</h3>
+        <TripForm />
+        <h3> Tuesday </h3>
+        <TripForm />
+        <h3>Wednesday</h3>
+        <TripForm />
+        <h3>Thursday</h3>
+        <TripForm />
+        <h3>Friday </h3>
+        <TripForm />
+        <h3>Saturday</h3>
+        <TripForm />
+        <h3>Sunday</h3>
+        <TripForm />
       </div>
     );
   }

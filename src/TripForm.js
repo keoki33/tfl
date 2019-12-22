@@ -309,7 +309,6 @@ class TripForm extends Component {
         {/* 
         <div className="routes">route 1</div>
         <div className="routes">route 2</div> */}
-
         <div className="tripForm">
           <label className="nightLabel" htmlFor="">
             Night
