@@ -80,7 +80,7 @@ class Form extends Component {
     this.calculateTravelcard();
     setTimeout(() => {
       this.setState({ loading: false, results: true });
-    }, 5000);
+    }, 2000);
   };
 
   calculateContactless = () => {
