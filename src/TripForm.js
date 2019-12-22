@@ -210,6 +210,7 @@ class TripForm extends Component {
     return (
       <div>
         <div className="tripForm">
+          <label htmlFor="">Morning</label>
           <form action="">
             <select
               onChange={event => {
@@ -310,31 +311,32 @@ class TripForm extends Component {
         <div className="routes">route 2</div> */}
 
         <div className="tripForm">
+          <label className="nightLabel" htmlFor="">
+            Night
+          </label>
           <form action="">
-            <label htmlFor="">
-              <select
-                onChange={event =>
-                  // this.setState({ startStationN: event.target.value }, () => {
-                  //   this.getStationId("N");
-                  // })
-                  this.props.handleFormInput(
-                    "startStationN",
-                    event.target.value,
-                    "N"
-                  )
-                }
-                value={this.props.startStationN}
-              >
-                <option value="0" disabled>
-                  From
+            <select
+              onChange={event =>
+                // this.setState({ startStationN: event.target.value }, () => {
+                //   this.getStationId("N");
+                // })
+                this.props.handleFormInput(
+                  "startStationN",
+                  event.target.value,
+                  "N"
+                )
+              }
+              value={this.props.startStationN}
+            >
+              <option value="0" disabled>
+                From
+              </option>
+              {stationList.map((item, key) => (
+                <option key={key} value={item["name"]}>
+                  {item["name"]}
                 </option>
-                {stationList.map((item, key) => (
-                  <option key={key} value={item["name"]}>
-                    {item["name"]}
-                  </option>
-                ))}
-              </select>
-            </label>
+              ))}
+            </select>
           </form>
           <form action="">
             <label htmlFor="">
@@ -411,13 +413,12 @@ class TripForm extends Component {
         </div>
         <br />
         <div>
-          <p>
-            Morning: £{this.props.invalidM ? "Invalid" : this.props.costM}{" "}
-            Night: £{this.props.invalid ? "Invalid" : this.props.costN} Total: £
-            {this.props.cost} bus trips:{" "}
-            {Number(this.props.busM) + Number(this.props.busN)} Zones travelled:{" "}
-            {this.props.zones}
-          </p>
+          <span></span>
+          Morning: £{this.props.invalidM ? "Invalid" : this.props.costM} Night:
+          £{this.props.invalid ? "Invalid" : this.props.costN} Total: £
+          {this.props.cost} bus trips:{" "}
+          {Number(this.props.busM) + Number(this.props.busN)} Zones travelled:{" "}
+          {this.props.zones}
         </div>
       </div>
     );

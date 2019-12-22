@@ -144,6 +144,13 @@ $buttonColor: rgb(0, 132, 255);
   input {
     margin-right: 5px;
   }
+  label {
+    margin-right: 8px;
+  }
+}
+
+label.nightLabel {
+  margin-right: 29px;
 }
 
 .formTime {
