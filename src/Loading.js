@@ -8,7 +8,7 @@ class Loading extends Component {
   render() {
     return (
       <div className="loading">
-        <h1>loading</h1>
+        {/* <h1>loading</h1> */}
         <img src={require("./trainLoading.gif")} alt="" />
       </div>
     );
