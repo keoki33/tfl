@@ -196,14 +196,24 @@ label.nightLabel {
 }
 
 .resultsSummary {
+  display: flex;
+  align-items: center;
   div {
     margin-right: 5px;
   }
-  display: flex;
   div:nth-child(0) {
   }
   div:nth-child(even) {
     width: 70px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+  }
+  svg {
+    position: relative;
+    left: -10px;
+    width: 30px;
+    height: 30px;
   }
 }
 
