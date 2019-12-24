@@ -201,7 +201,12 @@ class Form extends Component {
 
   getCostM = () => {
     if (this.state.startStationM != "0" && this.state.endStationM != "0") {
-      this.setState({ invalidM: false, costM: "Loading" });
+      this.setState({
+        invalidM: false,
+        costM: "spinner",
+        costN: "spinner",
+        cost: "spinner"
+      });
       fetch(
         `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM}/to/${this.state.endIdM}`
       )

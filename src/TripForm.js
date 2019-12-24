@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { stationList } from "./stationList.js";
+import { ReactComponent as Spinner } from "./loadingSpinner.svg";
 
 class TripForm extends Component {
   state = {
@@ -26,7 +27,8 @@ class TripForm extends Component {
     cost: 0,
     zones: "",
 
-    loading: false
+    loading: false,
+    spinner: false
   };
 
   //// calculate fares when all t/f time and bus all filled out.
@@ -205,6 +207,16 @@ class TripForm extends Component {
   //   // return `${sort[0]} to ${sort[sort.length - 1]}`;
   //   this.setState({ zones: `${sort[0]} to ${sort[sort.length - 1]}` });
   // };
+
+  displaySpinner = x => {
+    if (x === "spinner") {
+      return <Spinner />;
+    } else if (this.props.invalid) {
+      return "Invalid";
+    } else {
+      return x;
+    }
+  };
 
   render() {
     return (
@@ -419,7 +431,7 @@ class TripForm extends Component {
           <div>bus trips:</div>
           <div>{Number(this.props.busM) + Number(this.props.busN)}</div>{" "}
           <div> Total: </div>
-          <div>£{this.props.cost}</div>
+          <div>£{this.displaySpinner(this.props.cost)}</div>
           <div> Zones travelled: </div>
           <div>{this.props.zones}</div>
         </div>
