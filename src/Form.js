@@ -18,7 +18,8 @@ class Form extends Component {
     complex: false,
     results: false,
     main: true,
-    loading: false,
+    loadingScreen: false,
+    spinner: false,
 
     startStationM: "0",
     endStationM: "0",
@@ -70,7 +71,7 @@ class Form extends Component {
   displayResults = () => {
     this.setState({
       day: 0,
-      loading: true,
+      loadingScreen: true,
       main: false,
       simple: false,
       complex: false
@@ -79,7 +80,7 @@ class Form extends Component {
     this.calculateContactless();
     this.calculateTravelcard();
     setTimeout(() => {
-      this.setState({ loading: false, results: true });
+      this.setState({ loadingScreen: false, results: true });
     }, 2000);
   };
 
@@ -499,13 +500,14 @@ class Form extends Component {
             onClick={event => {
               this.displayResults();
             }}
+            disabled={this.state.spinner}
           >
             select
           </button>
         ) : (
           ""
         )}
-        {this.state.loading ? <Loading /> : ""}
+        {this.state.loadingScreen ? <Loading /> : ""}
         {this.state.results ? (
           <Results
             day={this.state.day}

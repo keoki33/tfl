@@ -433,7 +433,7 @@ class TripForm extends Component {
           <div> Total: </div>
           <div> £{this.displaySpinner(this.props.cost)}</div>
           <div> Zones travelled: </div>
-          <div>{this.props.zones}</div>
+          <div>{this.displaySpinner(this.props.zones)}</div>
         </div>
       </div>
     );
