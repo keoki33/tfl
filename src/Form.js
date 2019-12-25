@@ -206,7 +206,9 @@ class Form extends Component {
         invalidM: false,
         costM: "spinner",
         costN: "spinner",
-        cost: "spinner"
+        cost: "spinner",
+        zones: "spinner",
+        spinner: true
       });
       fetch(
         `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM}/to/${this.state.endIdM}`
