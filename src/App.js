@@ -162,31 +162,31 @@ class App extends Component {
         <div className="content">
           {/* {this.display()} */}
           {this.state.form ? (
-            // <TransitionGroup component={null}>
-            <CSSTransition
-              timeout={1000}
-              classNames="fade"
-              key="form"
-              in={this.state.form}
-            >
-              <Form />
-            </CSSTransition>
+            <TransitionGroup>
+              <CSSTransition
+                timeout={1000}
+                classNames="fade"
+                key="form"
+                in={this.state.form}
+              >
+                <Form />
+              </CSSTransition>
+            </TransitionGroup>
           ) : (
-            // </TransitionGroup>
             ""
           )}
           {this.state.about ? (
-            // <TransitionGroup component={null}>
-            <CSSTransition
-              timeout={1000}
-              classNames="fade"
-              key={"about"}
-              in={this.state.about}
-            >
-              <About />
-            </CSSTransition>
+            <TransitionGroup>
+              <CSSTransition
+                timeout={1000}
+                classNames="fade"
+                key={"about"}
+                in={this.state.about}
+              >
+                <About />
+              </CSSTransition>{" "}
+            </TransitionGroup>
           ) : (
-            // </TransitionGroup>
             ""
           )}
         </div>
