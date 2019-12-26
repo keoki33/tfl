@@ -154,6 +154,44 @@ class App extends Component {
     });
   };
 
+  displayForm = () => {
+    if (this.state.form) {
+      return (
+        <TransitionGroup>
+          <CSSTransition
+            timeout={1000}
+            classNames="fade"
+            key="form"
+            in={this.state.form}
+          >
+            <Form key="form" />
+          </CSSTransition>
+        </TransitionGroup>
+      );
+    } else {
+      return "";
+    }
+  };
+
+  displayAbout = () => {
+    if (this.state.about) {
+      return (
+        <TransitionGroup>
+          <CSSTransition
+            timeout={1000}
+            classNames="fade"
+            key="about"
+            in={this.state.about}
+          >
+            <About key="about" />
+          </CSSTransition>
+        </TransitionGroup>
+      );
+    } else {
+      return "";
+    }
+  };
+
   render() {
     return (
       <div className="main">
@@ -161,34 +199,9 @@ class App extends Component {
 
         <div className="content">
           {/* {this.display()} */}
-          {this.state.form ? (
-            <TransitionGroup>
-              <CSSTransition
-                timeout={1000}
-                classNames="fade"
-                key="form"
-                in={this.state.form}
-              >
-                <Form />
-              </CSSTransition>
-            </TransitionGroup>
-          ) : (
-            ""
-          )}
-          {this.state.about ? (
-            <TransitionGroup>
-              <CSSTransition
-                timeout={1000}
-                classNames="fade"
-                key={"about"}
-                in={this.state.about}
-              >
-                <About />
-              </CSSTransition>{" "}
-            </TransitionGroup>
-          ) : (
-            ""
-          )}
+
+          {this.displayAbout()}
+          {this.displayForm()}
         </div>
 
         <div className="adsL">
