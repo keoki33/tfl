@@ -54,7 +54,7 @@ class Form extends Component {
     costN: 0,
     costN2: 0,
     cost: 2.5,
-    zones: "1-2",
+    zones: "1-6",
 
     day: 0,
     week: 0,
