@@ -158,13 +158,39 @@ class App extends Component {
     return (
       <div className="main">
         <Navbar handleNav={this.handleNav} />
-        <CSSTransition in={true} timeout={10000} classNames="animate">
-          <div className="content">
-            {/* {this.display()} */}
-            {this.state.form ? <Form /> : ""}
-            {this.state.about ? <About /> : ""}
-          </div>
-        </CSSTransition>
+
+        <div className="content">
+          {/* {this.display()} */}
+          {this.state.form ? (
+            // <TransitionGroup component={null}>
+            <CSSTransition
+              timeout={1000}
+              classNames="fade"
+              key="form"
+              in={this.state.form}
+            >
+              <Form />
+            </CSSTransition>
+          ) : (
+            // </TransitionGroup>
+            ""
+          )}
+          {this.state.about ? (
+            // <TransitionGroup component={null}>
+            <CSSTransition
+              timeout={1000}
+              classNames="fade"
+              key={"about"}
+              in={this.state.about}
+            >
+              <About />
+            </CSSTransition>
+          ) : (
+            // </TransitionGroup>
+            ""
+          )}
+        </div>
+
         <div className="adsL">
           <img src={require("./verticalAd.png")} alt="" />
         </div>
