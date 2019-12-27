@@ -5,7 +5,7 @@ class About extends Component {
 
   render() {
     return (
-      <div>
+      <div className="about">
         <h1>about</h1>
         <p>
           Frustrated with the difficulty in calculating the average cost of my

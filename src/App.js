@@ -197,24 +197,9 @@ class App extends Component {
         <Navbar handleNav={this.handleNav} />
 
         <div className="content">
-          <CSSTransition
-            timeout={300}
-            classNames="fade2"
-            key="form"
-            in={this.state.form}
-            unmountOnExit
-          >
-            <Form />
-          </CSSTransition>
-          <CSSTransition
-            timeout={300}
-            classNames="fade"
-            key="about"
-            in={this.state.about}
-            unmountOnExit
-          >
-            <About />
-          </CSSTransition>
+          {this.state.form ? <Form /> : ""}
+
+          {this.state.about ? <About /> : ""}
         </div>
 
         <div className="adsL">

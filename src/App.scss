@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   color: rgb(29, 29, 29);
+  // animation: fadeIn 0.5s;
 }
 
 $borderColor: rgb(90, 90, 90);
@@ -387,18 +388,11 @@ label.nightLabel {
 //   animation: fadein 2s;
 // }
 
-.fade-enter-done {
-  animation: fadein 0.3s;
-}
-.fade2-enter-active {
-  animation: fadein 0.3s;
-}
-
 // .fade2-exit {
 //   animation: fadeOut 2s;
 // }
 
-@keyframes fadein {
+@keyframes fadeIn {
   from {
     opacity: 0;
   }
@@ -419,3 +413,20 @@ label.nightLabel {
 // ABOUT // ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT
 // ABOUT // ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT
 // ABOUT // ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT
+
+.about {
+  animation: fadeIn 0.5s;
+}
+
+//////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION ////////
+//////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION ////////
+//////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION ////////
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
