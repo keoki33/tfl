@@ -176,16 +176,15 @@ class App extends Component {
   displayAbout = () => {
     if (this.state.about) {
       return (
-        <TransitionGroup>
-          <CSSTransition
-            timeout={1000}
-            classNames="fade"
-            key="about"
-            in={this.state.about}
-          >
-            <About key="about" />
-          </CSSTransition>
-        </TransitionGroup>
+        <CSSTransition
+          timeout={1000}
+          classNames="fade"
+          key="about"
+          in={this.state.about}
+        >
+          {/* <About key="about" /> */}
+          <img key="12" src={require("./verticalAd.png")} alt="" />
+        </CSSTransition>
       );
     } else {
       return "";
@@ -198,10 +197,24 @@ class App extends Component {
         <Navbar handleNav={this.handleNav} />
 
         <div className="content">
-          {/* {this.display()} */}
-
-          {this.displayAbout()}
-          {this.displayForm()}
+          <CSSTransition
+            timeout={300}
+            classNames="fade2"
+            key="form"
+            in={this.state.form}
+            unmountOnExit
+          >
+            <Form />
+          </CSSTransition>
+          <CSSTransition
+            timeout={300}
+            classNames="fade"
+            key="about"
+            in={this.state.about}
+            unmountOnExit
+          >
+            <About />
+          </CSSTransition>
         </div>
 
         <div className="adsL">
