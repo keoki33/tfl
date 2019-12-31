@@ -86,6 +86,7 @@ $buttonColor: rgb(0, 132, 255);
 
 .content {
   grid-area: c;
+  animation: fadeIn 0.5s;
   // border: solid blue;
   width: 100%;
   height: 100%;
@@ -100,12 +101,14 @@ $buttonColor: rgb(0, 132, 255);
 }
 
 .fullForm {
+  animation: fadeIn 0.5s;
   h3 {
     margin: 10px 10px 5px 0px;
   }
 }
 
 .forms {
+  animation: fadeIn 0.5s;
   // border: solid red;
   height: 100%;
   overflow: auto;
@@ -132,6 +135,7 @@ $buttonColor: rgb(0, 132, 255);
 }
 
 .tripForm {
+  animation: fadeIn 0.5s;
   position: relative;
   // border: solid purple;
   // width: 100%;
@@ -235,7 +239,7 @@ label.nightLabel {
     border-bottom: solid $borderColor;
     padding: 5px;
   }
-
+  animation: fadeIn 0.5s;
   position: relative;
   // border: solid red;
   width: 100%;
@@ -327,7 +331,7 @@ label.nightLabel {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
+  animation: fadeIn 0.5s;
   overflow: hidden;
   img {
     width: 100%;
