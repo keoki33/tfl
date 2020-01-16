@@ -68,99 +68,12 @@ class Form extends Component {
     totalZones: 0
   };
 
-  displayResults = () => {
-    this.setState({
-      day: 0,
-      loadingScreen: true,
-      main: false,
-      simple: false,
-      complex: false
-    });
-    // this.getStationId();
-    this.calculateContactless();
-    this.calculateTravelcard();
-    setTimeout(() => {
-      this.setState({ loadingScreen: false, results: true });
-    }, 2000);
-  };
+  // order:
 
-  calculateContactless = () => {
-    this.setState({
-      day: this.state.cost.toFixed(2),
-      week: (this.state.cost * 5).toFixed(2),
-      month: (this.state.cost * 21).toFixed(2),
-      halfYear: (this.state.cost * 42).toFixed(2),
-      year: (this.state.cost * 253).toFixed(2)
-    });
-  };
+  // handleFormInput;
+  // if bus: totalCost
 
-  calculateTravelcard = () => {
-    let price = travelCardPriceList.filter(x => x.zone === this.state.zones);
-    this.setState({
-      weekCard: price[0].week.toFixed(2),
-      monthCard: price[0].month.toFixed(2),
-      halfYearCard: (price[0].month * 6).toFixed(2),
-      yearCard: price[0].year.toFixed(2)
-    });
-  };
-
-  zones = () => {
-    let arr = [
-      this.state.startZoneM,
-      this.state.endZoneM,
-      this.state.startZoneN,
-      this.state.endZoneN
-    ];
-    let sort = arr.sort().filter(x => x != "");
-    // return `${sort[0]} to ${sort[sort.length - 1]}`;
-    this.setState({ zones: `${sort[0]}-${sort[sort.length - 1]}` });
-  };
-
-  // getCost = () => {
-  //   fetch(
-  //     `https://api.tfl.gov.uk/Stoppoint/${this.state.startId}/FareTo/${this.state.endId}`
-  //   )
-  //     .then(resp => resp.json())
-  //     // .then(x =>
-  //     //   console.log(
-  //     //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
-  //     //       "cost"
-  //     //     ]
-  //     //   )
-  //     // );
-  //     .then(x => {
-  //       if (x.length == 0) {
-  //         this.setState({ day: 0 });
-  //       } else {
-  //         let list = x[0]["rows"][0]["ticketsAvailable"];
-
-  //         if (list.length === 2) {
-  //           this.setState({ day: list[1]["cost"] });
-  //         } else {
-  //           this.setState({
-  //             day: list[`${this.state.timeFieldSimpleM}`]["cost"]
-  //           });
-  //         }
-  //       }
-  //     });
-  // };
-
-  // getStationId = () => {
-  //   let start = stationList.filter(
-  //     x => x.name === this.state.startStationFieldSimpleM
-  //   );
-  //   let end = stationList.filter(
-  //     x => x.name === this.state.endStationFieldSimpleM
-  //   );
-
-  //   this.setState({ startId: start[0].id, endId: end[0].id }, () =>
-  //     this.getCost()
-  //   );
-  // };
-
-  formReturn = () => {
-    this.setState({ results: false, main: true, simple: true, complex: false });
-  };
+  // getStationId
 
   handleFormInput = (k, v, t) => {
     if (k === "busN" || k === "busM") {
@@ -269,6 +182,184 @@ class Form extends Component {
         });
     }
   };
+
+  getCostN = () => {
+    if (this.state.startStationN != "0" && this.state.endStationN != "0") {
+      this.setState({
+        invalidM: false,
+        costM: "spinner",
+        costN: "spinner",
+        cost: "spinner",
+        zones: "spinner",
+        spinner: true
+      });
+      fetch(
+        `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdN}/to/${this.state.endIdN}`
+      )
+        .then(resp => resp.json())
+        .then(x => {
+          if (
+            x.length == 0 ||
+            x["httpStatusCode"] == 404 ||
+            x["httpStatusCode"] == 500
+          ) {
+            this.setState(
+              {
+                costN: 0,
+                startZoneN: "",
+                endZoneN: "",
+                startZoneN2: "",
+                endZoneN2: "",
+                invalidN: true
+              },
+              () => {
+                this.totalCost();
+              }
+            );
+          } else if (x["journeys"][0]["fare"] === undefined) {
+            console.log("broken");
+          } else if (
+            x["journeys"][0]["fare"]["fares"][0]["taps"][0]["tapDetails"][
+              "modeType"
+            ] === "Bus"
+          ) {
+            this.setState({ costN: 0, invalidN: true }, () => {
+              this.totalCost();
+            });
+          } else {
+            this.setState(
+              {
+                invalidN: false,
+                // choicesN:
+                startZoneN: x["journeys"][0]["fare"]["fares"][0]["lowZone"],
+                endZoneN: x["journeys"][0]["fare"]["fares"][0]["highZone"],
+                startZoneN2: x["journeys"][1]["fare"]["fares"][0]["lowZone"],
+                endZoneN2: x["journeys"][1]["fare"]["fares"][0]["highZone"],
+                costN: Number(
+                  x["journeys"][0]["fare"]["fares"][0][`${this.state.timeN}`] /
+                    100
+                ).toFixed(2),
+                costN2: Number(
+                  x["journeys"][1]["fare"]["fares"][0][`${this.state.timeN}`] /
+                    100
+                ).toFixed(2)
+              },
+              () => {
+                this.totalCost();
+              }
+            );
+          }
+        });
+    }
+  };
+
+  totalCost = () => {
+    let price = travelCardPriceList.filter(x => x.zone === this.state.zones);
+    let cap = price[0];
+
+    let cc =
+      Number(this.state.costM) +
+      Number(this.state.costN) +
+      Number(this.state.busM) * 1.5 +
+      Number(this.state.busN) * 1.5;
+
+    this.setState({ cost: cc.toFixed(2) });
+  };
+
+  displayResults = () => {
+    this.setState({
+      day: 0,
+      loadingScreen: true,
+      main: false,
+      simple: false,
+      complex: false
+    });
+    // this.getStationId();
+    this.calculateContactless();
+    this.calculateTravelcard();
+    setTimeout(() => {
+      this.setState({ loadingScreen: false, results: true });
+    }, 2000);
+  };
+
+  calculateContactless = () => {
+    this.setState({
+      day: this.state.cost.toFixed(2),
+      week: (this.state.cost * 5).toFixed(2),
+      month: (this.state.cost * 21).toFixed(2),
+      halfYear: (this.state.cost * 42).toFixed(2),
+      year: (this.state.cost * 253).toFixed(2)
+    });
+  };
+
+  calculateTravelcard = () => {
+    let price = travelCardPriceList.filter(x => x.zone === this.state.zones);
+    this.setState({
+      weekCard: price[0].week.toFixed(2),
+      monthCard: price[0].month.toFixed(2),
+      halfYearCard: (price[0].month * 6).toFixed(2),
+      yearCard: price[0].year.toFixed(2)
+    });
+  };
+
+  zones = () => {
+    let arr = [
+      this.state.startZoneM,
+      this.state.endZoneM,
+      this.state.startZoneN,
+      this.state.endZoneN
+    ];
+    let sort = arr.sort().filter(x => x != "");
+    // return `${sort[0]} to ${sort[sort.length - 1]}`;
+    this.setState({ zones: `${sort[0]}-${sort[sort.length - 1]}` });
+  };
+
+  // getCost = () => {
+  //   fetch(
+  //     `https://api.tfl.gov.uk/Stoppoint/${this.state.startId}/FareTo/${this.state.endId}`
+  //   )
+  //     .then(resp => resp.json())
+  //     // .then(x =>
+  //     //   console.log(
+  //     //     x[0]["rows"][0]["ticketsAvailable"][`${this.state.timeFieldSimpleM}`][
+  //     //       "cost"
+  //     //     ]
+  //     //   )
+  //     // );
+  //     .then(x => {
+  //       if (x.length == 0) {
+  //         this.setState({ day: 0 });
+  //       } else {
+  //         let list = x[0]["rows"][0]["ticketsAvailable"];
+
+  //         if (list.length === 2) {
+  //           this.setState({ day: list[1]["cost"] });
+  //         } else {
+  //           this.setState({
+  //             day: list[`${this.state.timeFieldSimpleM}`]["cost"]
+  //           });
+  //         }
+  //       }
+  //     });
+  // };
+
+  // getStationId = () => {
+  //   let start = stationList.filter(
+  //     x => x.name === this.state.startStationFieldSimpleM
+  //   );
+  //   let end = stationList.filter(
+  //     x => x.name === this.state.endStationFieldSimpleM
+  //   );
+
+  //   this.setState({ startId: start[0].id, endId: end[0].id }, () =>
+  //     this.getCost()
+  //   );
+  // };
+
+  formReturn = () => {
+    this.setState({ results: false, main: true, simple: true, complex: false });
+  };
+
   //     .then(x => {
   //       if (x.length == 0 || x["httpStatusCode"] == 404) {
   //         console.log("error");
@@ -379,19 +470,6 @@ class Form extends Component {
   //       }
   //     });
   // };
-
-  totalCost = () => {
-    let price = travelCardPriceList.filter(x => x.zone === this.state.zones);
-    let cap = price[0];
-
-    let cc =
-      Number(this.state.costM) +
-      Number(this.state.costN) +
-      Number(this.state.busM) * 1.5 +
-      Number(this.state.busN) * 1.5;
-
-    this.setState({ cost: cc.toFixed(2) });
-  };
 
   // calculateZone = () => {
   //   if (
