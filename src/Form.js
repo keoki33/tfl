@@ -34,7 +34,7 @@ class Form extends Component {
 
     startStationN: "0",
     endStationN: "0",
-    timeN: "offPeak",
+    timeN: "peak",
     startZoneN: "",
     endZoneN: "",
     startZoneN2: "",
