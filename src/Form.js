@@ -19,7 +19,7 @@ class Form extends Component {
     results: false,
     main: true,
     loadingScreen: false,
-    spinner: false,
+    spinner: true,
 
     startStationM: "0",
     endStationM: "0",
@@ -263,7 +263,27 @@ class Form extends Component {
       Number(this.state.busM) * 1.5 +
       Number(this.state.busN) * 1.5;
 
-    this.setState({ cost: cc.toFixed(2) });
+    this.setState({ cost: Number(cc.toFixed(2)) }, () => {
+      this.zones();
+    });
+  };
+
+  zones = () => {
+    if (this.state.startZoneM != "" || this.state.startZoneN != "") {
+      let arr = [
+        this.state.startZoneM,
+        this.state.endZoneM,
+        this.state.startZoneN,
+        this.state.endZoneN
+      ];
+      console.log("zones");
+      let sort = arr.sort().filter(x => x != "");
+      // return `${sort[0]} to ${sort[sort.length - 1]}`;
+      this.setState({
+        zones: `${sort[0]}-${sort[sort.length - 1]}`,
+        spinner: false
+      });
+    }
   };
 
   displayResults = () => {
@@ -287,7 +307,7 @@ class Form extends Component {
       day: this.state.cost.toFixed(2),
       week: (this.state.cost * 5).toFixed(2),
       month: (this.state.cost * 21).toFixed(2),
-      halfYear: (this.state.cost * 42).toFixed(2),
+      halfYear: (this.state.cost * 126).toFixed(2),
       year: (this.state.cost * 253).toFixed(2)
     });
   };
@@ -300,18 +320,6 @@ class Form extends Component {
       halfYearCard: (price[0].month * 6).toFixed(2),
       yearCard: price[0].year.toFixed(2)
     });
-  };
-
-  zones = () => {
-    let arr = [
-      this.state.startZoneM,
-      this.state.endZoneM,
-      this.state.startZoneN,
-      this.state.endZoneN
-    ];
-    let sort = arr.sort().filter(x => x != "");
-    // return `${sort[0]} to ${sort[sort.length - 1]}`;
-    this.setState({ zones: `${sort[0]}-${sort[sort.length - 1]}` });
   };
 
   // getCost = () => {
