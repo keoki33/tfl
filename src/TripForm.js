@@ -321,6 +321,14 @@ class TripForm extends Component {
         {/* 
         <div className="routes">route 1</div>
         <div className="routes">route 2</div> */}
+        {/*  //  Night  Night  Night  Night  Night  Night  Night  Night                      */}
+        {/*  //  Night  Night  Night  Night  Night  Night  Night  Night                      */}
+        {/*  //  Night  Night  Night  Night  Night  Night  Night  Night                      */}
+        {/*  //  Night  Night  Night  Night  Night  Night  Night  Night                      */}
+        {/*  //  Night  Night  Night  Night  Night  Night  Night  Night                      */}
+        {/*  //  Night  Night  Night  Night  Night  Night  Night  Night                      */}
+        {/*  //  Night  Night  Night  Night  Night  Night  Night  Night                      */}
+
         <div className="tripForm">
           <label className="nightLabel" htmlFor="">
             Night
@@ -388,8 +396,8 @@ class TripForm extends Component {
                 disabled={this.props.disabled}
                 type="radio"
                 name="time"
-                value="2"
-                checked={this.props.timeN === "2"}
+                value="peak"
+                checked={this.props.timeN === "peak"}
               />
               <label htmlFor="">Off Peak</label>
               <input
@@ -401,8 +409,8 @@ class TripForm extends Component {
                 }}
                 type="radio"
                 name="time"
-                value="1"
-                checked={this.props.timeN === "1"}
+                value="offPeak"
+                checked={this.props.timeN === "offPeak"}
               />
             </form>
           </div>

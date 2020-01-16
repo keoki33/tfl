@@ -34,7 +34,7 @@ class Form extends Component {
 
     startStationN: "0",
     endStationN: "0",
-    timeN: "2",
+    timeN: "offPeak",
     startZoneN: "",
     endZoneN: "",
     startZoneN2: "",
@@ -53,8 +53,8 @@ class Form extends Component {
     costM2: 0,
     costN: 0,
     costN2: 0,
-    cost: 2.5,
-    zones: "1-6",
+    cost: 0,
+    zones: "",
 
     day: 0,
     week: 0,
