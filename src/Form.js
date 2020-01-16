@@ -118,7 +118,7 @@ class Form extends Component {
       this.setState({
         invalidM: false,
         costM: "spinner",
-        costN: "spinner",
+
         cost: "spinner",
         zones: "spinner",
         spinner: true
@@ -187,7 +187,7 @@ class Form extends Component {
     if (this.state.startStationN != "0" && this.state.endStationN != "0") {
       this.setState({
         invalidM: false,
-        costM: "spinner",
+
         costN: "spinner",
         cost: "spinner",
         zones: "spinner",
