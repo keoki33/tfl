@@ -42,8 +42,8 @@ class Form extends Component {
     busM: [0, 0, 0, 0, 0, 0, 0],
     busN: [0, 0, 0, 0, 0, 0, 0],
 
-    startIdM: "",
-    endIdM: "",
+    startIdM: ["", "", "", "", "", "", ""],
+    endIdM: ["", "", "", "", "", "", ""],
 
     costM: [0, 0, 0, 0, 0, 0, 0],
     costN: [0, 0, 0, 0, 0, 0, 0],
@@ -99,12 +99,15 @@ class Form extends Component {
       let end = stationList.filter(
         x => x.name === this.state[`endStation${time}`][i]
       );
+      let startId = [...this.state[`startId${time}`]];
+      let endId = [...this.state[`endId${time}`]];
+      startId[i] = start[0].id;
+      endId[i] = end[0].id;
 
       this.setState(
         {
-          [`startId${time}`]: start[0].id,
-          [`endId${time}`]: end[0].id
-          // [`startZone${time}`]: start[0].zone,
+          [`startId${time}`]: startId, // [`startZone${time}`]: start[0].zone,
+          [`endId${time}`]: endId // [`startZone${time}`]: start[0].zone,
           // [`endZone${time}`]: end[0].zone
         },
         () => (time == "M" ? this.getCostM(i) : this.getCostN(i))
@@ -126,7 +129,7 @@ class Form extends Component {
         spinner: true
       });
       fetch(
-        `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM}/to/${this.state.endIdM}`
+        `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM[i]}/to/${this.state.endIdM[i]}`
       )
         .then(resp => resp.json())
         .then(x => {
@@ -135,13 +138,17 @@ class Form extends Component {
             x["httpStatusCode"] == 404 ||
             x["httpStatusCode"] == 500
           ) {
+            let costM = [...this.state.costM];
+            let startZoneM = [...this.state.startZoneM];
+            let endZoneM = [...this.state.endZoneM];
+            costM[i] = 0;
+            startZoneM[i] = "";
+            endZoneM[i] = "";
             this.setState(
               {
-                costM: 0,
-                startZoneM: "",
-                endZoneM: "",
-                startZoneM2: "",
-                endZoneM2: "",
+                costM,
+                startZoneM,
+                endZoneM,
                 invalidM: true
               },
               () => {
@@ -155,9 +162,23 @@ class Form extends Component {
               "modeType"
             ] === "Bus"
           ) {
-            this.setState({ costM: 0, invalidM: true }, () => {
-              this.totalCost();
-            });
+            let costM = [...this.state.costM];
+            let startZoneM = [...this.state.startZoneM];
+            let endZoneM = [...this.state.endZoneM];
+            costM[i] = 0;
+            startZoneM[i] = "";
+            endZoneM[i] = "";
+            this.setState(
+              {
+                costM,
+                startZoneM,
+                endZoneM,
+                invalidM: true
+              },
+              () => {
+                this.totalCost();
+              }
+            );
           } else {
             let startZoneM;
 
