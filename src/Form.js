@@ -21,13 +21,11 @@ class Form extends Component {
     loadingScreen: false,
     spinner: true,
 
-    startStationM: "0",
-    endStationM: "0",
-    timeM: "peak",
-    startZoneM: "",
-    endZoneM: "",
-    startZoneM2: "",
-    endZoneM2: "",
+    startStationM: ["0", "0", "0", "0", "0", "0", "0"],
+    endStationM: ["0", "0", "0", "0", "0", "0", "0"],
+    timeM: ["peak", "peak", "peak", "peak", "peak", "peak", "peak"],
+    startZoneM: ["", "", "", "", "", "", ""],
+    endZoneM: ["", "", "", "", "", "", ""],
     tripM: "",
     choicesM: "",
     invalidM: false,
@@ -37,24 +35,20 @@ class Form extends Component {
     timeN: "peak",
     startZoneN: "",
     endZoneN: "",
-    startZoneN2: "",
-    endZoneN2: "",
     tripN: "",
     choicesN: "",
     invalidN: false,
 
-    busM: 0,
-    busN: 0,
+    busM: [0, 0, 0, 0, 0, 0, 0],
+    busN: [0, 0, 0, 0, 0, 0, 0],
 
     startIdM: "",
     endIdM: "",
 
-    costM: 0,
-    costM2: 0,
-    costN: 0,
-    costN2: 0,
+    costM: [0, 0, 0, 0, 0, 0, 0],
+    costN: [0, 0, 0, 0, 0, 0, 0],
     cost: 0,
-    zones: "",
+    zones: ["", "", "", "", "", "", ""],
 
     day: 0,
     week: 0,
@@ -75,13 +69,13 @@ class Form extends Component {
 
   // getStationId
 
-  handleFormInput = (k, v, t) => {
+  handleFormInput = (k, v, t, i) => {
     if (k === "busN" || k === "busM") {
       this.setState({ [k]: v }, () => {
         this.totalCost();
       });
     } else {
-      this.setState({ [k]: v }, () => {
+      this.setState({ [k[i]]: v }, () => {
         this.getStationId(t);
       });
     }
@@ -554,19 +548,20 @@ class Form extends Component {
           {this.state.simple ? (
             <div className="simpleForm">
               <TripForm
-                startStationM={this.state.startStationM}
-                endStationM={this.state.endStationM}
-                timeM={this.state.timeM}
-                startStationN={this.state.startStationN}
-                endStationN={this.state.endStationN}
-                timeN={this.state.timeN}
-                busM={this.state.busM}
-                busN={this.state.busN}
+                index={0}
+                startStationM={this.state.startStationM[0]}
+                endStationM={this.state.endStationM[0]}
+                timeM={this.state.timeM[0]}
+                startStationN={this.state.startStationN[0]}
+                endStationN={this.state.endStationN[0]}
+                timeN={this.state.timeN[0]}
+                busM={this.state.busM[0]}
+                busN={this.state.busN[0]}
                 handleFormInput={this.handleFormInput}
-                costM={this.state.costM}
-                costN={this.state.costN}
+                costM={this.state.costM[0]}
+                costN={this.state.costN[0]}
                 cost={this.state.cost}
-                zones={this.state.zones}
+                zones={this.state.zones[0]}
                 tripM={this.state.tripM}
                 choicesM={this.state.choicesM}
                 tripN={this.state.tripN}

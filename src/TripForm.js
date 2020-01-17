@@ -232,7 +232,8 @@ class TripForm extends Component {
                 this.props.handleFormInput(
                   "startStationM",
                   event.target.value,
-                  "M"
+                  "M",
+                  this.props.index
                 );
               }}
               value={this.props.startStationM}
@@ -256,7 +257,8 @@ class TripForm extends Component {
                 this.props.handleFormInput(
                   "endStationM",
                   event.target.value,
-                  "M"
+                  "M",
+                  this.props.index
                 );
               }}
               value={this.props.endStationM}
@@ -279,7 +281,12 @@ class TripForm extends Component {
                   // this.setState({ timeM: event.target.value }, () => {
                   //   this.getStationId("M");
                   // });
-                  this.props.handleFormInput("timeM", event.target.value, "M");
+                  this.props.handleFormInput(
+                    "timeM",
+                    event.target.value,
+                    "M",
+                    this.props.index
+                  );
                 }}
                 disabled={this.props.disabled}
                 type="radio"
@@ -293,7 +300,12 @@ class TripForm extends Component {
                   // this.setState({ timeM: event.target.value }, () => {
                   //   this.getStationId("M");
                   // });
-                  this.props.handleFormInput("timeM", event.target.value, "M");
+                  this.props.handleFormInput(
+                    "timeM",
+                    event.target.value,
+                    "M",
+                    this.props.index
+                  );
                 }}
                 type="radio"
                 name="time"
@@ -309,7 +321,12 @@ class TripForm extends Component {
                 // this.setState({ busM: event.target.value }, () => {
                 //   this.totalCost();
                 // });
-                this.props.handleFormInput("busM", event.target.value);
+                this.props.handleFormInput(
+                  "busM",
+                  event.target.value,
+                  "",
+                  this.props.index
+                );
               }}
               type="number"
               name="bus"
@@ -342,7 +359,8 @@ class TripForm extends Component {
                 this.props.handleFormInput(
                   "startStationN",
                   event.target.value,
-                  "N"
+                  "N",
+                  this.props.index
                 )
               }
               value={this.props.startStationN}
@@ -367,7 +385,8 @@ class TripForm extends Component {
                   this.props.handleFormInput(
                     "endStationN",
                     event.target.value,
-                    "N"
+                    "N",
+                    this.props.index
                   );
                 }}
                 value={this.props.endStationN}
@@ -391,7 +410,12 @@ class TripForm extends Component {
                   // this.setState({ timeN: event.target.value }, () => {
                   //   this.getStationId("N");
                   // });
-                  this.props.handleFormInput("timeN", event.target.value, "N");
+                  this.props.handleFormInput(
+                    "timeN",
+                    event.target.value,
+                    "N",
+                    this.props.index
+                  );
                 }}
                 disabled={this.props.disabled}
                 type="radio"
@@ -405,7 +429,12 @@ class TripForm extends Component {
                   // this.setState({ timeN: event.target.value }, () => {
                   //   this.getStationId("N");
                   // });
-                  this.props.handleFormInput("timeN", event.target.value, "N");
+                  this.props.handleFormInput(
+                    "timeN",
+                    event.target.value,
+                    "N",
+                    this.props.index
+                  );
                 }}
                 type="radio"
                 name="time"
@@ -421,7 +450,12 @@ class TripForm extends Component {
                 // this.setState({ busN: event.target.value }, () => {
                 //   this.totalCost();
                 // });
-                this.props.handleFormInput("busN", event.target.value);
+                this.props.handleFormInput(
+                  "busN",
+                  event.target.value,
+                  "",
+                  this.props.index
+                );
               }}
               min="0"
               step="1"
