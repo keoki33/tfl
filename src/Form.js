@@ -27,7 +27,7 @@ class Form extends Component {
     startZoneM: ["", "", "", "", "", "", ""],
     endZoneM: ["", "", "", "", "", "", ""],
     tripM: "",
-    choicesM: "",
+
     invalidM: false,
 
     startStationN: "0",
@@ -36,7 +36,7 @@ class Form extends Component {
     startZoneN: "",
     endZoneN: "",
     tripN: "",
-    choicesN: "",
+
     invalidN: false,
 
     busM: [0, 0, 0, 0, 0, 0, 0],
@@ -75,24 +75,29 @@ class Form extends Component {
         this.totalCost();
       });
     } else {
-      this.setState({ [k[i]]: v }, () => {
-        this.getStationId(t);
+      let arr = [...this.state[k]];
+      arr[i] = v;
+      this.setState({ [k]: arr }, () => {
+        this.getStationId(t, i);
       });
     }
   };
 
-  getStationId = time => {
+  getStationId = (time, i) => {
     if (
-      this.state[`startStation${time}`] === "0" ||
-      this.state[`endStation${time}`] === "0"
+      this.state[`startStation${time}`][i] === "0" ||
+      this.state[`endStation${time}`][i] === "0"
     ) {
-      time == "M" ? this.getCostM() : this.getCostN();
+      time == "M" ? this.getCostM(i) : this.getCostN(i);
     } else {
+      console.log(this.state.startStationM);
+      console.log(this.state[`startStation${time}`][i]);
+
       let start = stationList.filter(
-        x => x.name === this.state[`startStation${time}`]
+        x => x.name === this.state[`startStation${time}`][i]
       );
       let end = stationList.filter(
-        x => x.name === this.state[`endStation${time}`]
+        x => x.name === this.state[`endStation${time}`][i]
       );
 
       this.setState(
@@ -102,13 +107,16 @@ class Form extends Component {
           // [`startZone${time}`]: start[0].zone,
           // [`endZone${time}`]: end[0].zone
         },
-        () => (time == "M" ? this.getCostM() : this.getCostN())
+        () => (time == "M" ? this.getCostM(i) : this.getCostN(i))
       );
     }
   };
 
-  getCostM = () => {
-    if (this.state.startStationM != "0" && this.state.endStationM != "0") {
+  getCostM = i => {
+    if (
+      this.state.startStationM[i] != "0" &&
+      this.state.endStationM[i] != "0"
+    ) {
       this.setState({
         invalidM: false,
         costM: "spinner",
@@ -151,20 +159,16 @@ class Form extends Component {
               this.totalCost();
             });
           } else {
+            let startZoneM;
+
             this.setState(
               {
                 invalidM: false,
-                // choicesN:
+
                 startZoneM: x["journeys"][0]["fare"]["fares"][0]["lowZone"],
                 endZoneM: x["journeys"][0]["fare"]["fares"][0]["highZone"],
-                startZoneM2: x["journeys"][1]["fare"]["fares"][0]["lowZone"],
-                endZoneM2: x["journeys"][1]["fare"]["fares"][0]["highZone"],
                 costM: Number(
                   x["journeys"][0]["fare"]["fares"][0][`${this.state.timeM}`] /
-                    100
-                ).toFixed(2),
-                costM2: Number(
-                  x["journeys"][1]["fare"]["fares"][0][`${this.state.timeM}`] /
                     100
                 ).toFixed(2)
               },
@@ -177,7 +181,7 @@ class Form extends Component {
     }
   };
 
-  getCostN = () => {
+  getCostN = i => {
     if (this.state.startStationN != "0" && this.state.endStationN != "0") {
       this.setState({
         invalidM: false,
