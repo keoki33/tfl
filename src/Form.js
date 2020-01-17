@@ -566,10 +566,6 @@ class Form extends Component {
                 costN={this.state.costN[0]}
                 cost={this.state.cost}
                 zones={this.state.zones[0]}
-                tripM={this.state.tripM}
-                choicesM={this.state.choicesM}
-                tripN={this.state.tripN}
-                choicesN={this.state.choicesN}
                 invalidM={this.state.invalidM}
                 invalidN={this.state.invalidN}
 
