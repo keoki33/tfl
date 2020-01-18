@@ -48,7 +48,7 @@ class Form extends Component {
     costM: [0, 0, 0, 0, 0, 0, 0],
     costN: [0, 0, 0, 0, 0, 0, 0],
     cost: 0,
-    zones: ["", "", "", "", "", "", ""],
+    zones: "",
 
     day: 0,
     week: 0,
@@ -116,14 +116,18 @@ class Form extends Component {
   };
 
   getCostM = i => {
+    console.log(this.state.costM);
+
     if (
       this.state.startStationM[i] != "0" &&
       this.state.endStationM[i] != "0"
     ) {
+      let costM = [...this.state.costM];
+      costM[i] = "spinner";
+
       this.setState({
         invalidM: false,
-        costM: "spinner",
-
+        costM: costM,
         cost: "spinner",
         zones: "spinner",
         spinner: true
@@ -180,20 +184,33 @@ class Form extends Component {
               }
             );
           } else {
-            let startZoneM;
+            console.log(this.state.timeM);
+            let costM = [...this.state.costM];
+            let startZoneM = [...this.state.startZoneM];
+            let endZoneM = [...this.state.endZoneM];
+            console.log(
+              (
+                x["journeys"][0]["fare"]["fares"][0][`${this.state.timeM[i]}`] /
+                100
+              ).toFixed(2)
+            );
+            costM[i] = Number(
+              x["journeys"][0]["fare"]["fares"][0][`${this.state.timeM[i]}`] /
+                100
+            ).toFixed(2);
+            startZoneM[i] = x["journeys"][0]["fare"]["fares"][0]["lowZone"];
+            endZoneM[i] = x["journeys"][0]["fare"]["fares"][0]["highZone"];
 
             this.setState(
               {
                 invalidM: false,
-
-                startZoneM: x["journeys"][0]["fare"]["fares"][0]["lowZone"],
-                endZoneM: x["journeys"][0]["fare"]["fares"][0]["highZone"],
-                costM: Number(
-                  x["journeys"][0]["fare"]["fares"][0][`${this.state.timeM}`] /
-                    100
-                ).toFixed(2)
+                startZoneM,
+                endZoneM,
+                costM
               },
               () => {
+                console.log("test");
+                console.log(this.state.costM);
                 this.totalCost();
               }
             );
@@ -586,7 +603,7 @@ class Form extends Component {
                 costM={this.state.costM[0]}
                 costN={this.state.costN[0]}
                 cost={this.state.cost}
-                zones={this.state.zones[0]}
+                zones={this.state.zones}
                 invalidM={this.state.invalidM}
                 invalidN={this.state.invalidN}
 
