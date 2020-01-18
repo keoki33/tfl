@@ -309,14 +309,16 @@ class Form extends Component {
   zones = () => {
     if (this.state.startZoneM != "" || this.state.startZoneN != "") {
       let arr = [
-        this.state.startZoneM,
-        this.state.endZoneM,
-        this.state.startZoneN,
-        this.state.endZoneN
+        this.state.startZoneM.concat(
+          this.state.endZoneM,
+          this.state.startZoneN,
+          this.state.endZoneN
+        )
       ];
-      console.log("zones");
-      let sort = arr.sort().filter(x => x != "");
+      console.log(arr);
+      let sort = arr[0].sort().filter(x => x != "");
       // return `${sort[0]} to ${sort[sort.length - 1]}`;
+      console.log(sort);
       this.setState({
         zones: `${sort[0]}-${sort[sort.length - 1]}`,
         spinner: false
