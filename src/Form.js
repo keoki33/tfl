@@ -292,16 +292,18 @@ class Form extends Component {
   totalCost = () => {
     let price = travelCardPriceList.filter(x => x.zone === this.state.zones);
     let cap = price[0];
+    if (this.state.simple) {
+      let cc =
+        Number(this.state.costM[0]) +
+        Number(this.state.costN[0]) +
+        Number(this.state.busM[0]) * 1.5 +
+        Number(this.state.busN[0]) * 1.5;
 
-    let cc =
-      Number(this.state.costM) +
-      Number(this.state.costN) +
-      Number(this.state.busM) * 1.5 +
-      Number(this.state.busN) * 1.5;
-
-    this.setState({ cost: Number(cc.toFixed(2)) }, () => {
-      this.zones();
-    });
+      this.setState({ cost: Number(cc.toFixed(2)) }, () => {
+        this.zones();
+      });
+    } else {
+    }
   };
 
   zones = () => {
