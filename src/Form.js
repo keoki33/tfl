@@ -121,13 +121,17 @@ class Form extends Component {
       this.state.endStationM[i] != "0"
     ) {
       let costM = [...this.state.costM];
+      let cost = [...this.state.cost];
+      let zones = [...this.state.zones];
       costM[i] = "spinner";
+      cost[i] = "spinner";
+      zones[i] = "spinner";
 
       this.setState({
         invalidM: false,
         costM: costM,
-        cost: "spinner",
-        zones: "spinner",
+        cost: cost,
+        zones: zones,
         spinner: true
       });
       fetch(
@@ -209,7 +213,7 @@ class Form extends Component {
               () => {
                 console.log("test");
                 console.log(this.state.costM);
-                this.totalCost();
+                this.totalCost(i);
               }
             );
           }
@@ -302,7 +306,7 @@ class Form extends Component {
         Number(this.state.busM[0]) * 1.5 +
         Number(this.state.busN[0]) * 1.5;
       cost[i] = cc;
-      this.setState({ cost: Number(cost[i].toFixed(2)) }, () => {
+      this.setState({ cost: cost }, () => {
         this.zones(i);
       });
     } else {
@@ -310,18 +314,20 @@ class Form extends Component {
   };
 
   zones = i => {
-    if (this.state.startZoneM != "" || this.state.startZoneN != "") {
+    if (this.state.startZoneM[i] != "" || this.state.startZoneN[i] != "") {
+      let zones = [...this.state.zones];
       let arr = this.state.startZoneM.concat(
-        this.state.endZoneM,
-        this.state.startZoneN,
-        this.state.endZoneN
+        this.state.endZoneM[i],
+        this.state.startZoneN[i],
+        this.state.endZoneN[i]
       );
       console.log(arr);
       let sort = arr.sort().filter(x => x != "");
       // return `${sort[0]} to ${sort[sort.length - 1]}`;
       console.log(sort);
+      zones[i] = `${sort[0]}-${sort[sort.length - 1]}`;
       this.setState({
-        zones: `${sort[0]}-${sort[sort.length - 1]}`,
+        zones,
         spinner: false
       });
     }
@@ -607,8 +613,8 @@ class Form extends Component {
                 handleFormInput={this.handleFormInput}
                 costM={this.state.costM[0]}
                 costN={this.state.costN[0]}
-                cost={this.state.cost}
-                zones={this.state.zones}
+                cost={this.state.cost[0]}
+                zones={this.state.zones[0]}
                 invalidM={this.state.invalidM}
                 invalidN={this.state.invalidN}
 
