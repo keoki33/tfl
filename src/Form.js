@@ -47,8 +47,8 @@ class Form extends Component {
 
     costM: [0, 0, 0, 0, 0, 0, 0],
     costN: [0, 0, 0, 0, 0, 0, 0],
-    cost: 0,
-    zones: "",
+    cost: [0, 0, 0, 0, 0, 0, 0],
+    zones: ["", "", "", "", "", "", ""],
 
     day: 0,
     week: 0,
@@ -116,8 +116,6 @@ class Form extends Component {
   };
 
   getCostM = i => {
-    console.log(this.state.costM);
-
     if (
       this.state.startStationM[i] != "0" &&
       this.state.endStationM[i] != "0"
@@ -220,11 +218,15 @@ class Form extends Component {
   };
 
   getCostN = i => {
-    if (this.state.startStationN != "0" && this.state.endStationN != "0") {
+    if (
+      this.state.startStationN[i] != "0" &&
+      this.state.endStationN[i] != "0"
+    ) {
+      let costN = [...this.state.costN];
+      costN[i] = "spinner";
       this.setState({
         invalidM: false,
-
-        costN: "spinner",
+        costN,
         cost: "spinner",
         zones: "spinner",
         spinner: true
@@ -249,7 +251,7 @@ class Form extends Component {
                 invalidN: true
               },
               () => {
-                this.totalCost();
+                this.totalCost(i);
               }
             );
           } else if (x["journeys"][0]["fare"] === undefined) {
@@ -260,7 +262,7 @@ class Form extends Component {
             ] === "Bus"
           ) {
             this.setState({ costN: 0, invalidN: true }, () => {
-              this.totalCost();
+              this.totalCost(i);
             });
           } else {
             this.setState(
@@ -281,7 +283,7 @@ class Form extends Component {
                 ).toFixed(2)
               },
               () => {
-                this.totalCost();
+                this.totalCost(i);
               }
             );
           }
@@ -289,24 +291,25 @@ class Form extends Component {
     }
   };
 
-  totalCost = () => {
+  totalCost = i => {
     let price = travelCardPriceList.filter(x => x.zone === this.state.zones);
     let cap = price[0];
     if (this.state.simple) {
+      let cost = [...this.state.cost];
       let cc =
         Number(this.state.costM[0]) +
         Number(this.state.costN[0]) +
         Number(this.state.busM[0]) * 1.5 +
         Number(this.state.busN[0]) * 1.5;
-
-      this.setState({ cost: Number(cc.toFixed(2)) }, () => {
-        this.zones();
+      cost[i] = cc;
+      this.setState({ cost: Number(cost[i].toFixed(2)) }, () => {
+        this.zones(i);
       });
     } else {
     }
   };
 
-  zones = () => {
+  zones = i => {
     if (this.state.startZoneM != "" || this.state.startZoneN != "") {
       let arr = this.state.startZoneM.concat(
         this.state.endZoneM,
