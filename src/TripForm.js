@@ -238,9 +238,7 @@ class TripForm extends Component {
               }}
               value={this.props.startStationM}
             >
-              <option value="0" disabled>
-                From
-              </option>
+              <option value="0">From</option>
               {stationList.map((item, key) => (
                 <option key={key} value={item["name"]}>
                   {item["name"]}
@@ -263,9 +261,7 @@ class TripForm extends Component {
               }}
               value={this.props.endStationM}
             >
-              <option value="0" disabled>
-                To
-              </option>
+              <option value="0">To</option>
               {stationList.map((item, key) => (
                 <option key={key} value={item["name"]}>
                   {item["name"]}
@@ -365,9 +361,7 @@ class TripForm extends Component {
               }
               value={this.props.startStationN}
             >
-              <option value="0" disabled>
-                From
-              </option>
+              <option value="0">From</option>
               {stationList.map((item, key) => (
                 <option key={key} value={item["name"]}>
                   {item["name"]}

@@ -117,6 +117,30 @@ class Form extends Component {
 
   getCostM = i => {
     if (
+      this.state.startStationM[i] == "0" ||
+      this.state.endStationM[i] == "0"
+    ) {
+      let costM = [...this.state.costM];
+      let startZoneM = [...this.state.startZoneM];
+      let endZoneM = [...this.state.endZoneM];
+      let zones = [...this.state.zones];
+      costM[i] = 0;
+      startZoneM[i] = "";
+      endZoneM[i] = "";
+      zones[i] = "";
+      this.setState(
+        {
+          costM,
+          startZoneM,
+          endZoneM,
+          zones,
+          invalidM: false
+        },
+        () => {
+          this.totalCost(i);
+        }
+      );
+    } else if (
       this.state.startStationM[i] != "0" &&
       this.state.endStationM[i] != "0"
     ) {
@@ -147,22 +171,45 @@ class Form extends Component {
             let costM = [...this.state.costM];
             let startZoneM = [...this.state.startZoneM];
             let endZoneM = [...this.state.endZoneM];
+            let zones = [...this.state.zones];
             costM[i] = 0;
             startZoneM[i] = "";
             endZoneM[i] = "";
+            zones[i] = "";
             this.setState(
               {
                 costM,
                 startZoneM,
                 endZoneM,
-                invalidM: true
+                zones,
+                invalidM: false
               },
               () => {
-                this.totalCost();
+                this.totalCost(i);
               }
             );
           } else if (x["journeys"][0]["fare"] === undefined) {
             console.log("broken");
+            let costM = [...this.state.costM];
+            let startZoneM = [...this.state.startZoneM];
+            let endZoneM = [...this.state.endZoneM];
+            let zones = [...this.state.zones];
+            costM[i] = 0;
+            startZoneM[i] = "";
+            endZoneM[i] = "";
+            zones[i] = "";
+            this.setState(
+              {
+                costM,
+                startZoneM,
+                endZoneM,
+                zones,
+                invalidM: false
+              },
+              () => {
+                this.totalCost(i);
+              }
+            );
           } else if (
             x["journeys"][0]["fare"]["fares"][0]["taps"][0]["tapDetails"][
               "modeType"
@@ -171,22 +218,24 @@ class Form extends Component {
             let costM = [...this.state.costM];
             let startZoneM = [...this.state.startZoneM];
             let endZoneM = [...this.state.endZoneM];
+            let zones = [...this.state.zones];
             costM[i] = 0;
             startZoneM[i] = "";
             endZoneM[i] = "";
+            zones[i] = "";
             this.setState(
               {
                 costM,
                 startZoneM,
                 endZoneM,
-                invalidM: true
+                zones,
+                invalidM: false
               },
               () => {
-                this.totalCost();
+                this.totalCost(i);
               }
             );
           } else {
-            console.log(this.state.timeM);
             let costM = [...this.state.costM];
             let startZoneM = [...this.state.startZoneM];
             let endZoneM = [...this.state.endZoneM];
