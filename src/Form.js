@@ -71,9 +71,21 @@ class Form extends Component {
 
   handleFormInput = (k, v, t, i) => {
     if (k === "busN" || k === "busM") {
-      this.setState({ [k]: v }, () => {
-        this.totalCost();
-      });
+      let busN = [...this.state.busN];
+
+      if (k === "busM") {
+        let busM = [...this.state.busM];
+        busM[i] = v;
+        this.setState({ busM }, () => {
+          this.totalCost(i);
+        });
+      } else {
+        let busN = [...this.state.busN];
+        busN[i] = v;
+        this.setState({ busN }, () => {
+          this.totalCost(i);
+        });
+      }
     } else {
       let arr = [...this.state[k]];
       arr[i] = v;
