@@ -168,6 +168,7 @@ class Form extends Component {
             x["httpStatusCode"] == 404 ||
             x["httpStatusCode"] == 500
           ) {
+            console.log("500 code");
             let costM = [...this.state.costM];
             let startZoneM = [...this.state.startZoneM];
             let endZoneM = [...this.state.endZoneM];
@@ -189,7 +190,7 @@ class Form extends Component {
               }
             );
           } else if (x["journeys"][0]["fare"] === undefined) {
-            console.log("broken");
+            console.log("no fare array");
             let costM = [...this.state.costM];
             let startZoneM = [...this.state.startZoneM];
             let endZoneM = [...this.state.endZoneM];
@@ -215,6 +216,7 @@ class Form extends Component {
               "modeType"
             ] === "Bus"
           ) {
+            console.log("bus only");
             let costM = [...this.state.costM];
             let startZoneM = [...this.state.startZoneM];
             let endZoneM = [...this.state.endZoneM];
