@@ -489,19 +489,20 @@ class Form extends Component {
     });
     // this.getStationId();
     this.calculateContactless();
-    this.calculateTravelcard();
+    // this.calculateTravelcard();
     setTimeout(() => {
       this.setState({ loadingScreen: false, results: true });
     }, 2000);
   };
 
   calculateContactless = () => {
+    let total = Number(this.state.cost.reduce((a, b) => a + b, 0)).toFixed(2);
     this.setState({
-      day: this.state.cost.toFixed(2),
-      week: (this.state.cost * 5).toFixed(2),
-      month: (this.state.cost * 21).toFixed(2),
-      halfYear: (this.state.cost * 126).toFixed(2),
-      year: (this.state.cost * 253).toFixed(2)
+      day: total,
+      week: (total * 5).toFixed(2),
+      month: (total * 21).toFixed(2),
+      halfYear: (total * 126).toFixed(2),
+      year: (total * 253).toFixed(2)
     });
   };
 
