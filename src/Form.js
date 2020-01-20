@@ -33,8 +33,8 @@ class Form extends Component {
     startStationN: "0",
     endStationN: "0",
     timeN: "peak",
-    startZoneN: "",
-    endZoneN: "",
+    startZoneN: ["", "", "", "", "", "", ""],
+    endZoneN: ["", "", "", "", "", "", ""],
     tripN: "",
 
     invalidN: false,
@@ -301,11 +301,11 @@ class Form extends Component {
     if (this.state.simple) {
       let cost = [...this.state.cost];
       let cc =
-        Number(this.state.costM[0]) +
-        Number(this.state.costN[0]) +
-        Number(this.state.busM[0]) * 1.5 +
-        Number(this.state.busN[0]) * 1.5;
-      cost[i] = cc;
+        Number(this.state.costM[i]) +
+        Number(this.state.costN[i]) +
+        Number(this.state.busM[i]) * 1.5 +
+        Number(this.state.busN[i]) * 1.5;
+      cost[i] = cc.toFixed(2);
       this.setState({ cost: cost }, () => {
         this.zones(i);
       });
@@ -316,7 +316,10 @@ class Form extends Component {
   zones = i => {
     if (this.state.startZoneM[i] != "" || this.state.startZoneN[i] != "") {
       let zones = [...this.state.zones];
-      let arr = this.state.startZoneM.concat(
+      let arr = [];
+
+      arr.push(
+        this.state.startZoneM[i],
         this.state.endZoneM[i],
         this.state.startZoneN[i],
         this.state.endZoneN[i]
