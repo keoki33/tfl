@@ -30,9 +30,9 @@ class Form extends Component {
 
     invalidM: false,
 
-    startStationN: "0",
-    endStationN: "0",
-    timeN: "peak",
+    startStationN: ["0", "0", "0", "0", "0", "0", "0"],
+    endStationN: ["0", "0", "0", "0", "0", "0", "0"],
+    timeN: ["peak", "peak", "peak", "peak", "peak", "peak", "peak"],
     startZoneN: ["", "", "", "", "", "", ""],
     endZoneN: ["", "", "", "", "", "", ""],
     tripN: "",
@@ -44,6 +44,8 @@ class Form extends Component {
 
     startIdM: ["", "", "", "", "", "", ""],
     endIdM: ["", "", "", "", "", "", ""],
+    startIdN: ["", "", "", "", "", "", ""],
+    endIdN: ["", "", "", "", "", "", ""],
 
     costM: [0, 0, 0, 0, 0, 0, 0],
     costN: [0, 0, 0, 0, 0, 0, 0],
@@ -274,8 +276,6 @@ class Form extends Component {
                 costM
               },
               () => {
-                console.log("test");
-                console.log(this.state.costM);
                 this.totalCost(i);
               }
             );
@@ -286,20 +286,49 @@ class Form extends Component {
 
   getCostN = i => {
     if (
+      this.state.startStationN[i] == "0" ||
+      this.state.endStationN[i] == "0"
+    ) {
+      let costN = [...this.state.costN];
+      let startZoneN = [...this.state.startZoneN];
+      let endZoneN = [...this.state.endZoneN];
+      let zones = [...this.state.zones];
+      costN[i] = 0;
+      startZoneN[i] = "";
+      endZoneN[i] = "";
+      zones[i] = "";
+      this.setState(
+        {
+          costN,
+          startZoneN,
+          endZoneN,
+          zones,
+          invalidN: false
+        },
+        () => {
+          this.totalCost(i);
+        }
+      );
+    } else if (
       this.state.startStationN[i] != "0" &&
       this.state.endStationN[i] != "0"
     ) {
       let costN = [...this.state.costN];
+      let cost = [...this.state.cost];
+      let zones = [...this.state.zones];
       costN[i] = "spinner";
+      cost[i] = "spinner";
+      zones[i] = "spinner";
+
       this.setState({
-        invalidM: false,
-        costN,
-        cost: "spinner",
-        zones: "spinner",
+        invalidN: false,
+        costN: costN,
+        cost: cost,
+        zones: zones,
         spinner: true
       });
       fetch(
-        `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdN}/to/${this.state.endIdN}`
+        `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdN[i]}/to/${this.state.endIdN[i]}`
       )
         .then(resp => resp.json())
         .then(x => {
@@ -308,46 +337,98 @@ class Form extends Component {
             x["httpStatusCode"] == 404 ||
             x["httpStatusCode"] == 500
           ) {
+            console.log("500 code");
+            let costN = [...this.state.costN];
+            let startZoneN = [...this.state.startZoneN];
+            let endZoneN = [...this.state.endZoneN];
+            let zones = [...this.state.zones];
+            costN[i] = 0;
+            startZoneN[i] = "";
+            endZoneN[i] = "";
+            zones[i] = "";
             this.setState(
               {
-                costN: 0,
-                startZoneN: "",
-                endZoneN: "",
-                startZoneN2: "",
-                endZoneN2: "",
-                invalidN: true
+                costN,
+                startZoneN,
+                endZoneN,
+                zones,
+                invalidN: false
               },
               () => {
                 this.totalCost(i);
               }
             );
           } else if (x["journeys"][0]["fare"] === undefined) {
-            console.log("broken");
+            console.log("no fare array");
+            let costN = [...this.state.costN];
+            let startZoneN = [...this.state.startZoneN];
+            let endZoneN = [...this.state.endZoneN];
+            let zones = [...this.state.zones];
+            costN[i] = 0;
+            startZoneN[i] = "";
+            endZoneN[i] = "";
+            zones[i] = "";
+            this.setState(
+              {
+                costN,
+                startZoneN,
+                endZoneN,
+                zones,
+                invalidN: false
+              },
+              () => {
+                this.totalCost(i);
+              }
+            );
           } else if (
             x["journeys"][0]["fare"]["fares"][0]["taps"][0]["tapDetails"][
               "modeType"
             ] === "Bus"
           ) {
-            this.setState({ costN: 0, invalidN: true }, () => {
-              this.totalCost(i);
-            });
+            console.log("bus only");
+            let costN = [...this.state.costN];
+            let startZoneN = [...this.state.startZoneN];
+            let endZoneN = [...this.state.endZoneN];
+            let zones = [...this.state.zones];
+            costN[i] = 0;
+            startZoneN[i] = "";
+            endZoneN[i] = "";
+            zones[i] = "";
+            this.setState(
+              {
+                costN,
+                startZoneN,
+                endZoneN,
+                zones,
+                invalidN: false
+              },
+              () => {
+                this.totalCost(i);
+              }
+            );
           } else {
+            let costN = [...this.state.costN];
+            let startZoneN = [...this.state.startZoneN];
+            let endZoneN = [...this.state.endZoneN];
+            console.log(
+              (
+                x["journeys"][0]["fare"]["fares"][0][`${this.state.timeN[i]}`] /
+                100
+              ).toFixed(2)
+            );
+            costN[i] = Number(
+              x["journeys"][0]["fare"]["fares"][0][`${this.state.timeN[i]}`] /
+                100
+            ).toFixed(2);
+            startZoneN[i] = x["journeys"][0]["fare"]["fares"][0]["lowZone"];
+            endZoneN[i] = x["journeys"][0]["fare"]["fares"][0]["highZone"];
+
             this.setState(
               {
                 invalidN: false,
-                // choicesN:
-                startZoneN: x["journeys"][0]["fare"]["fares"][0]["lowZone"],
-                endZoneN: x["journeys"][0]["fare"]["fares"][0]["highZone"],
-                startZoneN2: x["journeys"][1]["fare"]["fares"][0]["lowZone"],
-                endZoneN2: x["journeys"][1]["fare"]["fares"][0]["highZone"],
-                costN: Number(
-                  x["journeys"][0]["fare"]["fares"][0][`${this.state.timeN}`] /
-                    100
-                ).toFixed(2),
-                costN2: Number(
-                  x["journeys"][1]["fare"]["fares"][0][`${this.state.timeN}`] /
-                    100
-                ).toFixed(2)
+                startZoneN,
+                endZoneN,
+                costN
               },
               () => {
                 this.totalCost(i);
@@ -357,7 +438,6 @@ class Form extends Component {
         });
     }
   };
-
   totalCost = i => {
     let price = travelCardPriceList.filter(x => x.zone === this.state.zones);
     let cap = price[0];

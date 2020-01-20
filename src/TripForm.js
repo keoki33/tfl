@@ -21,6 +21,8 @@ class TripForm extends Component {
 
     startIdM: "",
     endIdM: "",
+    startIdN: "",
+    endIdN: "",
 
     costM: 0,
     costN: 0,
