@@ -512,13 +512,20 @@ class Form extends Component {
     let total = Number(
       this.state.cost.reduce((a, b) => Number(a) + Number(b))
     ).toFixed(2);
-    this.setState({
-      day: total,
-      week: (total * 5).toFixed(2),
-      month: (total * 21).toFixed(2),
-      halfYear: (total * 126).toFixed(2),
-      year: (total * 253).toFixed(2)
-    });
+    if (this.state.simple) {
+      this.setState({
+        day: total,
+        week: (total * 5).toFixed(2),
+        month: (total * 21).toFixed(2),
+        halfYear: (total * 126).toFixed(2),
+        year: (total * 253).toFixed(2)
+      });
+    } else {
+      //day average of week
+      //reset form when switching back and forth between simple/
+      //bus trips retain value when edit form
+      //return to complex if was complex, make last screen state?
+    }
   };
 
   calculateTravelcard = () => {
@@ -784,7 +791,7 @@ class Form extends Component {
           </p> */}
           {this.state.main ? (
             <form action="" className="formSwitch">
-              <label htmlFor="">Same trip M-F </label>
+              <label htmlFor="">Same trip Mon-Fri </label>
               <input
                 onChange={event => {
                   this.setState({ simple: true, complex: false });
