@@ -63,7 +63,7 @@ class Form extends Component {
     monthCard: 0,
     halfYearCard: 0,
     yearCard: 0,
-    totalZones: 0
+    totalZones: ""
   };
 
   // order:
@@ -462,20 +462,29 @@ class Form extends Component {
     if (this.state.startZoneM[i] != "" || this.state.startZoneN[i] != "") {
       let zones = [...this.state.zones];
       let arr = [];
-
+      let arr2 = [];
       arr.push(
         this.state.startZoneM[i],
         this.state.endZoneM[i],
         this.state.startZoneN[i],
         this.state.endZoneN[i]
       );
-      console.log(arr);
+
       let sort = arr.sort().filter(x => x != "");
       // return `${sort[0]} to ${sort[sort.length - 1]}`;
-      console.log(sort);
       zones[i] = `${sort[0]}-${sort[sort.length - 1]}`;
+      arr2 = this.state.startZoneM.concat(
+        this.state.startZoneN,
+        this.state.endZoneM,
+        this.state.endZoneN
+      );
+      console.log(arr2);
+      let totalSort = arr2.sort().filter(x => x != "");
+      let totalZones = `${totalSort[0]}-${totalSort[totalSort.length - 1]}`;
+      console.log(totalZones);
       this.setState({
         zones,
+        totalZones,
         spinner: false
       });
     }
@@ -801,7 +810,7 @@ class Form extends Component {
             monthCard={this.state.monthCard}
             halfYearCard={this.state.halfYearCard}
             yearCard={this.state.yearCard}
-            zones={this.state.zones}
+            zones={this.state.totalZones}
           />
         ) : (
           ""
