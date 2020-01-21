@@ -12,6 +12,8 @@ import {
 import { stationList } from "./stationList.js";
 import { travelCardPriceList } from "./travelCardPriceList.js";
 
+// index: M:0, T:1, W:2, TH:3, F:4, S:5, Su: 6
+
 class Form extends Component {
   state = {
     simple: true,
