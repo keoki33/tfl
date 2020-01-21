@@ -500,7 +500,7 @@ class Form extends Component {
     });
     // this.getStationId();
     this.calculateContactless();
-    // this.calculateTravelcard();
+    this.calculateTravelcard();
     setTimeout(() => {
       this.setState({ loadingScreen: false, results: true });
     }, 2000);
@@ -518,7 +518,9 @@ class Form extends Component {
   };
 
   calculateTravelcard = () => {
-    let price = travelCardPriceList.filter(x => x.zone === this.state.zones);
+    let price = travelCardPriceList.filter(
+      x => x.zone === this.state.totalZones
+    );
     this.setState({
       weekCard: price[0].week.toFixed(2),
       monthCard: price[0].month.toFixed(2),
