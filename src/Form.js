@@ -529,6 +529,53 @@ class Form extends Component {
     });
   };
 
+  formReturn = () => {
+    this.setState({ results: false, main: true, simple: true, complex: false });
+  };
+
+  displayFullForm = () => {
+    let week = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ];
+
+    return (
+      <div className="fullForm">
+        {week.map((x, i) => {
+          return (
+            <div>
+              <h3>{`${week[i]}`}</h3>
+              <TripForm
+                index={i}
+                startStationM={this.state.startStationM[i]}
+                endStationM={this.state.endStationM[i]}
+                timeM={this.state.timeM[i]}
+                startStationN={this.state.startStationN[i]}
+                endStationN={this.state.endStationN[i]}
+                timeN={this.state.timeN[i]}
+                busM={this.state.busM[i]}
+                busN={this.state.busN[i]}
+                handleFormInput={this.handleFormInput}
+                costM={this.state.costM[i]}
+                costN={this.state.costN[i]}
+                cost={this.state.cost[i]}
+                zones={this.state.zones[i]}
+                invalidM={this.state.invalidM}
+                invalidN={this.state.invalidN}
+                // disabled={true}
+              />
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
   // getCost = () => {
   //   fetch(
   //     `https://api.tfl.gov.uk/Stoppoint/${this.state.startId}/FareTo/${this.state.endId}`
@@ -570,10 +617,6 @@ class Form extends Component {
   //     this.getCost()
   //   );
   // };
-
-  formReturn = () => {
-    this.setState({ results: false, main: true, simple: true, complex: false });
-  };
 
   //     .then(x => {
   //       if (x.length == 0 || x["httpStatusCode"] == 404) {
@@ -784,7 +827,10 @@ class Form extends Component {
           ) : (
             ""
           )}
-          {this.state.complex ? <FullForm /> : ""}{" "}
+          {/* {this.state.complex ? <FullForm /> : ""}{" "} */}
+          <div className="fullForm">
+            {this.state.complex ? this.displayFullForm() : ""}{" "}
+          </div>
         </div>
 
         {this.state.main ? (
