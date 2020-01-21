@@ -440,22 +440,24 @@ class Form extends Component {
         });
     }
   };
+
   totalCost = i => {
     let price = travelCardPriceList.filter(x => x.zone === this.state.zones);
     let cap = price[0];
-    if (this.state.simple) {
-      let cost = [...this.state.cost];
-      let cc =
-        Number(this.state.costM[i]) +
-        Number(this.state.costN[i]) +
-        Number(this.state.busM[i]) * 1.5 +
-        Number(this.state.busN[i]) * 1.5;
-      cost[i] = cc.toFixed(2);
-      this.setState({ cost: cost }, () => {
-        this.zones(i);
-      });
-    } else {
-    }
+    // if (this.state.simple) {
+    let cost = [...this.state.cost];
+    let cc =
+      Number(this.state.costM[i]) +
+      Number(this.state.costN[i]) +
+      Number(this.state.busM[i]) * 1.5 +
+      Number(this.state.busN[i]) * 1.5;
+    cost[i] = cc.toFixed(2);
+    this.setState({ cost: cost }, () => {
+      this.zones(i);
+    });
+    // } else {
+
+    // }
   };
 
   zones = i => {
@@ -507,7 +509,9 @@ class Form extends Component {
   };
 
   calculateContactless = () => {
-    let total = Number(this.state.cost.reduce((a, b) => a + b, 0)).toFixed(2);
+    let total = Number(
+      this.state.cost.reduce((a, b) => Number(a) + Number(b))
+    ).toFixed(2);
     this.setState({
       day: total,
       week: (total * 5).toFixed(2),
@@ -548,7 +552,7 @@ class Form extends Component {
       <div className="fullForm">
         {week.map((x, i) => {
           return (
-            <div>
+            <div key={i}>
               <h3>{`${week[i]}`}</h3>
               <TripForm
                 index={i}
