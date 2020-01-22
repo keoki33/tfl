@@ -526,12 +526,11 @@ class Form extends Component {
       this.setState({
         day: (total / numberDays).toFixed(2),
         week: total,
-        month: (total * 21).toFixed(2),
-        halfYear: (total * 126).toFixed(2),
-        year: (total * 253).toFixed(2)
+        month: (total * 4.3).toFixed(2),
+        halfYear: (total * 26).toFixed(2),
+        year: (total * 52).toFixed(2)
       });
 
-      //day average of week
       //reset form when switching back and forth between simple/
       //bus trips retain value when edit form/ show value
       //return to complex if was complex, make last screen state?
