@@ -16,8 +16,8 @@ import { travelCardPriceList } from "./travelCardPriceList.js";
 
 class Form extends Component {
   state = {
-    simple: true,
-    complex: false,
+    simple: false,
+    complex: true,
     results: false,
     main: true,
     loadingScreen: false,
@@ -509,6 +509,8 @@ class Form extends Component {
   };
 
   calculateContactless = () => {
+    let reduce = this.state.cost.filter(x => x != 0);
+    let numberDays = reduce.length;
     let total = Number(
       this.state.cost.reduce((a, b) => Number(a) + Number(b))
     ).toFixed(2);
@@ -521,9 +523,17 @@ class Form extends Component {
         year: (total * 253).toFixed(2)
       });
     } else {
+      this.setState({
+        day: (total / numberDays).toFixed(2),
+        week: total,
+        month: (total * 21).toFixed(2),
+        halfYear: (total * 126).toFixed(2),
+        year: (total * 253).toFixed(2)
+      });
+
       //day average of week
       //reset form when switching back and forth between simple/
-      //bus trips retain value when edit form
+      //bus trips retain value when edit form/ show value
       //return to complex if was complex, make last screen state?
     }
   };
