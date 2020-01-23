@@ -20,7 +20,8 @@ const initialState = {
   results: false,
   main: true,
   loadingScreen: false,
-  spinner: true,
+  spinner: false,
+  resultsButtonDisabled: true,
 
   startStationM: ["0", "0", "0", "0", "0", "0", "0"],
   endStationM: ["0", "0", "0", "0", "0", "0", "0"],
@@ -174,7 +175,8 @@ class Form extends Component {
         costM: costM,
         cost: cost,
         zones: zones,
-        spinner: true
+        spinner: true,
+        resultsButtonDisabled: true
       });
       fetch(
         `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM[i]}/to/${this.state.endIdM[i]}`
@@ -329,7 +331,8 @@ class Form extends Component {
         costN: costN,
         cost: cost,
         zones: zones,
-        spinner: true
+        spinner: true,
+        resultsButtonDisabled: true
       });
       fetch(
         `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdN[i]}/to/${this.state.endIdN[i]}`
@@ -489,7 +492,8 @@ class Form extends Component {
       this.setState({
         zones,
         totalZones,
-        spinner: false
+        spinner: false,
+        resultsButtonDisabled: false
       });
     }
   };
@@ -599,7 +603,7 @@ class Form extends Component {
   };
 
   resetForm = () => {
-    this.setState({});
+    this.setState(initialState);
   };
 
   // getCost = () => {
@@ -813,6 +817,7 @@ class Form extends Component {
                   this.resetForm();
                 }}
                 defaultChecked
+                disabled={this.state.spinner}
                 type="radio"
                 name="formType"
               />
@@ -820,9 +825,11 @@ class Form extends Component {
               <input
                 onChange={event => {
                   this.setState({ simple: false, complex: true });
+                  this.resetForm();
                 }}
                 type="radio"
                 name="formType"
+                disabled={this.state.spinner}
               />
             </form>
           ) : (
@@ -865,7 +872,7 @@ class Form extends Component {
             onClick={event => {
               this.displayResults();
             }}
-            disabled={this.state.spinner}
+            disabled={this.state.resultsButtonDisabled}
           >
             select
           </button>
