@@ -84,7 +84,7 @@ class App extends Component {
     switch (x) {
       case "home":
         this.setState({ form: true, about: false });
-        window.location.reload();
+        // window.location.reload();
         break;
 
       case "about":

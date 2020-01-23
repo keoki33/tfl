@@ -7,7 +7,7 @@ class About extends Component {
     return (
       <div className="about">
         <h1>About</h1>
-        <p cl>
+        <p>
           Frustrated with the difficulty in calculating the average cost of my
           commute and trying to figure out if it was worth buying a Travelcard I
           created a website to let you easily make that determination.

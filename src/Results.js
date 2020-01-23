@@ -114,7 +114,14 @@ class Results extends Component {
                 </tr>
                 <tr>
                   <td>Year:</td>
-                  <td>£{this.props.yearCard}</td>
+                  <td>
+                    {new Intl.NumberFormat("en-GB", {
+                      minimumFractionDigits: 2,
+
+                      style: "currency",
+                      currency: "GBP"
+                    }).format(this.props.yearCard)}
+                  </td>
                 </tr>
               </tbody>
             </table>
