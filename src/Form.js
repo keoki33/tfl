@@ -14,57 +14,59 @@ import { travelCardPriceList } from "./travelCardPriceList.js";
 
 // index: M:0, T:1, W:2, TH:3, F:4, S:5, Su: 6
 
+const initialState = {
+  simple: false,
+  complex: true,
+  results: false,
+  main: true,
+  loadingScreen: false,
+  spinner: true,
+
+  startStationM: ["0", "0", "0", "0", "0", "0", "0"],
+  endStationM: ["0", "0", "0", "0", "0", "0", "0"],
+  timeM: ["peak", "peak", "peak", "peak", "peak", "peak", "peak"],
+  startZoneM: ["", "", "", "", "", "", ""],
+  endZoneM: ["", "", "", "", "", "", ""],
+  tripM: "",
+
+  invalidM: false,
+
+  startStationN: ["0", "0", "0", "0", "0", "0", "0"],
+  endStationN: ["0", "0", "0", "0", "0", "0", "0"],
+  timeN: ["peak", "peak", "peak", "peak", "peak", "peak", "peak"],
+  startZoneN: ["", "", "", "", "", "", ""],
+  endZoneN: ["", "", "", "", "", "", ""],
+  tripN: "",
+
+  invalidN: false,
+
+  busM: [0, 0, 0, 0, 0, 0, 0],
+  busN: [0, 0, 0, 0, 0, 0, 0],
+
+  startIdM: ["", "", "", "", "", "", ""],
+  endIdM: ["", "", "", "", "", "", ""],
+  startIdN: ["", "", "", "", "", "", ""],
+  endIdN: ["", "", "", "", "", "", ""],
+
+  costM: [0, 0, 0, 0, 0, 0, 0],
+  costN: [0, 0, 0, 0, 0, 0, 0],
+  cost: [0, 0, 0, 0, 0, 0, 0],
+  zones: ["", "", "", "", "", "", ""],
+
+  day: 0,
+  week: 0,
+  month: 0,
+  halfYear: 0,
+  year: 0,
+  weekCard: 0,
+  monthCard: 0,
+  halfYearCard: 0,
+  yearCard: 0,
+  totalZones: ""
+};
+
 class Form extends Component {
-  state = {
-    simple: false,
-    complex: true,
-    results: false,
-    main: true,
-    loadingScreen: false,
-    spinner: true,
-
-    startStationM: ["0", "0", "0", "0", "0", "0", "0"],
-    endStationM: ["0", "0", "0", "0", "0", "0", "0"],
-    timeM: ["peak", "peak", "peak", "peak", "peak", "peak", "peak"],
-    startZoneM: ["", "", "", "", "", "", ""],
-    endZoneM: ["", "", "", "", "", "", ""],
-    tripM: "",
-
-    invalidM: false,
-
-    startStationN: ["0", "0", "0", "0", "0", "0", "0"],
-    endStationN: ["0", "0", "0", "0", "0", "0", "0"],
-    timeN: ["peak", "peak", "peak", "peak", "peak", "peak", "peak"],
-    startZoneN: ["", "", "", "", "", "", ""],
-    endZoneN: ["", "", "", "", "", "", ""],
-    tripN: "",
-
-    invalidN: false,
-
-    busM: [0, 0, 0, 0, 0, 0, 0],
-    busN: [0, 0, 0, 0, 0, 0, 0],
-
-    startIdM: ["", "", "", "", "", "", ""],
-    endIdM: ["", "", "", "", "", "", ""],
-    startIdN: ["", "", "", "", "", "", ""],
-    endIdN: ["", "", "", "", "", "", ""],
-
-    costM: [0, 0, 0, 0, 0, 0, 0],
-    costN: [0, 0, 0, 0, 0, 0, 0],
-    cost: [0, 0, 0, 0, 0, 0, 0],
-    zones: ["", "", "", "", "", "", ""],
-
-    day: 0,
-    week: 0,
-    month: 0,
-    halfYear: 0,
-    year: 0,
-    weekCard: 0,
-    monthCard: 0,
-    halfYearCard: 0,
-    yearCard: 0,
-    totalZones: ""
-  };
+  state = initialState;
 
   // order:
 
@@ -596,6 +598,10 @@ class Form extends Component {
     );
   };
 
+  resetForm = () => {
+    this.setState({});
+  };
+
   // getCost = () => {
   //   fetch(
   //     `https://api.tfl.gov.uk/Stoppoint/${this.state.startId}/FareTo/${this.state.endId}`
@@ -804,6 +810,7 @@ class Form extends Component {
               <input
                 onChange={event => {
                   this.setState({ simple: true, complex: false });
+                  this.resetForm();
                 }}
                 defaultChecked
                 type="radio"
