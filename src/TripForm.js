@@ -330,6 +330,7 @@ class TripForm extends Component {
               name="bus"
               min="0"
               step="1"
+              value={this.props.busM}
             />
           </form>
         </div>
@@ -457,6 +458,7 @@ class TripForm extends Component {
               step="1"
               type="number"
               name="bus"
+              value={this.props.busN}
             />
           </form>
         </div>

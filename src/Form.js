@@ -539,7 +539,6 @@ class Form extends Component {
       });
 
       //bus trips retain value when edit form/ show value
-      //return to complex if was complex, make last screen state?
     }
   };
 
