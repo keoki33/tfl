@@ -15,13 +15,14 @@ import { travelCardPriceList } from "./travelCardPriceList.js";
 // index: M:0, T:1, W:2, TH:3, F:4, S:5, Su: 6
 
 const initialState = {
-  simple: false,
-  complex: true,
+  simple: true,
+  complex: false,
   results: false,
   main: true,
   loadingScreen: false,
   spinner: false,
   resultsButtonDisabled: true,
+  lastScreen: "simple",
 
   startStationM: ["0", "0", "0", "0", "0", "0", "0"],
   endStationM: ["0", "0", "0", "0", "0", "0", "0"],
@@ -537,7 +538,6 @@ class Form extends Component {
         year: (total * 52).toFixed(2)
       });
 
-      //reset form when switching back and forth between simple/
       //bus trips retain value when edit form/ show value
       //return to complex if was complex, make last screen state?
     }
@@ -556,7 +556,19 @@ class Form extends Component {
   };
 
   formReturn = () => {
-    this.setState({ results: false, main: true, simple: true, complex: false });
+    this.state.lastScreen === "simple"
+      ? this.setState({
+          results: false,
+          main: true,
+          simple: true,
+          complex: false
+        })
+      : this.setState({
+          results: false,
+          main: true,
+          simple: false,
+          complex: true
+        });
   };
 
   displayFullForm = () => {
@@ -813,8 +825,12 @@ class Form extends Component {
               <label htmlFor="">Same trip Mon-Fri </label>
               <input
                 onChange={event => {
-                  this.setState({ simple: true, complex: false });
                   this.resetForm();
+                  this.setState({
+                    simple: true,
+                    complex: false,
+                    lastScreen: "simple"
+                  });
                 }}
                 defaultChecked
                 disabled={this.state.spinner}
@@ -824,8 +840,12 @@ class Form extends Component {
               <label htmlFor="">Custom week </label>
               <input
                 onChange={event => {
-                  this.setState({ simple: false, complex: true });
                   this.resetForm();
+                  this.setState({
+                    simple: false,
+                    complex: true,
+                    lastScreen: "complex"
+                  });
                 }}
                 type="radio"
                 name="formType"
