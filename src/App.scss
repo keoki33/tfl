@@ -122,6 +122,10 @@ $buttonColor: rgb(0, 132, 255);
   button:hover {
     transform: scale(1.05);
   }
+  button:disabled {
+    background-color: rgb(187, 193, 199);
+    opacity: 0.5;
+  }
 }
 
 .formSwitch {
