@@ -29,7 +29,7 @@ class Results extends Component {
     return (
       <div className="results">
         <div className="resultsHead">
-          <h1>Results</h1>
+          <h1>Contactless vs Travel Card</h1>
         </div>
         <br />
         <h3>Zones Travelled: {this.props.zones}</h3>

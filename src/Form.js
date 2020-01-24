@@ -893,7 +893,7 @@ class Form extends Component {
             }}
             disabled={this.state.resultsButtonDisabled}
           >
-            select
+            Calculate Total
           </button>
         ) : (
           ""
