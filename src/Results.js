@@ -79,11 +79,23 @@ class Results extends Component {
                 </tr>
                 <tr>
                   <td>6 month:</td>
-                  <td>£{this.props.halfYear}</td>
+                  <td>
+                    {new Intl.NumberFormat("en-GB", {
+                      minimumFractionDigits: 2,
+                      style: "currency",
+                      currency: "GBP"
+                    }).format(this.props.halfYear)}
+                  </td>
                 </tr>
                 <tr>
                   <td>Year:</td>
-                  <td>£{this.props.year}</td>
+                  <td>
+                    {new Intl.NumberFormat("en-GB", {
+                      minimumFractionDigits: 2,
+                      style: "currency",
+                      currency: "GBP"
+                    }).format(this.props.year)}
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -102,22 +114,39 @@ class Results extends Component {
                 </tr>
                 <tr>
                   <td>Weekly:</td>
-                  <td>£{this.props.weekCard}</td>
+                  <td>
+                    {new Intl.NumberFormat("en-GB", {
+                      minimumFractionDigits: 2,
+                      style: "currency",
+                      currency: "GBP"
+                    }).format(this.props.weekCard)}
+                  </td>
                 </tr>
                 <tr>
                   <td>Monthly:</td>
-                  <td>£{this.props.monthCard}</td>
+                  <td>
+                    {new Intl.NumberFormat("en-GB", {
+                      minimumFractionDigits: 2,
+                      style: "currency",
+                      currency: "GBP"
+                    }).format(this.props.monthCard)}
+                  </td>
                 </tr>
                 <tr>
                   <td>6 month:</td>
-                  <td>£{this.props.halfYearCard}</td>
+                  <td>
+                    {new Intl.NumberFormat("en-GB", {
+                      minimumFractionDigits: 2,
+                      style: "currency",
+                      currency: "GBP"
+                    }).format(this.props.halfYearCard)}
+                  </td>
                 </tr>
                 <tr>
                   <td>Year:</td>
                   <td>
                     {new Intl.NumberFormat("en-GB", {
                       minimumFractionDigits: 2,
-
                       style: "currency",
                       currency: "GBP"
                     }).format(this.props.yearCard)}
