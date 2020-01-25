@@ -586,6 +586,7 @@ class Form extends Component {
         {week.map((x, i) => {
           return (
             <div key={i}>
+              <hr />
               <h3>{`${week[i]}`}</h3>
               <TripForm
                 index={i}
@@ -606,6 +607,7 @@ class Form extends Component {
                 invalidN={this.state.invalidN}
                 // disabled={true}
               />
+              <hr />
             </div>
           );
         })}
