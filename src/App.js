@@ -83,8 +83,8 @@ class App extends Component {
   handleNav = x => {
     switch (x) {
       case "home":
-        this.setState({ form: true, about: false });
-        // window.location.reload();
+        // this.setState({ form: true, about: false });
+        window.location.reload();
         break;
 
       case "about":

@@ -21,7 +21,13 @@ class HogDetails extends Component {
               fill="#ffffff"
             />
           </svg> */}
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="-110 -15 700 160">
+          <svg
+            onClick={() => {
+              window.location.reload();
+            }}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="-110 -15 700 160"
+          >
             <path
               //   fill="#ffffff"
               d="M188.1 93h245.4v2.7H188.1zM81.8 0C45.2 0 15.4 29.7 15.4 66.4s29.7 66.4 66.4 66.4 66.4-29.7 66.4-66.4S118.5 0 81.8 0m42.9 66.4c0 23.7-19.2 42.8-42.9 42.8-23.6 0-42.8-19.1-42.8-42.8 0-23.7 19.2-42.8 42.8-42.8 23.7 0 42.9 19.1 42.9 42.8"
