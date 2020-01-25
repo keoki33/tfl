@@ -116,6 +116,7 @@ $buttonColor: rgb(0, 132, 255);
   height: 90%;
   overflow: auto;
   button {
+    margin-left: 1px;
     margin-top: 30px;
     background-color: $buttonColor;
     padding: 6px;
