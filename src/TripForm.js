@@ -462,7 +462,7 @@ class TripForm extends Component {
             />
           </form>
         </div>
-        <br />
+
         <div className="resultsSummary">
           <div>Morning: </div>{" "}
           <div>£{this.displaySpinner(this.props.costM)}</div>

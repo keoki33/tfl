@@ -108,12 +108,13 @@ $buttonColor: rgb(0, 132, 255);
 }
 
 .forms {
+  margin-top: 25px;
   animation: fadeIn 0.5s;
   // border: solid red;
   height: 100%;
   overflow: auto;
   button {
-    margin-top: 20px;
+    margin-top: 30px;
     background-color: $buttonColor;
     padding: 6px;
     border-radius: 5px;
@@ -134,7 +135,8 @@ $buttonColor: rgb(0, 132, 255);
     // margin-right: 0px;
   }
   input {
-    margin-right: 20px;
+    margin-left: 3px;
+    margin-right: 25px;
   }
 }
 
@@ -205,6 +207,8 @@ label.nightLabel {
 }
 
 .resultsSummary {
+  // border: solid purple;
+  margin-top: 5px;
   display: flex;
   align-items: center;
   div {
@@ -224,6 +228,11 @@ label.nightLabel {
     width: 30px;
     height: 30px;
   }
+}
+
+.instructions {
+  margin-top: 40px;
+  line-height: 18px;
 }
 
 //RESULTS //RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS//RESULTS
