@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   color: rgb(29, 29, 29);
+
   // animation: fadeIn 0.5s;
 }
 
@@ -75,6 +76,7 @@ $buttonColor: rgb(0, 132, 255);
 //GRID MAIN//GRID MAIN//GRID MAIN//GRID MAIN//GRID MAIN//GRID MAIN//GRID MAIN//GRID MAIN
 
 .main {
+  background-color: rgb(250, 250, 250);
   display: grid;
   grid-template-columns: 20% 60% 20%;
   grid-template-rows: 60px 70vh 20vh;
@@ -236,7 +238,7 @@ label.nightLabel {
 }
 
 .instructions {
-  margin-top: 40px;
+  margin-top: 70px;
   line-height: 18px;
 }
 
