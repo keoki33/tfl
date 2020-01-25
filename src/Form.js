@@ -892,16 +892,21 @@ class Form extends Component {
         ) : (
           ""
         )}
-        <p className="instructions">
-          1. Select your starting and end station for both morning and night
-          commute <br />
-          2. Select wether the journeys begin at peak or off peak times. <br />
-          3. Select number of bus trips, each one allows unlimited tap on/off
-          bus and trams for one hour. Only select more than one if you need to
-          switch buses after one hour. <br />
-          4. Use custom week if you have a different daily commute or commute on
-          weekends. <br />
-        </p>
+        {this.state.simple ? (
+          <p className="instructions">
+            1. Select your starting and end station for both morning and night
+            commute <br />
+            2. Select wether the journeys begin at peak or off peak times.{" "}
+            <br />
+            3. Select number of bus trips, each one allows unlimited tap on/off
+            bus and trams for one hour. Only select more than one if you need to
+            switch buses after one hour. <br />
+            4. Use custom week if you have a different daily commute or commute
+            on weekends. <br />
+          </p>
+        ) : (
+          ""
+        )}
         {this.state.loadingScreen ? <Loading /> : ""}
         {this.state.results ? (
           <Results
