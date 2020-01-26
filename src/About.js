@@ -8,9 +8,8 @@ class About extends Component {
       <div className="about">
         <h1>About</h1>
         <p>
-          Frustrated with the difficulty in calculating the average cost of my
-          commute and trying to figure out if it was worth buying a Travelcard I
-          created a website to let you easily make that determination.
+          Quickly work out the cost of your TFL commute and check if it is worth
+          purchasing a travel card.
         </p>
         <br />
         <p>
