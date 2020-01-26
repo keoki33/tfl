@@ -445,7 +445,13 @@ label.nightLabel {
 // ABOUT // ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT// ABOUT
 
 .about {
+  margin-top: 30px;
   animation: fadeIn 0.5s;
+  overflow: auto;
+  height: 88%;
+  h1 {
+    margin-bottom: 20px;
+  }
 }
 
 //////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION //////////////ANIMATION ////////
