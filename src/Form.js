@@ -827,7 +827,7 @@ class Form extends Component {
                     lastScreen: "simple"
                   });
                 }}
-                defaultChecked
+                checked={this.state.simple}
                 disabled={this.state.spinner}
                 type="radio"
                 name="formType"
@@ -842,6 +842,7 @@ class Form extends Component {
                     lastScreen: "complex"
                   });
                 }}
+                checked={this.state.complex}
                 type="radio"
                 name="formType"
                 disabled={this.state.spinner}
