@@ -5,11 +5,19 @@ class Ads extends Component {
 
   whatever = () => {};
 
+  componentDidMount() {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+  }
+
   render() {
     return (
-      <div className="ads">
-        <h1>ads</h1>
-      </div>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-12121212"
+        data-ad-slot="12121212"
+        data-ad-format="auto"
+      />
     );
   }
 }

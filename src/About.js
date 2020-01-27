@@ -8,50 +8,74 @@ class About extends Component {
       <div className="about">
         <h1>About</h1>
         <p>
-          Quickly work out the cost of your TFL commute and check if it is worth
-          purchasing a travel card.
+          Calculate the cost of your TFL commute and compare it to purchasing a
+          travel card to cover same route.
+        </p>
+
+        <p className="instructions">
+          <h3>Instructions:</h3> <br /> <br />
+          <p>
+            1. Select your starting and end station for both morning and night
+            commutes{" "}
+          </p>
+          <br /> <br />
+          <p>2. Select wether the journeys begin at peak or off peak times. </p>
+          <br /> <br />
+          <p>
+            Peak fares - Monday to Friday (not on public holidays) journeys
+            starting between 06:30 and 09:30, and between 16:00 and 19:00.
+            <br /> <br />
+            Off-peak fares - at all other times and if you travel from a station
+            outside Zone 1 to a station in Zone 1 between 16:00 and 19:00,
+            Monday to Friday.
+          </p>
+          <br />
+          <p>
+            3. Select number of bus trips, each one allows unlimited tap on/off
+            bus and trams for one hour. Only select more than one if you need to
+            switch buses after one hour. <br /> <br />
+            4. Use simple if you travel same commute Mon-Fri and want basic
+            average commute cost. Use custom to select commute for every day
+            including weekends.
+          </p>
+          <br />
+          <p>
+            All fares assume you are not tapping out or switching trains to
+            avoid zone 1. Fares and routes are calculated as using best route
+            from TFL trip planner.{" "}
+          </p>
+          <br />
+          <p>
+            <strong>
+              If fare shows £0, TFL could not find a tube journey between the
+              two stations. Select another station.
+            </strong>
+          </p>
         </p>
         <br />
         <p>
-          Choose your start and end stations for morning and afternoon commute.{" "}
+          <h3>Simple calculation:</h3>
           <br />
-          Peak fares - Monday to Friday (not on public holidays) journeys
-          starting between 06:30 and 09:30, and between 16:00 and 19:00.
-          Off-peak fares - at all other times and if you travel from a station
-          outside Zone 1 to a station in Zone 1 between 16:00 and 19:00, Monday
-          to Friday. <br />
-          Select number of bus trips, each one allows unlimited tap on/off bus
-          and trams for one hour. Only select more than one if you need to
-          switch buses after one hour. <br />
+          <ul>
+            <li> Commute Monday to Friday with no commute on weekends.</li>
+            <li>Month is 21 working days</li>
+            <li>Half Year is 26 working days </li>
+            <li>Year is 253 working days </li>
+          </ul>
+          <br />
+          <h3>Complex calculation:</h3>
+          <br />
+          <ul>
+            <li>Does not subtract any holidays.</li>
+            <li>Month is averaged as 4.3 weeks. </li>
+            <li>Half Year is 126 weeks.</li>
+            <li>Year is 52 weeks.</li>
+          </ul>
         </p>
-        Use simple if you travel same commute Mon-Fri and want basic average
-        commute cost. Use custom to select commute for every day including
-        weekends. <br />
+        <br />
         <p>
-          Simple calculation:
-          <br />
-          <br />
-          Week commute Monday to Friday with no commute on weekends. <br />
-          Month is 21 working days <br />
-          Half Year is 126 working days <br />
-          Year is 253 working days <br />
-          <br />
-          Complex calculation: <br />
-          <br />
-          Does not subtract any holidays. <br />
-          Month is averaged as 4.3 weeks. <br />
-          Half Year is 126 weeks. <br />
-          Year is 52 weeks. <br />
-          <br />
-          <br />
-          All fares assume you are not tapping out or switching trains to avoid
-          zone 1. Fares and routes are calculated as using best route from TFL
-          trip planner. If fare shows £0, TFL could not find a tube journey
-          between the two stations.
-        </p>
-        <p>
-          This website is in no way associated with TFL. Any errors in
-          calculation and/or costs please report to
+          This website is in no way associated with TFL. Website is in beta
+          stage. Any errors in calculation and/or costs please report to
           errors@tfltravelcardcalculator.com
         </p>
       </div>
