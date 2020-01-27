@@ -11,7 +11,6 @@ class About extends Component {
           Calculate the cost of your TFL commute and compare it to purchasing a
           travel card to cover same route.
         </p>
-
         <p className="instructions">
           <h3>Instructions:</h3> <br /> <br />
           <p>
@@ -73,6 +72,25 @@ class About extends Component {
           </ul>
         </div>
         <br />
+        <p>
+          <h3>Useful links:</h3>
+          <br />
+          <a href="http://content.tfl.gov.uk/adult-2020-prices.pdf">
+            TFL adult travelcard pricelist 2020
+          </a>
+          <br />
+          <a href="https://tfl.gov.uk/fares/find-fares/tube-and-rail-fares/single-fare-finder">
+            TFl single fare finder
+          </a>
+          <br />
+          <a href="https://tfl.gov.uk/fares/find-fares/tube-and-rail-fares/caps-and-travelcard-prices">
+            Tfl calculate travelcard with zones
+          </a>
+          <a href="https://www.reeclaim.co.uk/">
+            Reeclaim: Automated travel delay refunds
+          </a>
+        </p>
+        <br /> <br />
         <p>
           This website is in no way associated with TFL. Website is in beta
           stage. Any errors in calculation and/or costs please report to
