@@ -53,17 +53,17 @@ class About extends Component {
           </p>
         </p>
         <br />
-        <p>
+        <div>
           <h3>Simple calculation:</h3>
           <br />
-          <ul>
+          <ul className="list">
             <li> Commute Monday to Friday with no commute on weekends.</li>
             <li>Month is 21 working days</li>
             <li>Half Year is 26 working days </li>
             <li>Year is 253 working days </li>
           </ul>
           <br />
-          <h3>Complex calculation:</h3>
+          <h3>Custom calculation:</h3>
           <br />
           <ul>
             <li>Does not subtract any holidays.</li>
@@ -71,7 +71,7 @@ class About extends Component {
             <li>Half Year is 126 weeks.</li>
             <li>Year is 52 weeks.</li>
           </ul>
-        </p>
+        </div>
         <br />
         <p>
           This website is in no way associated with TFL. Website is in beta
