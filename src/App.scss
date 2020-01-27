@@ -117,7 +117,7 @@ $buttonColor: rgb(0, 132, 255);
   overflow: auto;
   button {
     margin-left: 1px;
-    margin-top: 30px;
+    margin-top: 10px;
     background-color: $buttonColor;
     padding: 6px;
     border-radius: 5px;
@@ -239,10 +239,11 @@ label.nightLabel {
 }
 
 .instructions {
-  margin-top: 40px;
+  margin-top: 30px;
   line-height: 18px;
   p {
     margin-left: 15px;
+    margin-bottom: 10px;
   }
 }
 

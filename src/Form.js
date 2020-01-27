@@ -897,25 +897,23 @@ class Form extends Component {
         )}
         {this.state.simple ? (
           <p className="instructions">
-            <h3>Instructions:</h3> <br /> <br />
+            <h3>Instructions:</h3> <br />
             <p>
               1. Select your starting and end station for both morning and night
               commutes{" "}
             </p>
-            <br /> <br />
             <p>
               2. Select wether the journeys begin at peak or off peak times.{" "}
             </p>
-            <br /> <br />
             <p>
               Peak fares - Monday to Friday (not on public holidays) journeys
               starting between 06:30 and 09:30, and between 16:00 and 19:00.
-              <br /> <br />
+            </p>
+            <p>
               Off-peak fares - at all other times and if you travel from a
               station outside Zone 1 to a station in Zone 1 between 16:00 and
               19:00, Monday to Friday.
             </p>
-            <br />
             <p>
               3. Select number of bus trips, each one allows unlimited tap
               on/off bus and trams for one hour. Only select more than one if
@@ -924,7 +922,6 @@ class Form extends Component {
               average commute cost. Use custom to select commute for every day
               including weekends.
             </p>
-            <br />
             <p>
               All fares assume you are not tapping out or switching trains to
               avoid zone 1. Fares and routes are calculated as using best route
