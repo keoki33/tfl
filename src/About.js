@@ -86,6 +86,7 @@ class About extends Component {
           <a href="https://tfl.gov.uk/fares/find-fares/tube-and-rail-fares/caps-and-travelcard-prices">
             Tfl calculate travelcard with zones
           </a>
+          <br />
           <a href="https://www.reeclaim.co.uk/">
             Reeclaim: Automated travel delay refunds
           </a>
