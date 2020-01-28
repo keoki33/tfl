@@ -90,6 +90,8 @@ class About extends Component {
           <a href="https://www.reeclaim.co.uk/">
             Reeclaim: Automated travel delay refunds
           </a>
+          <br />
+          <a href="https://www.vecteezy.com/"> Vectors by Vecteezy</a>
         </p>
         <br /> <br />
         <p>
