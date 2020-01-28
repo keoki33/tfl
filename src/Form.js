@@ -934,6 +934,7 @@ class Form extends Component {
                 two stations. Select another station.
               </strong>
             </p>
+            <img src={require("./tubeMap.jpg")} alt="" />
           </p>
         ) : (
           ""
