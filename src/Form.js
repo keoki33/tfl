@@ -934,7 +934,12 @@ class Form extends Component {
                 two stations. Select another station.
               </strong>
             </p>
-            <img src={require("./tubeMap.jpg")} alt="" />
+            <a
+              href="http://content.tfl.gov.uk/standard-tube-map.pdf"
+              target="_blank"
+            >
+              <img src={require("./tubeMap.jpg")} alt="" />
+            </a>
           </p>
         ) : (
           ""
