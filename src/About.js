@@ -91,8 +91,13 @@ class About extends Component {
             Reeclaim: Automated travel delay refunds
           </a>
           <br />
+          <br />
           <a href="https://www.vecteezy.com/"> Vectors by Vecteezy</a>
-        </p>
+        </p>{" "}
+        <br />
+        <a href="https://dribbble.com/shots/5945198-Train-loading-animation#shot-description">
+          Like the loading screen? Hire him.
+        </a>
         <br /> <br />
         <p>
           This website is in no way associated with TFL. Website is in beta
