@@ -75,27 +75,42 @@ class About extends Component {
         <p>
           <h3>Useful links:</h3>
           <br />
-          <a href="http://content.tfl.gov.uk/adult-2020-prices.pdf">
+          <a
+            href="http://content.tfl.gov.uk/adult-2020-prices.pdf"
+            target="_blank"
+          >
             TFL adult travelcard pricelist 2020
           </a>
           <br />
-          <a href="https://tfl.gov.uk/fares/find-fares/tube-and-rail-fares/single-fare-finder">
+          <a
+            href="https://tfl.gov.uk/fares/find-fares/tube-and-rail-fares/single-fare-finder"
+            target="_blank"
+          >
             TFl single fare finder
           </a>
           <br />
-          <a href="https://tfl.gov.uk/fares/find-fares/tube-and-rail-fares/caps-and-travelcard-prices">
+          <a
+            href="https://tfl.gov.uk/fares/find-fares/tube-and-rail-fares/caps-and-travelcard-prices"
+            target="_blank"
+          >
             Tfl calculate travelcard with zones
           </a>
           <br />
-          <a href="https://www.reeclaim.co.uk/">
+          <a href="https://www.reeclaim.co.uk/" target="_blank">
             Reeclaim: Automated travel delay refunds
           </a>
           <br />
           <br />
-          <a href="https://www.vecteezy.com/"> Vectors by Vecteezy</a>
+          <a href="https://www.vecteezy.com/" target="_blank">
+            {" "}
+            Vectors by Vecteezy
+          </a>
         </p>{" "}
         <br />
-        <a href="https://dribbble.com/shots/5945198-Train-loading-animation#shot-description">
+        <a
+          href="https://dribbble.com/shots/5945198-Train-loading-animation#shot-description"
+          target="_blank"
+        >
           Like the loading screen? Hire him.
         </a>
         <br /> <br />
