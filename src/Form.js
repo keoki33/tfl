@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FullForm from "./FullForm";
+
 import TripForm from "./TripForm";
 import Results from "./Results";
 import Loading from "./Loading";
@@ -896,7 +896,7 @@ class Form extends Component {
           ""
         )}
         {this.state.simple ? (
-          <p className="instructions">
+          <div className="instructions">
             <h3>Instructions:</h3> <br />
             <p>
               1. Select your starting and end station for both morning and night
@@ -940,7 +940,7 @@ class Form extends Component {
             >
               <img src={require("./tubeMap.jpg")} alt="" />
             </a>
-          </p>
+          </div>
         ) : (
           ""
         )}
