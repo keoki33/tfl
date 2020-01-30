@@ -11,6 +11,8 @@
 
 $borderColor: rgb(90, 90, 90);
 $buttonColor: rgb(0, 132, 255);
+$backgroundColor: rgb(250, 250, 250);
+// $backgroundColor: red;
 
 // NAVBAR // // NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //
 // NAVBAR // // NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //// NAVBAR //
@@ -76,7 +78,7 @@ $buttonColor: rgb(0, 132, 255);
 //GRID MAIN//GRID MAIN//GRID MAIN//GRID MAIN//GRID MAIN//GRID MAIN//GRID MAIN//GRID MAIN
 
 .main {
-  background-color: rgb(250, 250, 250);
+  background-color: $backgroundColor;
   display: grid;
   grid-template-columns: 20% 60% 20%;
   grid-template-rows: 60px 70vh 20vh;
@@ -232,11 +234,15 @@ label.nightLabel {
     align-items: center;
   }
   svg {
+    background: $backgroundColor;
     position: relative;
     left: -10px;
     width: 30px;
     height: 30px;
   }
+  // stroke {
+  //   background-color: $backgroundColor;
+  // }
 }
 
 .instructions {
