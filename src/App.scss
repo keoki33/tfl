@@ -34,8 +34,13 @@ $backgroundColor: rgb(250, 250, 250);
       color: white;
       display: inline;
       padding: 20px;
+      transition: color 0.5s;
+    }
+    li:hover {
+      color: $buttonColor;
     }
   }
+
   svg {
     stroke-dashoffset: 1000;
     animation: draw 7s linear infinite alternate 1s;
