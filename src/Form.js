@@ -180,7 +180,7 @@ class Form extends Component {
         resultsButtonDisabled: true
       });
       fetch(
-        `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM[i]}/to/${this.state.endIdM[i]}`
+        `https://keo-proxy.herokuapp.com/https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM[i]}/to/${this.state.endIdM[i]}`
       )
         .then(resp => resp.json())
         .then(x => {
@@ -336,7 +336,7 @@ class Form extends Component {
         resultsButtonDisabled: true
       });
       fetch(
-        `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdN[i]}/to/${this.state.endIdN[i]}`
+        `https://keo-proxy.herokuapp.com/https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdN[i]}/to/${this.state.endIdN[i]}`
       )
         .then(resp => resp.json())
         .then(x => {
