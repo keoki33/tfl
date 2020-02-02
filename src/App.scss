@@ -287,8 +287,12 @@ label.nightLabel {
     border-bottom: solid $borderColor;
     padding: 5px;
   }
+  h4 {
+  }
+  font-size: 17px;
   animation: fadeIn 0.5s;
   position: relative;
+
   // border: solid red;
   width: 100%;
   height: 100%;
@@ -308,6 +312,7 @@ label.nightLabel {
   height: 55%;
   h4 {
     padding: 5px;
+    margin-bottom: 10px;
   }
 }
 
