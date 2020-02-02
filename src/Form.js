@@ -103,6 +103,17 @@ class Form extends Component {
     }
   };
 
+  componentDidMount() {
+    ///// to wake up heroku
+    fetch(
+      `https://keo-proxy.herokuapp.com/https://api.tfl.gov.uk/journey/journeyresults/940GZZDLABR/to/940GZZLUALD}`
+    )
+      .then(resp => resp.json())
+      .then(x => {
+        console.log(x);
+      });
+  }
+
   getStationId = (time, i) => {
     if (
       this.state[`startStation${time}`][i] === "0" ||
