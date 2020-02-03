@@ -783,44 +783,7 @@ class Form extends Component {
   //     });
   // };
 
-  // calculateZone = () => {
-  //   if (
-  //     (this.state.startZoneM != "" && this.state.startZoneM != "") ||
-  //     (this.state.startZoneN != "" && this.state.startZoneN != "")
-  //   ) {
-  //     if (
-  //       // this.state.startZoneM.includes("+") ||
-  //       // this.state.endZoneM.includes("+")
-  //       this.state.startZoneM.length == 2
-  //     ) {
-  //       if (this.state.endZoneM <= this.state.startZoneM[0]) {
-  //         let x = this.state.startZoneM[0];
-  //         this.setState({ startZoneM: x }, () => {
-  //           this.zones();
-  //         });
-  //       } else {
-  //         let x = this.state.startZoneM[1];
-  //         this.setState({ startZoneM: x }, () => {
-  //           this.zones();
-  //         });
-  //       }
-  //     } else if (this.state.endZoneM.length == 2) {
-  //       if (this.state.startZoneM <= this.state.endZoneM[0]) {
-  //         let x = this.state.endZoneM[0];
-  //         this.setState({ endZoneM: x }, () => {
-  //           this.zones();
-  //         });
-  //       } else {
-  //         let x = this.state.endZoneM[1];
-  //         this.setState({ endZoneM: x }, () => {
-  //           this.zones();
-  //         });
-  //       }
-  //     } else {
-  //       this.zones();
-  //     }
-  //   }
-  // };
+  
 
   render() {
     return (
