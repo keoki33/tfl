@@ -6,10 +6,14 @@ class About extends Component {
   render() {
     return (
       <div className="about">
-        <h1>About</h1>
-        <p>
+        <h2>
           Calculate the cost of your TFL commute and compare it to purchasing a
           travel card to cover same route.
+        </h2>
+        <p>
+          Frustrated by the unneccessary complexity of calculating my TFL
+          commute, I created this site to help others quickly budget for their
+          commute and chedck if it's worth purchasing a travel card.
         </p>
         <p className="instructions">
           <h3>Instructions:</h3> <br /> <br />
