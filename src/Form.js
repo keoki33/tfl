@@ -106,7 +106,7 @@ class Form extends Component {
   componentDidMount() {
     ///// to wake up heroku
     // fetch(
-    //   `https://keo-proxy.herokuapp.com/https://api.tfl.gov.uk/journey/journeyresults/940GZZDLABR/to/940GZZLUALD}`
+    //   `https://keo-proxy.herokuapp.com/https://api.tfl.gov.uk/journey/journeyresults/940GZZDLABR/to/940GZZLUALD}?time=1500`
     // )
     //   .then(resp => resp.json())
     //   .then(x => {
@@ -191,8 +191,8 @@ class Form extends Component {
         resultsButtonDisabled: true
       });
       fetch(
-        // `https://keo-proxy.herokuapp.com/https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM[i]}/to/${this.state.endIdM[i]}`
-        `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM[i]}/to/${this.state.endIdM[i]}`
+        // `https://keo-proxy.herokuapp.com/https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM[i]}/to/${this.state.endIdM[i]}?time=1500`
+        `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdM[i]}/to/${this.state.endIdM[i]}?time=1500`
       )
         .then(resp => resp.json())
         .then(x => {
@@ -348,8 +348,8 @@ class Form extends Component {
         resultsButtonDisabled: true
       });
       fetch(
-        // `https://keo-proxy.herokuapp.com/https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdN[i]}/to/${this.state.endIdN[i]}`
-        `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdN[i]}/to/${this.state.endIdN[i]}`
+        // `https://keo-proxy.herokuapp.com/https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdN[i]}/to/${this.state.endIdN[i]}?time=1500`
+        `https://api.tfl.gov.uk/journey/journeyresults/${this.state.startIdN[i]}/to/${this.state.endIdN[i]}?time=1500`
       )
         .then(resp => resp.json())
         .then(x => {
