@@ -120,8 +120,8 @@ class About extends Component {
         <br /> <br />
         <p>
           This website is in no way associated with TFL. Website is in beta
-          stage. Any errors in calculation and/or costs please report to
-          errors@tfltravelcardcalculator.com
+          stage. Any errors in calculation and/or costs please report to{" "}
+          <a href="mailto:help@tflcalculator.com">help@tflcalculator.com</a>
         </p>
       </div>
     );
