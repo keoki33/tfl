@@ -871,6 +871,13 @@ class Form extends Component {
         )}
         {this.state.simple ? (
           <div className="instructions">
+            <p>
+              <strong>
+                If fare shows £0, TFL could not find a tube journey between the
+                two stations. Select another station.
+              </strong>
+            </p>
+            <br />
             <h3>Instructions:</h3> <br />
             <p>
               1. Select your starting and end station for both morning and night
@@ -900,13 +907,6 @@ class Form extends Component {
               All fares assume you are not tapping out or switching trains to
               avoid zone 1. Fares and routes are calculated as using best route
               from TFL trip planner.{" "}
-            </p>
-            <br />
-            <p>
-              <strong>
-                If fare shows £0, TFL could not find a tube journey between the
-                two stations. Select another station.
-              </strong>
             </p>
             <a
               href="http://content.tfl.gov.uk/standard-tube-map.pdf"
