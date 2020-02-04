@@ -7,8 +7,8 @@ class About extends Component {
     return (
       <div className="about">
         <h2>
-          Calculate the cost of your TFL commute and compare it to purchasing a
-          travel card to cover same route.
+          Calculate the cost of your TFL tube commute and compare it to an
+          equivalent travel card.
         </h2>
         <p>
           Frustrated by the unneccessary complexity of calculating my TFL

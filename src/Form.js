@@ -790,38 +790,44 @@ class Form extends Component {
       <div className="forms">
         <div>
           {this.state.main ? (
-            <form action="" className="formSwitch">
-              <label htmlFor="">Same trip Mon-Fri </label>
-              <input
-                onChange={event => {
-                  this.resetForm();
-                  this.setState({
-                    simple: true,
-                    complex: false,
-                    lastScreen: "simple"
-                  });
-                }}
-                checked={this.state.simple}
-                disabled={this.state.spinner}
-                type="radio"
-                name="formType"
-              />
-              <label htmlFor="">Custom week </label>
-              <input
-                onChange={event => {
-                  this.resetForm();
-                  this.setState({
-                    simple: false,
-                    complex: true,
-                    lastScreen: "complex"
-                  });
-                }}
-                checked={this.state.complex}
-                type="radio"
-                name="formType"
-                disabled={this.state.spinner}
-              />
-            </form>
+            <div>
+              <h2>
+                Calculate the cost of your TFL tube commute and compare it to an
+                equivalent travel card.
+              </h2>
+              <form action="" className="formSwitch">
+                <label htmlFor="">Same trip Mon-Fri </label>
+                <input
+                  onChange={event => {
+                    this.resetForm();
+                    this.setState({
+                      simple: true,
+                      complex: false,
+                      lastScreen: "simple"
+                    });
+                  }}
+                  checked={this.state.simple}
+                  disabled={this.state.spinner}
+                  type="radio"
+                  name="formType"
+                />
+                <label htmlFor="">Custom week </label>
+                <input
+                  onChange={event => {
+                    this.resetForm();
+                    this.setState({
+                      simple: false,
+                      complex: true,
+                      lastScreen: "complex"
+                    });
+                  }}
+                  checked={this.state.complex}
+                  type="radio"
+                  name="formType"
+                  disabled={this.state.spinner}
+                />
+              </form>
+            </div>
           ) : (
             ""
           )}

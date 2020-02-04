@@ -38,7 +38,7 @@ class HogDetails extends Component {
             />
           </svg>
         </div>
-        <h2>TFL tube fare and travelcard calculator</h2>
+        <h2>TFL tube fare and travelcard comparison calculator</h2>
         <ul className="links">
           <li
             onClick={() => {
