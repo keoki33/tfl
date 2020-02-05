@@ -18,11 +18,13 @@ class About extends Component {
         <p className="instructions">
           <h3>Instructions:</h3> <br /> <br />
           <p>
-            1. Select your starting and end station for both morning and night
-            commutes{" "}
+            1. Select your starting and end station for both start and return
+            commutes.
           </p>
           <br /> <br />
-          <p>2. Select wether the journeys begin at peak or off peak times. </p>
+          <p>
+            2. Select whether the journeys begin at peak or off peak times.{" "}
+          </p>
           <br /> <br />
           <p>
             Peak fares - Monday to Friday (not on public holidays) journeys

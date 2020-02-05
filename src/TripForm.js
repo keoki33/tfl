@@ -224,7 +224,7 @@ class TripForm extends Component {
     return (
       <div>
         <div className="tripForm">
-          <label htmlFor="">Morning</label>
+          <label htmlFor="">Start</label>
           <form action="">
             <select
               onChange={event => {
@@ -347,7 +347,7 @@ class TripForm extends Component {
 
         <div className="tripForm">
           <label className="nightLabel" htmlFor="">
-            Night
+            Return
           </label>
           <form action="">
             <select
@@ -464,9 +464,8 @@ class TripForm extends Component {
         </div>
 
         <div className="resultsSummary">
-          <div>Morning: </div>{" "}
-          <div>£{this.displaySpinner(this.props.costM)}</div>
-          <div>Night: </div>
+          <div>Start: </div> <div>£{this.displaySpinner(this.props.costM)}</div>
+          <div>Return: </div>
           <div>£{this.displaySpinner(this.props.costN)}</div>
           <div>bus trips:</div>
           <div>{Number(this.props.busM) + Number(this.props.busN)}</div>{" "}

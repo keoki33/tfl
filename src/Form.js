@@ -886,11 +886,11 @@ class Form extends Component {
             <br />
             <h3>Instructions:</h3> <br />
             <p>
-              1. Select your starting and end station for both morning and night
-              commutes{" "}
+              1. Select your starting and end station for both start and return
+              commutes.
             </p>
             <p>
-              2. Select wether the journeys begin at peak or off peak times.{" "}
+              2. Select whether the journeys begin at peak or off peak times.{" "}
             </p>
             <p>
               Peak fares - Monday to Friday (not on public holidays) journeys
