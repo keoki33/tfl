@@ -64,7 +64,7 @@ class About extends Component {
           <ul className="list">
             <li> Commute Monday to Friday with no commute on weekends.</li>
             <li>Month is 21 working days</li>
-            <li>Half Year is 26 working days </li>
+            <li>Half Year is 126 working days </li>
             <li>Year is 253 working days </li>
           </ul>
           <br />
