@@ -122,9 +122,12 @@ class About extends Component {
         <br /> <br />
         <p>
           This website is in no way associated with TFL. Website is in beta
-          stage. Any errors in calculation and/or costs please report to{" "}
+          stage, not currently formatted for mobile devices. Any errors in
+          calculation and/or costs please report to{" "}
           <a href="mailto:help@tflcalculator.com">help@tflcalculator.com</a>
         </p>
+        <br />
+        <h3> Thank you for trying my site!</h3>
       </div>
     );
   }
