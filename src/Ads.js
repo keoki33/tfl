@@ -14,8 +14,8 @@ class Ads extends Component {
       <ins
         className="adsbygoogle"
         style={{ display: "block" }}
-        data-ad-client="ca-pub-12121212"
-        data-ad-slot="12121212"
+        data-ad-client="ca-pub-8101873648625510"
+        data-ad-slot="8101873648625510"
         data-ad-format="auto"
       />
     );

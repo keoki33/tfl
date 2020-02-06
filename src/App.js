@@ -214,7 +214,8 @@ class App extends Component {
           <img src={require("./verticalAd.png")} alt="" />
         </div>
         <div className="adsB">
-          <img src={require("./horizontalAd.png")} alt="" />
+          {/* <img src={require("./horizontalAd.png")} alt="" /> */}
+          <Ads />
         </div>
         {/* <Loading /> */}
       </div>
