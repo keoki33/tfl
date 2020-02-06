@@ -59,16 +59,17 @@ class About extends Component {
         </p>
         <br />
         <div>
-          <h3>Simple calculation:</h3>
+          <h3>Same trip Mon-Fri calculation:</h3>
           <br />
           <ul className="list">
             <li> Commute Monday to Friday with no commute on weekends.</li>
+            <li>Assumes no commute on standard U.K. holidays.</li>
             <li>Month is 21 working days</li>
             <li>Half Year is 126 working days </li>
             <li>Year is 253 working days </li>
           </ul>
           <br />
-          <h3>Custom calculation:</h3>
+          <h3>Custom week calculation:</h3>
           <br />
           <ul>
             <li>Does not subtract any holidays.</li>
