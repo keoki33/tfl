@@ -914,6 +914,11 @@ class Form extends Component {
               avoid zone 1. Fares and routes are calculated as using best route
               from TFL trip planner.{" "}
             </p>
+            <br />
+            <p>
+              To see the formula for the calculaions, click on the about link at
+              the top.
+            </p>
             <a
               href="http://content.tfl.gov.uk/standard-tube-map.pdf"
               target="_blank"

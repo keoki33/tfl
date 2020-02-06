@@ -73,7 +73,7 @@ class About extends Component {
           <ul>
             <li>Does not subtract any holidays.</li>
             <li>Month is averaged as 4.3 weeks. </li>
-            <li>Half Year is 126 weeks.</li>
+            <li>Half Year is 26 weeks.</li>
             <li>Year is 52 weeks.</li>
           </ul>
         </div>
