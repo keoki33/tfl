@@ -833,6 +833,8 @@ class Form extends Component {
           )}
           {this.state.simple ? (
             <div className="simpleForm">
+              <hr />
+              <h3>Monday to Friday</h3>
               <TripForm
                 index={0}
                 startStationM={this.state.startStationM[0]}
@@ -853,6 +855,7 @@ class Form extends Component {
 
                 // disabled={true}
               />
+              <hr />
             </div>
           ) : (
             ""

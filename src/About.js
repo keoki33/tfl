@@ -13,7 +13,7 @@ class About extends Component {
         <p>
           Frustrated by the unneccessary complexity of calculating my TFL
           commute, I created this site to help others quickly budget for their
-          commute and chedck if it's worth purchasing a travel card.
+          commute and check if it's worth purchasing a travel card.
         </p>
         <p className="instructions">
           <h3>Instructions:</h3> <br /> <br />
