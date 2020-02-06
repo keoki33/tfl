@@ -6,6 +6,7 @@ import {
 } from "react-transition-group";
 
 import Loading from "./Loading";
+import AdSense from "react-adsense";
 
 import "./App.scss";
 
@@ -215,7 +216,11 @@ class App extends Component {
         </div>
         <div className="adsB">
           {/* <img src={require("./horizontalAd.png")} alt="" /> */}
-          <Ads />
+          {/* <Ads /> */}
+          <AdSense.Google
+            client="ca-pub-8101873648625510"
+            slot="8101873648625510"
+          />
         </div>
         {/* <Loading /> */}
       </div>

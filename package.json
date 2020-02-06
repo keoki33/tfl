@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "react": "^16.9.0",
+    "react-adsense": "^0.1.0",
+    "react-adsense-ad": "^3.4.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.2",
-    "react-transition-group": "^4.3.0"
+    "react-scripts": "^3.3.1",
+    "react-transition-group": "^4.3.0",
+    "save": "^2.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
