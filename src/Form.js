@@ -525,7 +525,7 @@ class Form extends Component {
     this.calculateTravelcard();
     setTimeout(() => {
       this.setState({ loadingScreen: false, results: true });
-    }, 2000);
+    }, 3000);
   };
 
   calculateContactless = () => {
