@@ -21,11 +21,11 @@ class About extends Component {
             1. Select your starting and end station for both start and return
             commutes.
           </p>
-          <br /> <br />
+          <br />
           <p>
             2. Select whether the journeys begin at peak or off peak times.{" "}
           </p>
-          <br /> <br />
+          <br />
           <p>
             Peak fares - Monday to Friday (not on public holidays) journeys
             starting between 06:30 and 09:30, and between 16:00 and 19:00.
