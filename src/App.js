@@ -217,10 +217,12 @@ class App extends Component {
         <div className="adsB">
           {/* <img src={require("./horizontalAd.png")} alt="" /> */}
           {/* <Ads /> */}
-          <AdSense.Google
-            client="ca-pub-8101873648625510"
-            slot="8101873648625510"
-          />
+          <div className="adsB">
+            <AdSense.Google
+              client="ca-pub-8101873648625510"
+              slot="8101873648625510"
+            />
+          </div>
         </div>
         {/* <Loading /> */}
       </div>
