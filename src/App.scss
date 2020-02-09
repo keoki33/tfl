@@ -94,6 +94,12 @@ $backgroundColor: rgb(250, 250, 250);
     " ab ab ab";
 }
 
+@media screen and (max-width: 1024px) {
+  .main {
+    width: 1024px;
+  }
+}
+
 .content {
   grid-area: c;
   animation: fadeIn 0.5s;
