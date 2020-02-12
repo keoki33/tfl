@@ -325,6 +325,7 @@ label.nightLabel {
   border-radius: 5px;
 }
 .resultsTables {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -362,13 +363,14 @@ label.nightLabel {
   // border: solid purple;
   position: relative;
   height: fit-content;
-  bottom: 0px;
+  // bottom: 0px;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
 
   button {
+    position: relative;
     padding: 10px;
     border-radius: 5px;
     margin-right: 40px;
@@ -450,11 +452,11 @@ label.nightLabel {
 
 .adsB {
   grid-area: ab;
-  border: solid rgb(243, 243, 243);
-  iframe {
+
+  img {
     position: relative;
-    width: 90%;
-    height: 80%;
+    width: 95%;
+    height: 90%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

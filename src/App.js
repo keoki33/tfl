@@ -215,14 +215,14 @@ class App extends Component {
           <img src={require("./verticalAd.png")} alt="" />
         </div>
         <div className="adsB">
-          {/* <img src={require("./horizontalAd.png")} alt="" /> */}
+          <img src={require("./horizontalAd.png")} alt="" />
           {/* <Ads /> */}
-          <div className="adsB">
+          {/* <div className="adsB">
             <AdSense.Google
               client="ca-pub-8101873648625510"
               slot="8101873648625510"
             />
-          </div>
+          </div> */}
         </div>
         {/* <Loading /> */}
       </div>

@@ -156,6 +156,7 @@ class Results extends Component {
             </table>
           </div>
         </div>
+        <br />
         <div className="resultsButtons">
           <div>
             {" "}
